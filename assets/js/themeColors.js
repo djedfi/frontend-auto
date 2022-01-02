@@ -443,15 +443,15 @@ function names() {
 
     let indexUrl = window.location.href.split('/')
     if (indexUrl[indexUrl.length - 1] === "index.html") {
-        index();
+        //index();
     } else if (indexUrl[indexUrl.length - 1] === "index.html#") {
-        index();
+        //index();
     } else if (indexUrl[indexUrl.length - 1] === "") {
-        index();
+        //index();
     } else if (indexUrl[indexUrl.length - 1] === "#") {
-        index();
+        //index();
     } else if (indexUrl[indexUrl.length - 1] === "Verticalmenu") {
-        index();
+        //index();
     }
     let colorData = hexToRgba(myVarVal || "#6c5ffc", 0.1)
     document.querySelector('html').style.setProperty('--primary01', colorData);
