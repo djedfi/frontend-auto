@@ -20,8 +20,8 @@
             </div>
 
             <div class="container-login100">
-                <div id="id_div_login" class="wrap-login100 p-6 d-none">
-                    <form class="login100-form validate-form">
+                <div id="id_div_login" class="wrap-login100 p-6 d-block">
+                    <form class="login100-form validate-form" id="id_form_login">
                         <span class="login100-form-title pb-5">
                             Login
                         </span>
@@ -41,22 +41,25 @@
                                             <a href="#" class="input-group-text bg-white text-muted">
                                                 <i class="zmdi zmdi-email text-muted" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 form-control" type="email" placeholder="Email">
+                                            <input class="input100 form-control" id="id_txt_email_usr" name="txt_email_usr" type="email" placeholder="Email" data-cerror-print="id_div_msg_error_email_login" required>
                                         </div>
+                                        <div id="id_div_msg_error_email_login"></div>
                                         <div class="wrap-input100 validate-input input-group" id="Password-toggle">
                                             <a href="#" class="input-group-text bg-white text-muted">
                                                 <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                             </a>
-                                            <input class="input100 form-control" type="password" placeholder="Password">
+                                            <input class="input100 form-control" type="password" id="id_txt_pass_usr" name="txt_pass_usr" placeholder="Password" data-cerror-print="id_div_msg_error_pass_login" required>
                                         </div>
+                                        <div id="id_div_msg_error_pass_login"></div>
                                         <div class="text-end pt-4">
-                                            <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
+                                            <p class="mb-0"><a href="javascript:void(0);" class="text-primary ms-1" id="id_a_fpass">Forgot Password?</a></p>
                                         </div>
                                         <div class="container-login100-form-btn">
-                                            <a href="index.html" class="login100-form-btn btn-primary">
+                                            <a  href="javascript:void(0);" class="login100-form-btn btn-primary" id="id_btn_login">
                                                     Login
                                             </a>
-                                        </div>
+                                        </div><br>
+                                        <div id="id_div_msg_error_login"  class="" role="alert"></div>
                                         
                                     </div>
                                 </div>
@@ -65,7 +68,7 @@
 
                     </form>
                 </div>
-                <div id="id_div_reset_pass" class="wrap-login100 p-6 d-block">
+                <div id="id_div_reset_pass" class="wrap-login100 p-6 d-none">
                     <form class="login100-form validate-form">
                         <span class="login100-form-title pb-5">
                             Forgot Password
@@ -81,7 +84,7 @@
                             <a class="btn btn-primary d-grid" href="index.html">Submit</a>
                         </div>
                         <div class="text-center mt-4">
-                            <p class="text-dark mb-0">You remember your pass?<a class="text-primary ms-1" href="login.html">Login</a></p>
+                            <p class="text-dark mb-0">You remember your pass?<a href="javascript:void(0);" class="text-primary ms-1" id="id_a_flogin">Login</a></p>
                         </div>
                     </form>
                 </div>

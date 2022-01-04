@@ -76,6 +76,9 @@ final class Interfaces
             <link href="'.$this->path_rplugins.'datatable/responsive.bootstrap5.css'.$this->version_resources.'" rel="stylesheet" />
             <!-- COLOR SKIN CSS -->
             <link id="theme" rel="stylesheet" type="text/css" media="all" href="'.$this->path_template.'colors/color1.css'.$this->version_resources.'" />
+            <!-- VALIDATE CSS -->
+            <link id="theme" rel="stylesheet" type="text/css" media="all" href="'.$this->path_css.'cvalidate.css'.$this->version_resources.'" />
+            <!-- MODULE CSS -->
             ' . (file_exists($cssmod) ? '<link rel="stylesheet" type="text/css" href="' . $cssmod . $this->version_resources . '" />' : '') . '
         </head>
         <body class="app sidebar-mini ltr light-mode">';
@@ -85,7 +88,9 @@ final class Interfaces
     public function return_js()
     {
         $jsmod  = $this->path_js. $this->modulo . '.js';
-        $this->html_output = '<!-- JQUERY JS -->
+        
+        $this->html_output = '
+        <!-- JQUERY JS -->
         <script src="'.$this->path_rjs.'jquery.min.js'.$this->version_resources.'"></script>
     
         <!-- BOOTSTRAP JS -->
@@ -102,10 +107,19 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'p-scroll/perfect-scrollbar.js'.$this->version_resources.'"></script>
         
         <!-- Color Theme js -->
-    <script src="'.$this->path_rjs.'themeColors.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rjs.'themeColors.js'.$this->version_resources.'"></script>
     
         <!-- CUSTOM JS -->
         <script src="'.$this->path_rjs.'custom.js'.$this->version_resources.'"></script>
+        
+        <!-- VALIDATE FORM -->
+        <script src="'.$this->path_js.'cvalidate.js'.$this->version_resources.'"></script>
+
+        <!-- INDEX -->
+        <script src="'.$this->path_js.'config.js'.$this->version_resources.'"></script>'
+        .(!isset($_SESSION['usuAA']) ? '<script src="'.$this->path_js.'index.js'.$this->version_resources.'"></script>': '').'
+
+        <!-- MODULE JS -->
         ' . (file_exists($jsmod) ? '<script src="'.$jsmod.$this->version_resources.'"></script>' : '') . '
         </body>
         </html>';

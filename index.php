@@ -35,6 +35,12 @@ if (isset($_SESSION['timeout']))
 }
 
 $mod                    =   htmlentities(isset($_GET['mod']) ? $_GET['mod'] : '');
+if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']))
+{
+    $mod  = 'login';
+}
+
+
 $array_config_interface =   array(
     'vresource'=>$varCache,
     'modulo'=>$mod,
@@ -50,6 +56,7 @@ $array_config_interface =   array(
 $obj_interfaces         =   new Interfaces($array_config_interface);
 $obj_interfaces->header();
 echo $obj_interfaces->html_output;
+
 if(!isset($_SESSION['usuAA']))
 {
     include("modulos/" . $array_modulos['login'] . "/index.php");

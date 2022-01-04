@@ -17,6 +17,4 @@ final class Principal
     
         return $arreglo;
     }    
-
-    
 }
