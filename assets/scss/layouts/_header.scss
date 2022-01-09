@@ -1033,4 +1033,10 @@
     #user-profile .media{
         display: inline-block !important;
     }
+    #user-profile .media-xs{
+        display: flex !important;
+    }
+    .profile-cover__img .profile-img-1>img{
+        margin-left: -29px;
+    }
 }

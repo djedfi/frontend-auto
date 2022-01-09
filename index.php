@@ -60,14 +60,23 @@ echo $obj_interfaces->html_output;
 if(!isset($_SESSION['usuAA']))
 {
     include("modulos/" . $array_modulos['login'] . "/index.php");
+    $obj_interfaces->return_js_no_login();
 }
-else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod])) 
+else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && $mod== 'login') 
 {
+    header('Location:./?mod=home');
+}
+else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && $mod != 'errors') 
+{
+    $innerHTML = '';
     include("modulos/" . $array_modulos[$mod] . "/index.php");
+    $obj_interfaces->template();
+    echo $obj_interfaces->html_template;
+    $obj_interfaces->return_js_login();
 }
 else
 {
+    $obj_interfaces->return_js_no_login();
     include("modulos/" . $array_modulos['errors'] . "/index.php");
 }
-$obj_interfaces->return_js();
 echo $obj_interfaces->html_output;

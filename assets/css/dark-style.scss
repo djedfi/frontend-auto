@@ -2392,6 +2392,11 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
             border-bottom-color: $border-dark;
         }
     }
+    .toast.show{
+        .btn-close{
+            color: #d5d5d5;
+        }
+    }
     .task-icon1:first-child {
         border: 2px solid $primary-1;
     }
@@ -3092,7 +3097,7 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
         color: $white;
     }
     .btn-close {
-        // color: #9595b5;
+        color: #9595b5;
         &:hover,
         &:focus {
             color: inherit;
@@ -4827,7 +4832,7 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
         border: $border-dark solid 1px;
         background-color: $dark-theme-1 !important;
         .richText-toolbar {
-            border-bottom: rgba(156, 162, 161, 0.1) solid 1px;
+            border-bottom: rgba(156, 162, 161, 0) solid 1px;
             ul li a {
                 border-right: rgba(156, 162, 161, 0.2) solid 1px;
             }
@@ -8704,7 +8709,7 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
     .richText {
         .richText-editor {
             background-color: $dark-theme-1;
-            border-left-color: $border-dark;
+            border-left-color: rgba(255, 255, 255, 0.0);
         }
         .richText-toolbar ul {
             border-bottom-color: $border-dark;

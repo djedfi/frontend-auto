@@ -3050,3 +3050,13 @@ input {
     background-color: $secondary;
     border-color: $secondary;
 }
+
+@media (max-width: 576px){
+    .radiobtns [class*=btn-outline-], .checkboxbtns [class*=btn-outline-]{
+        padding: 0.1rem 0.2rem !important;
+        font-size: 12px !important;
+    }
+    .example{
+        padding: 1rem !important;
+    }
+}

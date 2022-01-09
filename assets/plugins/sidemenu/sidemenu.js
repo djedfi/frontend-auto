@@ -1,37 +1,65 @@
-(function() {
+(function () {
     "use strict";
 
     var slideMenu = $('.side-menu');
 
     // Toggle Sidebar
-    $(document).on('click', '[data-bs-toggle="sidebar"]', function(event) {
+    $(document).on('click', '[data-bs-toggle="sidebar"]', function (event) {
         event.preventDefault();
         $('.app').toggleClass('sidenav-toggled');
     });
 
 
-    // ______________Active Class
-    $(".app-sidebar a").each(function() {
-        var pageUrl = window.location.href.split(/[?#]/)[0];
-        if (this.href == pageUrl) {
-            $(this).addClass("active");
-            $(this).parent().addClass("is-expanded");
-            $(this).parent().parent().prev().addClass("active");
-            $(this).parent().parent().addClass("open");
-            $(this).parent().parent().prev().addClass("is-expanded");
-            $(this).parent().parent().parent().addClass("is-expanded");
-            $(this).parent().parent().parent().parent().addClass("open");
-            $(this).parent().parent().parent().parent().prev().addClass("active");
-            $(this).parent().parent().parent().parent().parent().addClass("is-expanded");
+    var position = window.location.pathname.split('?');
+    var queryString = window.location.search;
+    var get_modulo =queryString.split('=');
+    var modulo_url = '';
+
+    if(get_modulo.length == 2)
+    {
+        modulo_url = './'+get_modulo[0]+'='+get_modulo[1];
+    }
+    else if(get_modulo.length == 3)
+    {
+        modulo_url = './'+get_modulo[0]+'='+get_modulo[1]+'='+get_modulo[2];
+    }
+
+    $(".app-sidebar li a").each(function () {
+        var $this = $(this);
+        var pageUrl = $this.attr("href");
+        
+        if (pageUrl) {
+            if (modulo_url == pageUrl) {
+                $(this).addClass("active");
+                $(this).parent().addClass("is-expanded");
+                $(this).parent().parent().prev().addClass("active");
+                $(this).parent().parent().addClass("open");
+                $(this).parent().parent().prev().addClass("is-expanded");
+                $(this).parent().parent().parent().addClass("is-expanded");
+                $(this).parent().parent().parent().parent().addClass("open");
+                $(this).parent().parent().parent().parent().prev().addClass("active");
+                $(this).parent().parent().parent().parent().parent().addClass("is-expanded");
+                return false;
+            }
         }
     });
+    if ($('.slide-item').hasClass('active')) {
+        $('.app-sidebar').animate({
+            scrollTop: $('a.slide-item.active').offset().top - 600
+        }, 600);
+    }
+    if ($('.sub-slide-item').hasClass('active')) {
+        $('.app-sidebar').animate({
+            scrollTop: $('a.sub-slide-item.active').offset().top - 600
+        }, 600);
+    }
 
 
-    var toggleSidebar = function() {
+    var toggleSidebar = function () {
         var w = $(window);
         if (w.outerWidth() <= 1024) {
             $("body").addClass("sidebar-gone");
-            $(document).off("click", "body").on("click", "body", function(e) {
+            $(document).off("click", "body").on("click", "body", function (e) {
                 if ($(e.target).hasClass('sidebar-show') || $(e.target).hasClass('search-show')) {
                     $("body").removeClass("sidebar-show");
                     $("body").addClass("sidebar-gone");
@@ -53,7 +81,7 @@
 
 
     //sticky-header
-    $(window).on("scroll", function(e) {
+    $(window).on("scroll", function (e) {
         if ($(window).scrollTop() >= 70) {
             $('.app-header').addClass('fixed-header');
             $('.app-header').addClass('visible-title');
@@ -63,7 +91,7 @@
         }
     });
 
-    $(window).on("scroll", function(e) {
+    $(window).on("scroll", function (e) {
         if ($(window).scrollTop() >= 70) {
             $('.horizontal-main').addClass('fixed-header');
             $('.horizontal-main').addClass('visible-title');
@@ -76,11 +104,11 @@
 
 function hovermenu() {
 
-    $(".app-sidebar").hover(function() {
+    $(".app-sidebar").hover(function () {
         if ($('.app').hasClass('sidenav-toggled')) {
             $('.app').addClass('sidenav-toggled-open');
         }
-    }, function() {
+    }, function () {
         if ($('.app').hasClass('sidenav-toggled')) {
             $('.app').removeClass('sidenav-toggled-open');
         }
@@ -91,22 +119,22 @@ function hovermenu() {
 function icontext() {
     $(".app-sidebar").off("mouseenter mouseleave");
 
-    $(document).on('click', ".app-sidebar", function(event) {
+    $(document).on('click', ".app-sidebar", function (event) {
         if ($('body').hasClass('sidenav-toggled') == true) {
             $('body').addClass('sidenav-toggled-open');
         }
     });
 
-    $(document).on('click', ".main-content", function(event) {
+    $(document).on('click', ".main-content", function (event) {
         $('body').removeClass('sidenav-toggled-open');
     });
 }
 
 //________________Horizontal js
-jQuery(function() {
+jQuery(function () {
     'use strict';
-    document.addEventListener("touchstart", function() {}, false);
-    jQuery(function() {
+    document.addEventListener("touchstart", function () { }, false);
+    jQuery(function () {
         jQuery('body').wrapInner('<div class="horizontalMenucontainer" />');
     });
 }());
@@ -143,7 +171,7 @@ var slide = "100px";
 var leftsideLimit = -100
 
 // get horizontal width
-var horizontalMenu = function() {
+var horizontalMenu = function () {
     return $('.horizontal-main').innerWidth();
 }
 var HorizontalWidthSize = horizontalMenu();
@@ -196,7 +224,7 @@ $(window).resize(
 
 $("#slide-left").addClass("d-none");
 
-$(document).on("click", ".ltr #slide-left", function() {
+$(document).on("click", ".ltr #slide-left", function () {
     horizontalMenuLimit()
     var currentPosition = parseInt(sideMenu.css("marginLeft"));
     if (currentPosition <= 0) {
@@ -212,7 +240,7 @@ $(document).on("click", ".ltr #slide-left", function() {
         }
     }
 });
-$(document).on("click", ".ltr #slide-right", function() {
+$(document).on("click", ".ltr #slide-right", function () {
     horizontalMenuLimit();
     var currentPosition = parseInt(sideMenu.css("marginLeft"));
     if (currentPosition >= slideLimit) {
@@ -229,7 +257,7 @@ $(document).on("click", ".ltr #slide-right", function() {
     }
 });
 
-$(document).on("click", ".rtl #slide-left", function() {
+$(document).on("click", ".rtl #slide-left", function () {
     horizontalMenuLimit()
     var currentPosition = parseInt(sideMenu.css("marginRight"));
     console.log(currentPosition);
@@ -246,13 +274,13 @@ $(document).on("click", ".rtl #slide-left", function() {
         }
     }
 });
-$(document).on("click", ".rtl #slide-right", function() {
+$(document).on("click", ".rtl #slide-right", function () {
     horizontalMenuLimit();
     var currentPosition = parseInt(sideMenu.css("marginRight"));
     if (currentPosition >= slideLimit) {
         $("#slide-left").removeClass("d-none");
         sideMenu.stop(false, true).animate({
-            marginLeft : 0,
+            marginLeft: 0,
             marginRight: "-=" + slide
         }, {
             duration: 400
@@ -271,13 +299,13 @@ function menuClick() {
     $("[data-bs-toggle='sub-slide2']").off('click');
 
     // initiating the click function
-    $("[data-bs-toggle='slide']").on('click', function(e) {
+    $("[data-bs-toggle='slide']").on('click', function (e) {
         var $this = $(this);
         var checkElement = $this.next();
         var animationSpeed = 300,
             slideMenuSelector = '.slide-menu';
         if (checkElement.is(slideMenuSelector) && checkElement.is(':visible')) {
-            checkElement.slideUp(animationSpeed, function() {
+            checkElement.slideUp(animationSpeed, function () {
                 checkElement.removeClass('open');
             });
             checkElement.parent("li").removeClass("is-expanded");
@@ -286,7 +314,7 @@ function menuClick() {
             var ul = parent.find('ul:visible').slideUp(animationSpeed);
             ul.removeClass('open');
             var parent_li = $this.parent("li");
-            checkElement.slideDown(animationSpeed, function() {
+            checkElement.slideDown(animationSpeed, function () {
                 checkElement.addClass('open');
                 parent.find('li.is-expanded').removeClass('is-expanded');
                 parent_li.addClass('is-expanded');
@@ -298,13 +326,13 @@ function menuClick() {
     });
 
     // Activate sidebar slide toggle
-    $("[data-bs-toggle='sub-slide']").on('click', function(e) {
+    $("[data-bs-toggle='sub-slide']").on('click', function (e) {
         var $this = $(this);
         var checkElement = $this.next();
         var animationSpeed = 300,
             slideMenuSelector = '.sub-slide-menu';
         if (checkElement.is(slideMenuSelector) && checkElement.is(':visible')) {
-            checkElement.slideUp(animationSpeed, function() {
+            checkElement.slideUp(animationSpeed, function () {
                 checkElement.removeClass('open');
             });
             checkElement.parent("li").removeClass("is-expanded");
@@ -313,7 +341,7 @@ function menuClick() {
             var ul = parent.find('ul:visible').slideUp(animationSpeed);
             ul.removeClass('open');
             var parent_li = $this.parent("li");
-            checkElement.slideDown(animationSpeed, function() {
+            checkElement.slideDown(animationSpeed, function () {
                 checkElement.addClass('open');
                 parent.find('li.is-expanded').removeClass('is-expanded');
                 parent_li.addClass('is-expanded');
@@ -325,13 +353,13 @@ function menuClick() {
     });
 
     // Activate sidebar slide toggle
-    $("[data-bs-toggle='sub-slide2']").on('click', function(e) {
+    $("[data-bs-toggle='sub-slide2']").on('click', function (e) {
         var $this = $(this);
         var checkElement = $this.next();
         var animationSpeed = 300,
             slideMenuSelector = '.sub-slide-menu2';
         if (checkElement.is(slideMenuSelector) && checkElement.is(':visible')) {
-            checkElement.slideUp(animationSpeed, function() {
+            checkElement.slideUp(animationSpeed, function () {
                 checkElement.removeClass('open');
             });
             checkElement.parent("li").removeClass("is-expanded");
@@ -340,7 +368,7 @@ function menuClick() {
             var ul = parent.find('ul:visible').slideUp(animationSpeed);
             ul.removeClass('open');
             var parent_li = $this.parent("li");
-            checkElement.slideDown(animationSpeed, function() {
+            checkElement.slideDown(animationSpeed, function () {
                 checkElement.addClass('open');
                 parent.find('li.is-expanded').removeClass('is-expanded');
                 parent_li.addClass('is-expanded');
@@ -351,18 +379,18 @@ function menuClick() {
         }
     });
 
-        // To close the sub menu dropdown by clicking on inner content
-        $('.hor-content').on('click', function(){
-            $('.side-menu li').each(function(){
-                $('.side-menu ul.open').slideUp(300)
-                $(this).parent().removeClass("is-expanded");
-                $(this).parent().parent().removeClass("open");
-                $(this).parent().parent().prev().removeClass("is-expanded");
-                $(this).parent().parent().parent().removeClass("is-expanded");
-                $(this).parent().parent().parent().parent().removeClass("open");
-                $(this).parent().parent().parent().parent().parent().removeClass("is-expanded");
-            })
+    // To close the sub menu dropdown by clicking on inner content
+    $('.hor-content').on('click', function () {
+        $('.side-menu li').each(function () {
+            $('.side-menu ul.open').slideUp(300)
+            $(this).parent().removeClass("is-expanded");
+            $(this).parent().parent().removeClass("open");
+            $(this).parent().parent().prev().removeClass("is-expanded");
+            $(this).parent().parent().parent().removeClass("is-expanded");
+            $(this).parent().parent().parent().parent().removeClass("open");
+            $(this).parent().parent().parent().parent().parent().removeClass("is-expanded");
         })
+    })
 }
 
 function HorizontalHovermenu() {
@@ -387,11 +415,11 @@ hovermenu();
 
 // ______________HOVER JS start
 function hovermenu() {
-    $(".app-sidebar").hover(function() {
+    $(".app-sidebar").hover(function () {
         if ($('body').hasClass('sidenav-toggled')) {
             $('body').addClass('sidenav-toggled-open');
         }
-    }, function() {
+    }, function () {
         if ($('body').hasClass('sidenav-toggled')) {
             $('body').removeClass('sidenav-toggled-open');
         }
@@ -403,19 +431,19 @@ function hovermenu() {
 function icontext() {
     $(".app-sidebar").off("mouseenter mouseleave");
 
-    $(document).on('click', ".app-sidebar", function(event) {
+    $(document).on('click', ".app-sidebar", function (event) {
         if ($('body').hasClass('sidenav-toggled') == true) {
             $('body').addClass('sidenav-toggled-open');
         }
     });
 
-    $(document).on('click', ".app-content", function(event) {
+    $(document).on('click', ".app-content", function (event) {
         $('body').removeClass('sidenav-toggled-open');
     });
 
     //Mobile menu 
-    jQuery(document).ready(function($) {
-        var alterClass = function() {
+    jQuery(document).ready(function ($) {
+        var alterClass = function () {
             var ww = document.body.clientWidth;
             if (ww < 768) {
                 $('body').removeClass('sidenav-toggled');
@@ -423,7 +451,7 @@ function icontext() {
                 $('body').addClass('sidenav-toggled');
             };
         };
-        $(window).resize(function() {
+        $(window).resize(function () {
             alterClass();
         });
         //Fire it when the page first loads:

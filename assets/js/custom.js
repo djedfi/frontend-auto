@@ -286,6 +286,7 @@ $('.off-canvas').on('click', function() {
 });
 
 
+
 //######## SWITCHER STYLES ######## //
 
 
@@ -480,3 +481,41 @@ $(document).ready (function(){
 // Bg-Image4 Style
 // $('body').addClass('bg-img4');
 // $('body').addClass('transparent-mode');
+
+
+function resetData() {
+    $('#myonoffswitch3').prop('checked', true);
+    $('#myonoffswitch6').prop('checked', true);
+    $('#myonoffswitch1').prop('checked', true);
+    $('#myonoffswitch9').prop('checked', true);
+    $('#myonoffswitch10').prop('checked', false);
+    $('#myonoffswitch11').prop('checked', true);
+    $('#myonoffswitch12').prop('checked', false);
+    $('#myonoffswitch13').prop('checked', true);
+    $('#myonoffswitch14').prop('checked', false);
+    $('#myonoffswitch15').prop('checked', false);
+    $('#myonoffswitch16').prop('checked', false);
+    $('#myonoffswitch17').prop('checked', false);
+    $('#myonoffswitch18').prop('checked', false);
+    $('body')?.removeClass('bg-img4');
+    $('body')?.removeClass('bg-img1');
+    $('body')?.removeClass('bg-img2');
+    $('body')?.removeClass('bg-img3');
+    $('body')?.removeClass('transparent-mode');
+    $('body')?.removeClass('dark-mode');
+    $('body')?.removeClass('dark-menu');
+    $('body')?.removeClass('color-menu');
+    $('body')?.removeClass('gradient-menu');
+    $('body')?.removeClass('dark-header');
+    $('body')?.removeClass('color-header');
+    $('body')?.removeClass('gradient-header');
+    $('body')?.removeClass('layout-boxed');
+    $('body')?.removeClass('icontext-menu');
+    $('body')?.removeClass('icon-overlay');
+    $('body')?.removeClass('closed-leftmenu');
+    $('body')?.removeClass('hover-submenu');
+    $('body')?.removeClass('hover-submenu1');
+    $('body')?.removeClass('sidenav-toggled');
+    $('body')?.removeClass('scrollable-layout');
+    
+}

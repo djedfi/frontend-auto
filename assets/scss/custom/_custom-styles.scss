@@ -2693,14 +2693,12 @@ svg.table-delete {
 }
 
 @media (max-width: 320px) {
-.app-header .header-right-icons .nav-link.icon {
-    margin: 0px !important;
-    height: 2.1rem !important;
-    width: 2.1rem !important;
-}
-.sidebar-mini .responsive-navbar .navbar-collapse, .responsive-navbar .navbar-collapse {
-    margin-top: 72px !important;
-}
+    .app-header .header-right-icons .nav-link.icon {
+        margin: 0px !important;
+    }
+    .sidebar-mini .responsive-navbar .navbar-collapse, .responsive-navbar .navbar-collapse {
+        margin-top: 72px !important;
+    }
 
 }
 
@@ -2736,7 +2734,7 @@ svg.table-delete {
     }
     .sidebar-mini .responsive-navbar .navbar-collapse,
     .responsive-navbar .navbar-collapse {
-        margin-top: 72px !important;
+        margin-top: 74px !important;
     }
     .sidebar-mini .app-sidebar {
         top: 69px;
@@ -3088,6 +3086,12 @@ ul.inbox-pagination li {
     text-align: center;
     border: 1px solid #e9edf4;
     color: $default-color;
+}
+
+@media (max-width: 576px){
+    .card-pay .tabs-menu li{
+        width: 100%;
+    }
 }
 
 .form-wizard-title {
@@ -4618,4 +4622,27 @@ table.table-bordered.dataTable thead tr:first-child td {
       align-items: center;
     }
   }
+
+@media (max-width: 992px){
+    .wizard>.steps .done a .title, .wizard>.steps .done a:hover .title, .wizard>.steps .done a:active .title{
+        display: none !important;
+    }
+}
+
+@media (max-width: 576px){
+    .cal1 .clndr .clndr-table tr .day .day-contents{
+        padding: 7px !important;
+    }
+    .fc-col-header thead th{
+        padding: 10px 0px !important;
+    }
+}
+
+.fc .fc-button-group{
+    margin-bottom: 2px;
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child){
+    margin-bottom: 2px;
+}
   

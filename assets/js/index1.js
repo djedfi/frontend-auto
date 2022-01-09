@@ -1,7 +1,5 @@
 $(function(e) {
 
-
-
     //flotChart1
     $.plot('#flotback-chart', [{
         data: dashData10,
@@ -514,8 +512,6 @@ function getCssValuePrefix() {
 }
 
 function index() {
-
-    // document.querySelector('.bg-recentorder').style.background = getCssValuePrefix() + 'linear-gradient(' + 'right' + ', ' + hexToRgba(myVarVal, 0.8) + ', ' + hexToRgba(myVarVal, 0.6) + ')'
 
     /*-----Transactions-----*/
     var myCanvas = document.getElementById("transactions");

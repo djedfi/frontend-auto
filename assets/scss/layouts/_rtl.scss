@@ -108,7 +108,7 @@ body.rtl {
         margin-right: -0.5rem;
     }
     @media (max-width: 768px) {
-        .responsive-navbar .dropdown-menu.dropdown-menu-end.show {
+        .app-header.header .dropdown-menu.header-search {
             right: 0 !important;
         }
     }
@@ -1095,7 +1095,7 @@ body.rtl {
     }
     @media (max-width: 992px) {
         .wideget-user .social.social-profile-buttons {
-            float: right !important;
+            float: left !important;
             margin-right: 153px;
             margin-left: inherit;
         }
@@ -3206,3 +3206,62 @@ body.rtl {
     }
 }
 
+@media (max-width: 576px) {
+    .rtl .wideget-user .social.social-profile-buttons{
+        margin-right: 0;
+    }
+}
+@media only screen and (max-width: 460px){
+.rtl .profile-cover__img .profile-img-1>img {
+    margin-right: -29px;
+    margin-left: inherit;
+    }   
+}
+@media (max-width: 1279px) and (min-width: 992px){
+    .rtl .sw-theme-dots>ul.step-anchor>li>a:after {
+        right: 44% !important;
+        left: inherit;
+    }
+}
+@media (min-width: 576px){
+    .rtl .wizard>.steps>ul li+li {
+        margin-right: 20px;
+        margin-left: inherit;
+    }
+}
+.rtl .wizard>.steps>ul li+li {
+    margin-right: 5px;
+    margin-left: inherit;
+
+}
+
+.rtl.dark-menu .app-sidebar{
+    border-left-color: $dark-theme-1;
+    border-right: inherit;
+}
+
+.rtl.transparent-mode .cal1 .clndr .clndr-table tr .day:last-child{
+    border-left-color: $border-dark;
+    border-right-color: $border-dark;
+}
+.rtl.transparent-mode .cal1 .clndr .clndr-table tr .day{
+    border-right-color: $border-dark;
+}
+
+.rtl.dark-mode .cal1 .clndr .clndr-table tr .day:last-child{
+    border-left-color: $border-dark;
+    border-right-color: $border-dark;
+}
+.rtl.dark-mode .cal1 .clndr .clndr-table tr .day{
+    border-right-color: $border-dark;
+}
+.rtl {
+    &.header-light.transparent-mode .side-header{
+        border-right-color: inherit;
+        border-left-color: $border;
+    }
+    &.icontext-menu.header-light.transparent-mode .side-header{
+        border-right-color: inherit;
+        border-left-color: $border;
+    }
+}

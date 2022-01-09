@@ -4713,6 +4713,19 @@ input[type=button].btn-block {
     border-color: #05c3fb;
 }
 
+@media (max-width: 576px) {
+
+    .radiobtns [class*=btn-outline-],
+    .checkboxbtns [class*=btn-outline-] {
+        padding: 0.1rem 0.2rem !important;
+        font-size: 12px !important;
+    }
+
+    .example {
+        padding: 1rem !important;
+    }
+}
+
 /*------ Card -------*/
 .card-header-tabs {
     margin: -1.25rem 0;
@@ -8064,7 +8077,7 @@ ul.dropdown-menu li.dropdown ul.dropdown-menu .dropdown-plus-title {
 .dropdown-menu-arrow.dropdown-menu-end:before,
 .dropdown-menu-arrow.dropdown-menu-end:after {
     left: auto;
-    right: 12px;
+    right: 18px;
 }
 
 .dropdown-toggle {
@@ -15118,17 +15131,18 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 /*----- Global Loader -----*/
 #global-loader {
-    position: fixed;
-    z-index: 50000;
-    background: white;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+  position: fixed;
+  z-index: 9999;
+  background-color: #131313;
+  opacity: 0.9;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 ul {
@@ -17909,8 +17923,6 @@ svg.table-delete {
 @media (max-width: 320px) {
     .app-header .header-right-icons .nav-link.icon {
         margin: 0px !important;
-        height: 2.1rem !important;
-        width: 2.1rem !important;
     }
 
     .sidebar-mini .responsive-navbar .navbar-collapse,
@@ -17959,7 +17971,7 @@ svg.table-delete {
 
     .sidebar-mini .responsive-navbar .navbar-collapse,
     .responsive-navbar .navbar-collapse {
-        margin-top: 72px !important;
+        margin-top: 74px !important;
     }
 
     .sidebar-mini .app-sidebar {
@@ -18317,6 +18329,12 @@ ul.inbox-pagination li {
     text-align: center;
     border: 1px solid #e9edf4;
     color: #282f53;
+}
+
+@media (max-width: 576px) {
+    .card-pay .tabs-menu li {
+        width: 100%;
+    }
 }
 
 .form-wizard-title {
@@ -19870,6 +19888,33 @@ table.table-bordered.dataTable thead tr:first-child td {
         justify-content: center;
         align-items: center;
     }
+}
+
+@media (max-width: 992px) {
+
+    .wizard>.steps .done a .title,
+    .wizard>.steps .done a:hover .title,
+    .wizard>.steps .done a:active .title {
+        display: none !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .cal1 .clndr .clndr-table tr .day .day-contents {
+        padding: 7px !important;
+    }
+
+    .fc-col-header thead th {
+        padding: 10px 0px !important;
+    }
+}
+
+.fc .fc-button-group {
+    margin-bottom: 2px;
+}
+
+.fc-direction-ltr .fc-toolbar>*> :not(:first-child) {
+    margin-bottom: 2px;
 }
 
 .file-radius-attachments {
@@ -22370,7 +22415,7 @@ list-style6 ul {
 .ribbon-price {
     position: absolute;
     top: 0;
-    z-index: 9;
+    z-index: 8;
     right: 0;
     width: 100%;
     display: block;
@@ -24577,6 +24622,14 @@ ul.timeline>li:before {
 
     #user-profile .media {
         display: inline-block !important;
+    }
+
+    #user-profile .media-xs {
+        display: flex !important;
+    }
+
+    .profile-cover__img .profile-img-1>img {
+        margin-left: -29px;
     }
 }
 
@@ -29299,7 +29352,7 @@ body.rtl {
 }
 
 @media (max-width: 768px) {
-    .rtl .responsive-navbar .dropdown-menu.dropdown-menu-end.show {
+    .rtl .app-header.header .dropdown-menu.header-search {
         right: 0 !important;
     }
 }
@@ -30457,7 +30510,7 @@ body.rtl {
 
 @media (max-width: 992px) {
     .rtl .wideget-user .social.social-profile-buttons {
-        float: right !important;
+        float: left !important;
         margin-right: 153px;
         margin-left: inherit;
     }
@@ -32931,6 +32984,71 @@ body.rtl {
     }
 }
 
+@media (max-width: 576px) {
+    .rtl .wideget-user .social.social-profile-buttons {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .rtl .profile-cover__img .profile-img-1>img {
+        margin-right: -29px;
+        margin-left: inherit;
+    }
+}
+
+@media (max-width: 1279px) and (min-width: 992px) {
+    .rtl .sw-theme-dots>ul.step-anchor>li>a:after {
+        right: 44% !important;
+        left: inherit;
+    }
+}
+
+@media (min-width: 576px) {
+    .rtl .wizard>.steps>ul li+li {
+        margin-right: 20px;
+        margin-left: inherit;
+    }
+}
+
+.rtl .wizard>.steps>ul li+li {
+    margin-right: 5px;
+    margin-left: inherit;
+}
+
+.rtl.dark-menu .app-sidebar {
+    border-left-color: #2a2a4a;
+    border-right: inherit;
+}
+
+.rtl.transparent-mode .cal1 .clndr .clndr-table tr .day:last-child {
+    border-left-color: rgba(255, 255, 255, 0.1);
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.rtl.transparent-mode .cal1 .clndr .clndr-table tr .day {
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.rtl.dark-mode .cal1 .clndr .clndr-table tr .day:last-child {
+    border-left-color: rgba(255, 255, 255, 0.1);
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.rtl.dark-mode .cal1 .clndr .clndr-table tr .day {
+    border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.rtl.header-light.transparent-mode .side-header {
+    border-right-color: inherit;
+    border-left-color: #e9edf4;
+}
+
+.rtl.icontext-menu.header-light.transparent-mode .side-header {
+    border-right-color: inherit;
+    border-left-color: #e9edf4;
+}
+
 /* ######## LIB-STYLES ######## */
 /*----- Date Picker ----*/
 .ui-datepicker {
@@ -33839,7 +33957,7 @@ body.rtl {
 
     .app .app-sidebar {
         left: -270px;
-        top: 69px;
+        top: 73px;
     }
 
     .app .app-sidebar__overlay {
@@ -34935,7 +35053,7 @@ body.rtl {
 
     .icontext-menu.app .app-sidebar {
         left: -270px;
-        top: 68px;
+        top: 73px;
     }
 
     .icontext-menu.app .app-sidebar__overlay {
@@ -36026,7 +36144,7 @@ body.rtl {
 
     .closed-leftmenu.app .app-sidebar {
         left: -270px;
-        top: 68px;
+        top: 73px;
     }
 
     .closed-leftmenu.app .app-sidebar__overlay {
@@ -36859,7 +36977,6 @@ body.rtl {
 .closed-leftmenu .side-menu .sub-category {
     color: #74829c;
     margin-bottom: 0.5rem;
-    margin-top: 1.5rem;
     padding: 12px 30px 2px 20px;
     margin-bottom: 0;
     white-space: nowrap;
@@ -37097,7 +37214,7 @@ body.rtl {
 
     .hover-submenu.app .app-sidebar {
         left: -270px;
-        top: 68px;
+        top: 73px;
     }
 
     .hover-submenu.app .app-sidebar__overlay {
@@ -38296,7 +38413,7 @@ body.rtl {
 
     .hover-submenu1.app .app-sidebar {
         left: -270px;
-        top: 68px;
+        top: 73px;
     }
 
     .hover-submenu1.app .app-sidebar__overlay {

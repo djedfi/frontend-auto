@@ -14,7 +14,13 @@ $.ajax
     },
     error : function(data)
     {
-        alert('no podemos conectar con el servidor');
+        swal({
+            title: "Warning",
+            text: "We can not connect with the server",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonText: 'Ok'
+        });
     }
 });
 

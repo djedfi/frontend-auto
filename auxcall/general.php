@@ -44,5 +44,19 @@ if (isset($ahac))
             );
             echo $respuesta_json;
         break;
+
+        case 'logout':
+            session_destroy();
+            
+            $respuesta_json     =   json_encode
+            (
+                array
+                (
+                    'bandera'       => true
+                )
+            );
+            echo $respuesta_json;
+
+        break;
     }
 }

@@ -2905,6 +2905,10 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
     border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
+.dark-mode .toast.show .btn-close {
+    color: #d5d5d5;
+}
+
 .dark-mode .task-icon1:first-child {
     border: 2px solid var(--primary-bg-color);
 }
@@ -3720,6 +3724,10 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
 
 .dark-mode .mediaicon {
     color: #fff;
+}
+
+.dark-mode .btn-close {
+    color: #9595b5;
 }
 
 .dark-mode .btn-close:hover,
@@ -5619,7 +5627,7 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
 }
 
 .dark-mode .richText .richText-toolbar {
-    border-bottom: rgba(156, 162, 161, 0.1) solid 1px;
+    border-bottom: rgba(156, 162, 161, 0) solid 1px;
 }
 
 .dark-mode .richText .richText-toolbar ul li a {
@@ -9537,7 +9545,7 @@ body.dark-mode *:hover::-webkit-scrollbar-thumb {
 
 .dark-mode .richText .richText-editor {
     background-color: #2a2a4a;
-    border-left-color: rgba(255, 255, 255, 0.1);
+    border-left-color: rgba(255, 255, 255, 0);
 }
 
 .dark-mode .richText .richText-toolbar ul {

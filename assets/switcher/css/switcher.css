@@ -782,25 +782,29 @@ a.evo-hist {
     background: rgba(255, 255, 255, 0.1);
 }
 .bg-img1 .form_holder{
-    background: url(../../images/media/bg-img1.jpg) !important;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    .bg-img2 .form_holder{
-    background: url(../../images/media/bg-img2.jpg) !important;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    .bg-img3 .form_holder{
-    background: url(../../images/media/bg-img3.jpg) !important;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-    .bg-img4 .form_holder{
-    background: url(../../images/media/bg-img4.jpg) !important;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+    background-image: url(../../images/media/bg-img1.jpg) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.bg-img2 .form_holder{
+    background-image: url(../../images/media/bg-img2.jpg) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.bg-img3 .form_holder{
+    background-image: url(../../images/media/bg-img3.jpg) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.bg-img4 .form_holder{
+    background-image: url(../../images/media/bg-img4.jpg) !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
     
 
 

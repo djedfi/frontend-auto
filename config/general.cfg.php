@@ -21,7 +21,13 @@ $array_modulos = array
 (
     "errors" => "errors",
     "login" => "login",
-    "home" => "home"
+    "home" => "home",
+    "make" => "make",
+    "model" => "model",
+    "trim"  => "trim",
+    "user"  => "user",
+    "car"  => "car",
+    "logout"=> "logout"
 );
 
 if(DEBUG_MODE)

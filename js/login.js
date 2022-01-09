@@ -1,5 +1,6 @@
 $(document).ready(function()
 {	
+    $('#id_txt_email_usr').focus();
     $("#id_a_fpass").click(function()
     {
         $('#id_div_login').removeClass('d-block').addClass('d-none');
@@ -15,6 +16,9 @@ $(document).ready(function()
     $("#id_btn_login").click(function()
     {   
         $("#global-loader").fadeIn("fast");
+        $('#id_div_msg_error_login').html('');
+        $('#id_div_msg_error_login').removeClass('alert').removeClass('alert-danger').removeClass('alert-success');
+        
         if(!$('#id_form_login').cvalidateForm())
         {
             $.ajax
@@ -35,9 +39,7 @@ $(document).ready(function()
                         var v_user_id         = data.user.id;
                         var v_token           = data.token;
                         var v_name_user       = data.user.first_name+' '+data.user.last_name;
-                        
-                        
-                        // localStorage.setItem('token',data.token);
+                        localStorage.setItem('token',data.token);
 
                         $.ajax
                         ({ 

@@ -441,18 +441,10 @@ function names() {
     myVarVal2 = localStorage.getItem("primaryColor") || localStorage.getItem("darkPrimary") || localStorage.getItem("transparentPrimary") || localStorage.getItem("transparentBgImgPrimary")  || null;
     myVarVal3 = localStorage.getItem("primaryColor") || localStorage.getItem("darkPrimary") || localStorage.getItem("transparentPrimary") || localStorage.getItem("transparentBgImgPrimary") || null;
 
-    let indexUrl = window.location.href.split('/')
-    if (indexUrl[indexUrl.length - 1] === "index.html") {
-        //index();
-    } else if (indexUrl[indexUrl.length - 1] === "index.html#") {
-        //index();
-    } else if (indexUrl[indexUrl.length - 1] === "") {
-        //index();
-    } else if (indexUrl[indexUrl.length - 1] === "#") {
-        //index();
-    } else if (indexUrl[indexUrl.length - 1] === "Verticalmenu") {
-        //index();
+    if(document.querySelector('#transactions') !== null){
+        index();
     }
+    
     let colorData = hexToRgba(myVarVal || "#6c5ffc", 0.1)
     document.querySelector('html').style.setProperty('--primary01', colorData);
 

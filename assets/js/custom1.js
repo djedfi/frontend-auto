@@ -239,6 +239,8 @@
             $('#myonoffswitch1').prop('checked', true);
             $('#myonoffswitch2').prop('checked', false);
             $('#myonoffswitchTransparent').prop('checked', false);
+            localStorage.removeItem('transparentBgImgPrimary');
+            localStorage.removeItem('transparentBgImgprimaryTransparent');
 
             checkOptions();
             const root = document.querySelector(':root');
@@ -278,7 +280,6 @@
             localStorage.removeItem('primaryBorderColor')
             localStorage.removeItem('primaryTransparent');
 
-
             $('#myonoffswitch1').prop('checked', false);
             $('#myonoffswitch2').prop('checked', true);
             $('#myonoffswitchTransparent').prop('checked', false);
@@ -288,6 +289,8 @@
             localStorage.removeItem('transparentBgColor');
             localStorage.removeItem('transparentThemeColor');
             localStorage.removeItem('transparentPrimary');
+            localStorage.removeItem('transparentBgImgPrimary');
+            localStorage.removeItem('transparentBgImgprimaryTransparent');
             const root = document.querySelector(':root');
             root.style = "";
             names()
@@ -323,6 +326,8 @@
             localStorage.removeItem('primaryTransparent');
             localStorage.removeItem('transparentPrimary');
             localStorage.removeItem('darkprimaryTransparent');
+            localStorage.removeItem('transparentBgImgPrimary');
+            localStorage.removeItem('transparentBgImgprimaryTransparent');
 
             $('#myonoffswitch2').prop('checked', false);
             $('#myonoffswitch1').prop('checked', false);
@@ -672,28 +677,6 @@
     });
     /*Hover Submenu Style 1 End*/
 
-    /*-- LTR Horizontal Versions --*/
-    $('#myonoffswitch21').click(function() {
-        if (this.checked) {
-            $('body').addClass('default-horizontal');
-            $('body').removeClass('centerlogo-horizontal');
-            localStorage.setItem("default-horizontal", "True");
-        } else {
-            $('body').removeClass('default-horizontal');
-            localStorage.setItem("default-horizontal", "false");
-        }
-    });
-    $('#myonoffswitch22').click(function() {
-        if (this.checked) {
-            $('body').addClass('centerlogo-horizontal');
-            $('body').removeClass('default-horizontal');
-            localStorage.setItem("centerlogo-horizontal", "True");
-        } else {
-            $('body').removeClass('centerlogo-horizontal');
-            localStorage.setItem("centerlogo-horizontal", "false");
-        }
-    });
-
 
     // ______________Accordion Style
     $(document).on("click", '[data-bs-toggle="collapse"]', function() {
@@ -779,10 +762,6 @@ $('.off-canvas').on('click', function() {
 
 $('#myonoffswitch24').click(function() {
     if (this.checked) {
-        $("#global-loader").fadeIn("fast");
-        setTimeout(()=>{
-            $("#global-loader").fadeOut("slow");
-        }, 300);
         $('body').addClass('rtl');
         $("html[lang=en]").attr("dir", "rtl");
         $('body').removeClass('ltr');
@@ -808,10 +787,6 @@ $('#myonoffswitch24').click(function() {
 
 $('#myonoffswitch23').click(function() {
     if (this.checked) {
-        $("#global-loader").fadeIn("fast");
-        setTimeout(()=>{
-            $("#global-loader").fadeOut("slow");
-        }, 300);
         $('body').addClass('ltr');
         $("html[lang=en]").attr("dir", "ltr");
         $('body').removeClass('rtl');
@@ -1041,4 +1016,41 @@ function checkOptions(){
     if(document.querySelector('body').classList.contains('dark-menu')) {
         $('#myonoffswitch5').prop('checked', true);
     }
+}
+
+function resetData() {
+    $('#myonoffswitch3').prop('checked', true);
+    $('#myonoffswitch6').prop('checked', true);
+    $('#myonoffswitch1').prop('checked', true);
+    $('#myonoffswitch9').prop('checked', true);
+    $('#myonoffswitch10').prop('checked', false);
+    $('#myonoffswitch11').prop('checked', true);
+    $('#myonoffswitch12').prop('checked', false);
+    $('#myonoffswitch13').prop('checked', true);
+    $('#myonoffswitch14').prop('checked', false);
+    $('#myonoffswitch15').prop('checked', false);
+    $('#myonoffswitch16').prop('checked', false);
+    $('#myonoffswitch17').prop('checked', false);
+    $('#myonoffswitch18').prop('checked', false);
+    $('body')?.removeClass('bg-img4');
+    $('body')?.removeClass('bg-img1');
+    $('body')?.removeClass('bg-img2');
+    $('body')?.removeClass('bg-img3');
+    $('body')?.removeClass('transparent-mode');
+    $('body')?.removeClass('dark-mode');
+    $('body')?.removeClass('dark-menu');
+    $('body')?.removeClass('color-menu');
+    $('body')?.removeClass('gradient-menu');
+    $('body')?.removeClass('dark-header');
+    $('body')?.removeClass('color-header');
+    $('body')?.removeClass('gradient-header');
+    $('body')?.removeClass('layout-boxed');
+    $('body')?.removeClass('icontext-menu');
+    $('body')?.removeClass('icon-overlay');
+    $('body')?.removeClass('closed-leftmenu');
+    $('body')?.removeClass('hover-submenu');
+    $('body')?.removeClass('hover-submenu1');
+    $('body')?.removeClass('sidenav-toggled');
+    $('body')?.removeClass('scrollable-layout');
+    
 }

@@ -1,8 +1,8 @@
 (function($) 
 {
-     $.fn.option_default = 
+    $.fn.option_default = 
     {
-        data_cerror_msg         : 'Please provide a right value.',
+        data_cerror_msg         : 'This value is required.',
         data_cok_msg            : 'It looks good!!!',
         data_cmatch_msg         : 'The password values do not match',        
         show_msg_cok            :  false 
@@ -270,21 +270,6 @@
         
         if(error == true || error_txta == true || error_select == true || error_rdo == true || error_chk == true || error_pass == true || error_misc == true || error_misc_d == true)
         {
-
-            array_position.sort(function(a, b){return a - b})
-            //console.log(array_position);
-            
-            for (var key in array_position)
-            {
-                if(array_position[key] > 0)
-                {
-                    $("html, body").animate({
-                        scrollTop: (array_position[key] - 100)
-                    }, 500);
-                    break;
-                }
-                
-            }
             return true;
         }
 
@@ -308,7 +293,7 @@
             }
             else
             {
-                msg_error_set   =   'Valor ingresado incorrectamente';
+                msg_error_set   =   $.fn.option_default.data_cerror_msg;
             }
 
             $('#'+id).addClass('border').addClass('border-danger');
