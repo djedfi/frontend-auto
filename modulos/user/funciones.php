@@ -25,7 +25,8 @@
                                         <input type="text" class="form-control" id="id_txt_lname_user" name="txt_lname_user"  maxlength="50"  required>
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="row">
                                 <div class="col-sm-6 col-md-6">                                   
                                     <div class="form-group">
                                         <label for="id_txt_email_user" class="form-label">E-mail <span class="text-red">*</span></label>
@@ -38,6 +39,8 @@
                                         <input type="email" class="form-control" id="id_txt_email_user_confirmation" name="txt_email_user_confirmation" data-cmatch="id_txt_email_user" data-cmatch-msg="The emails do not match" minlength="5" maxlength="150"   required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12">                                   
                                     <div class="form-group">
                                         <label for="id_slc_brand_trim" class="form-label">Add options to user<span class="text-red">*</span></label>

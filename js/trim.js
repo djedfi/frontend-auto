@@ -44,9 +44,7 @@ $(document).ready(function()
     
 	$("#id_slc_brand_trim").change(function()
 	{
-        
         $("#global-loader").fadeIn("fast");
-
         $('#id_slc_model_trim').select2("enable", false);
 
         $.ajax
@@ -125,33 +123,6 @@ $(document).ready(function()
                         $('#id_div_msg_error_newtrim').html('Ingreso informacion incorrecta');
                     }
                     $("#global-loader").fadeOut("slow");
-                },
-                error: function(data)
-                {
-                    
-                    $("#global-loader").fadeOut("slow");
-
-                    swal({
-                        title: "Alert",
-                        text: "We can not connect with the server",
-                        type: "error",
-                        showCancelButton: true,
-                        confirmButtonText: 'Exit',
-                        cancelButtonText: 'Stay on the page'
-                    },
-                    function(isConfirm)
-                    {
-                        if(isConfirm)
-                        {
-                            alert('Se ira a logout');
-                        }
-                        else
-                        {
-                            $("#id_btn_sbm_trim").removeClass('btn-loading');
-                            return false;
-                        }
-                      
-                    });
                 }
             });
         }

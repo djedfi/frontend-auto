@@ -80,33 +80,6 @@ $(document).ready(function()
                         $('#id_div_msg_error_newuser').html('Ingreso informacion incorrecta');
                     }
                     $("#global-loader").fadeOut("slow");
-                },
-                error: function(data)
-                {
-                    
-                    $("#global-loader").fadeOut("slow");
-
-                    swal({
-                        title: "Alert",
-                        text: "We can not connect with the server",
-                        type: "error",
-                        showCancelButton: true,
-                        confirmButtonText: 'Exit',
-                        cancelButtonText: 'Stay on the page'
-                    },
-                    function(isConfirm)
-                    {
-                        if(isConfirm)
-                        {
-                            alert('Se ira a logout');
-                        }
-                        else
-                        {
-                            $("#id_btn_sbm_user").removeClass('btn-loading');
-                            return false;
-                        }
-                      
-                    });
                 }
             });
         }

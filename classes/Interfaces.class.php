@@ -64,6 +64,11 @@ final class Interfaces
             <link href="'.$this->path_rcss.'skin-modes.css'.$this->version_resources.'" rel="stylesheet" />
             <!-- SINGLE-PAGE CSS -->
             '.(!isset($_SESSION['usuAA']) ? '<link href="'.$this->path_rplugins.'single-page/css/main.css'.$this->version_resources.'" rel="stylesheet" type="text/css">': '').'
+            <!-- FORN WIZARD CSS -->
+            <link href="'.$this->path_rplugins.'formwizard/smart_wizard.css" rel="stylesheet">
+            <link href="'.$this->path_rplugins.'formwizard/smart_wizard_theme_arrows.css" rel="stylesheet">
+            <link href="'.$this->path_rplugins.'formwizard/smart_wizard_theme_circles.css" rel="stylesheet">
+            <link href="'.$this->path_rplugins.'formwizard/smart_wizard_theme_dots.css" rel="stylesheet">
             <!-- P-scroll bar css-->
             <link href="'.$this->path_rplugins.'p-scroll/perfect-scrollbar.css'.$this->version_resources.'" rel="stylesheet" />
             <!--SWEET ALERT CSS-->
@@ -77,6 +82,13 @@ final class Interfaces
             <!-- INTERNAL Data table css -->
             <link href="'.$this->path_rplugins.'datatable/css/dataTables.bootstrap5.css'.$this->version_resources.'" rel="stylesheet" />
             <link href="'.$this->path_rplugins.'datatable/responsive.bootstrap5.css'.$this->version_resources.'" rel="stylesheet" />
+            <!-- INTERNAL Date Picker css -->
+            <link href="'.$this->path_rplugins.'date-picker/date-picker.css'.$this->version_resources.'" rel="stylesheet" />
+            <!-- INTERNAL COLOR PICKER css-->
+            <link href="'.$this->path_rplugins.'pickr-master/themes/classic.min.css'.$this->version_resources.'" rel="stylesheet" />
+            <link href="'.$this->path_rplugins.'pickr-master/themes/monolith.min.css'.$this->version_resources.'" rel="stylesheet" />
+            <link href="'.$this->path_rplugins.'pickr-master/themes/nano.min.css'.$this->version_resources.'" rel="stylesheet" />
+
             <!-- COLOR SKIN CSS -->
             <link id="theme" rel="stylesheet" type="text/css" media="all" href="'.$this->path_template.'colors/color1.css'.$this->version_resources.'" />
             <!-- VALIDATE CSS -->
@@ -143,6 +155,9 @@ final class Interfaces
         <!-- BOOTSTRAP JS -->
         <script src="'.$this->path_rplugins.'bootstrap/js/popper.min.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'bootstrap/js/bootstrap.min.js'.$this->version_resources.'"></script>
+
+        <!-- INPUT MASK JS-->
+        <script src="'.$this->path_rplugins.'input-mask/jquery.mask.min.js'.$this->version_resources.'"></script>
     
         <!-- SPARKLINE JS-->
         <script src="'.$this->path_rjs.'jquery.sparkline.min.js'.$this->version_resources.'"></script>
@@ -159,7 +174,10 @@ final class Interfaces
     
         <!-- SIDEBAR JS -->
         <script src="'.$this->path_rplugins.'sidebar/sidebar.js'.$this->version_resources.'"></script>
-    
+        
+        <!-- Perfect SCROLLBAR JS-->
+        <script src="'.$this->path_rplugins.'p-scroll/perfect-scrollbar.js"></script>
+        <script src="'.$this->path_rplugins.'p-scroll/pscroll.js"></script>
     
         <!-- INTERNAL CHARTJS CHART JS-->
         <script src="'.$this->path_rplugins.'chart/Chart.bundle.js'.$this->version_resources.'"></script>
@@ -196,9 +214,25 @@ final class Interfaces
         <!-- SIDE-MENU JS-->
         <script src="'.$this->path_rplugins.'sidemenu/sidemenu.js'.$this->version_resources.'"></script>
 
+        <!-- DATEPICKER JS -->
+        <script src="'.$this->path_rplugins.'date-picker/date-picker.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'date-picker/jquery-ui.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
+
+        <!-- COLOR PICKER JS -->
+        <script src="'.$this->path_rplugins.'pickr-master/pickr.es5.min.js'.$this->version_resources.'"></script>
+
         <!-- SWEET-ALERT JS -->
         <script src="'.$this->path_rplugins.'sweet-alert/sweetalert.min.js'.$this->version_resources.'"></script>
     
+        <!-- FORM WIZARD JS-->
+        <script src="'.$this->path_rplugins.'formwizard/jquery.smartWizard.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'formwizard/fromwizard.js'.$this->version_resources.'"></script>
+    
+        <!-- INTERNAl Jquery.steps js -->
+        <script src="'.$this->path_rplugins.'jquery-steps/jquery.steps.min.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'parsleyjs/parsley.min.js'.$this->version_resources.'"></script>
+
         <!-- Color Theme js -->
         <script src="'.$this->path_rjs.'themeColors.js'.$this->version_resources.'"></script>
     
@@ -210,6 +244,9 @@ final class Interfaces
 
         <!-- INDEX -->
         <script src="'.$this->path_js.'config.js'.$this->version_resources.'"></script>
+
+        <!-- MASKMONEY -->
+        <script src="'.$this->path_js.'jquery.maskMoney.min.js'.$this->version_resources.'"></script>
         
         <!-- MODULE JS -->
         ' . (file_exists($jsmod) ? '<script src="'.$jsmod.$this->version_resources.'"></script>' : '') . '
@@ -237,8 +274,8 @@ final class Interfaces
                             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="#"></a>
                             <!-- sidebar-toggle-->
                             <a class="logo-horizontal " href="./?mod=home">
-                                <img src="'.URL_AA_RIMG.'/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                                <img src="'.URL_AA_RIMG.'/brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img desktop-logo" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img light-logo1" alt="logo">
                             </a>
                             <!-- LOGO -->
                             
@@ -264,7 +301,7 @@ final class Interfaces
                                             <!-- SIDE-MENU -->
                                             <div class="dropdown d-flex profile-1">
                                                 <a href="#" data-bs-toggle="dropdown" class="nav-link pe-2 leading-none d-flex">
-                                                    <img src="'.URL_AA_RIMG.'/users/21.jpg" alt="profile-user" class="avatar  profile-user brround cover-image">
+                                                    <img src="'.URL_AA_IMG.'/user.png" alt="profile-user" class="avatar  profile-user brround cover-image">
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                     <div class="drop-heading">
@@ -297,10 +334,10 @@ final class Interfaces
                     <div class="app-sidebar">
                         <div class="side-header">
                             <a class="header-brand1" href="./?mod=home">
-                                <img src="'.URL_AA_RIMG.'brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                                <img src="'.URL_AA_RIMG.'brand/logo-1.png" class="header-brand-img toggle-logo" alt="logo">
-                                <img src="'.URL_AA_RIMG.'brand/logo-2.png" class="header-brand-img light-logo" alt="logo">
-                                <img src="'.URL_AA_RIMG.'brand/logo-3.png" class="header-brand-img light-logo1" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img desktop-logo" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img toggle-logo" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img light-logo" alt="logo">
+                                <img src="'.URL_AA_IMG.'car_logo2.png" class="header-brand-img light-logo1" alt="logo">
                             </a>
                             <!-- LOGO -->
                         </div>

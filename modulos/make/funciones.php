@@ -17,7 +17,7 @@
                                 <input type="text" class="form-control" id="id_txt_name_mk" name="txt_name_mk" placeholder="Enter make: e.g.: Nissan, BMW, etc." maxlength="45" autocomplete="off" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1" class="form-label">Website <span class="text-red">*</span></label>
+                                <label for="id_txt_url_mk" class="form-label">Website <span class="text-red">*</span></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="lbl_https_url">https://</span>
                                     <input type="text" class="form-control" id="id_txt_url_mk" name="txt_url_mk" aria-describedby="lbl_https_url" maxlength="150" autocomplete="off" data-cerror-print="id_div_msg_error_webnewmake" required>
