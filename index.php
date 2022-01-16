@@ -35,7 +35,7 @@ if (isset($_SESSION['timeout']))
 }
 
 $mod                    =   htmlentities(isset($_GET['mod']) ? $_GET['mod'] : '');
-if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']))
+if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']) && ($mod != 'reset_password') && ($mod != 'create_password'))
 {
     $mod  = 'login';
 }
@@ -55,19 +55,32 @@ $array_config_interface =   array(
 );
 $obj_interfaces         =   new Interfaces($array_config_interface);
 $obj_interfaces->header();
-echo $obj_interfaces->html_output;
 
-if(!isset($_SESSION['usuAA']))
+if(!isset($_SESSION['usuAA']) && isset($array_modulos[$mod]) && $mod== 'reset_password' && isset($_GET['token']) && $_GET['token'] != '')
 {
+    echo $obj_interfaces->html_output;
+    include("modulos/" . $array_modulos['reset_password'] . "/index.php");
+    $obj_interfaces->return_js_no_login();
+}
+else if(!isset($_SESSION['usuAA']) && isset($array_modulos[$mod]) && $mod== 'create_password' && isset($_GET['token']) && $_GET['token'] != '')
+{
+    echo $obj_interfaces->html_output;
+    include("modulos/" . $array_modulos['create_password'] . "/index.php");
+    $obj_interfaces->return_js_no_login();
+}
+else if(!isset($_SESSION['usuAA']))
+{
+    echo $obj_interfaces->html_output;
     include("modulos/" . $array_modulos['login'] . "/index.php");
     $obj_interfaces->return_js_no_login();
 }
-else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && $mod== 'login') 
+else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && ($mod== 'login' || $mod == 'reset_password' || $mod == 'create_password')) 
 {
     header('Location:./?mod=home');
 }
 else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && $mod != 'errors') 
 {
+    echo $obj_interfaces->html_output;
     $innerHTML = '';
     include("modulos/" . $array_modulos[$mod] . "/index.php");
     $obj_interfaces->template();
@@ -76,6 +89,7 @@ else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($arra
 }
 else
 {
+    echo $obj_interfaces->html_output;
     $obj_interfaces->return_js_no_login();
     include("modulos/" . $array_modulos['errors'] . "/index.php");
 }

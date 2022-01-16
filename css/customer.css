@@ -1,0 +1,15 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#id_txt_fname_cus, #id_txt_init_cus, #id_txt_lname_cus
+{
+  text-transform: uppercase;
+}

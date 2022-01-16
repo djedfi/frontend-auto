@@ -12,5 +12,5 @@ if($hac == 'add')
 }
 else 
 {
-    $innerHTML .=list_car();
+    $innerHTML .=list_customer();
 }

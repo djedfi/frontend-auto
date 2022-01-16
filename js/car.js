@@ -1,6 +1,6 @@
 $(document).ready(function()
 {	
-    //"use strict";
+    "use strict";
 
     $("#global-loader").fadeIn("fast");
 

@@ -39,7 +39,7 @@ $(document).ready(function()
         
         $("#id_btn_sbm_user").addClass('btn-loading');
         $("#global-loader").fadeIn("fast");
-        if(!$('#id_form_new_user').cvalidateForm())
+        if(!$('#id_form_new_user').cvalidateForm() && $('#id_hid_validate_email').val() != 1)
         {
             $('#id_hid_options_usr').val($('#id_slc_role_usr').val());
             $.ajax
@@ -85,10 +85,49 @@ $(document).ready(function()
         }
         else
         {
+            let error= [];
+            if($('#id_hid_validate_email').val() == 1)
+            {
+                error['id_txt_email_user'] = 'This E-Mail has been previoulsy registered';
+            }
+
+            $.fn.set_error_msg_array(error);     
             $("#global-loader").fadeOut("slow");
             $("#id_btn_sbm_user").removeClass('btn-loading');
         }
        
+    });
+
+    $("#id_txt_email_user").blur(function() 
+    {
+        if($('#id_txt_email_user').val().trim() != '')
+        {
+            $.ajax
+            ({ 
+                type: "POST",
+                url: endpoint_general+'checkemailUser/0',
+                data:{txt_email_user:$('#id_txt_email_user').val()},
+                dataType: "json",
+                crossDomain: true,
+                xhrFields: { withCredentials: true },
+                success: function (data, status, jqXHR) 
+                {   
+                    let error = [];
+                    if(data.res)
+                    {
+                        $('#id_hid_validate_email').val(1);
+                        error['id_txt_email_user'] = 'This E-mail has been previoulsy registered';
+                        $.fn.set_error_msg_array(error);
+                    }
+                    else
+                    {
+                        $('#id_hid_validate_email').val(0);
+                        $('#id_msg_error_id_txt_email_user').html('');
+                        $('#id_txt_email_user').removeClass('border').removeClass('border-danger');
+                    }
+                }
+            });
+        }
     });
 
 });

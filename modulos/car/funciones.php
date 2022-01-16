@@ -1,5 +1,5 @@
 <?php
- function list_make()
+ function list_car()
  {
      return 'listado';
  }
@@ -17,6 +17,7 @@
                  </div>
                  <div class="card-body">
                      <div id="id_wizard_car">
+                        <span class="text-red">All inputs with (*) are required</span>  
                          <h3>Main features</h3>
                          <section>
                             <form id="id_form_main" class="validate-form">
@@ -28,21 +29,21 @@
                                         <select class="form-control select2-show-search form-select" id="id_slc_make_car" name="slc_make_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcmake" required>
                                             <option label="Choose one"></option>
                                         </select>
-                                        <div id="id_div_msg_error_slcmake"  class="" role="alert"></div>
+                                        <div id="id_div_msg_error_slcmake" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_slc_model_car" class="form-label">Choose a Model <span class="text-red">*</span></label>
                                         <select class="form-control select2-show-search form-select" id="id_slc_model_car" name="slc_model_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcmodel" required>
                                             <option label="Choose one"></option>
                                         </select>
-                                        <div id="id_div_msg_error_slcmodel"  class="" role="alert"></div>
+                                        <div id="id_div_msg_error_slcmodel" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_slc_trim_car" class="form-label">Choose a Trim <span class="text-red">*</span></label>
                                         <select class="form-control select2-show-search form-select" id="id_slc_trim_car" name="slc_trim_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slctrim" required>
                                             <option label="Choose one"></option>
                                         </select>
-                                        <div id="id_div_msg_error_slctrim"  class="" role="alert"></div>
+                                        <div id="id_div_msg_error_slctrim" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_year_car" class="form-label">Year <span class="text-red">*</span></label>
@@ -110,6 +111,8 @@
                                             <option label="Choose one"></option>
                                             <option value="1">Gasoline</option>
                                             <option value="2">Diesel</option>
+                                            <option value="3">Hybrid</option>
+                                            <option value="4">Electric</option>
                                         </select>
                                         <div id="id_div_msg_error_slcfuelt"  class="" role="alert"></div>
                                     </div>
@@ -131,23 +134,23 @@
                             <form id="id_form_otherinfo" class="validate-form">
                                 <div class="row ">
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_engineinfo_car" class="form-label">Engine info <span class="text-red">*</span></label>
+                                        <label for="id_txt_engineinfo_car" class="form-label">Engine info </label>
                                         <input type="text" class="form-control" id="id_txt_engineinfo_car" name="txt_engineinfo_car" maxlength="45" autocomplete="off">
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_drivetrain_car" class="form-label">Drive Train <span class="text-red">*</span></label>
+                                        <label for="id_txt_drivetrain_car" class="form-label">Drive Train </label>
                                         <input type="text" class="form-control" id="id_txt_drivetrain_car" name="txt_drivetrain_car" maxlength="45" autocomplete="off">
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_fuelecono_car" class="form-label">Fuel Economy <span class="text-red">*</span></label>
+                                        <label for="id_txt_fuelecono_car" class="form-label">Fuel Economy </label>
                                         <input type="text" class="form-control" id="id_txt_fuelecono_car" name="txt_fuelecono_car"  maxlength="45" autocomplete="off">
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_wheelsize_car" class="form-label">Wheel Size <span class="text-red">*</span></label>
+                                        <label for="id_txt_wheelsize_car" class="form-label">Wheel Size </label>
                                         <input type="text" class="form-control" id="id_txt_wheelsize_car" name="txt_wheelsize_car" maxlength="45" autocomplete="off">
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_url_car" class="form-label">Website URL<span class="text-red">*</span></label>
+                                        <label for="id_txt_url_car" class="form-label">Website URL </label>
                                         <div class="input-group">
                                             <span class="input-group-text" id="lbl_https_url_car">https://</span>
                                             <input type="text" class="form-control" id="id_txt_url_car" name="txt_url_car" aria-describedby="lbl_https_url_car" maxlength="150" autocomplete="off" data-cerror-print="id_div_msg_error_webnewcar">

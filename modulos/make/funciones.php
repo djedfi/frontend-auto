@@ -12,6 +12,7 @@
                     </div>
                     <div class="card-body">
                         <form id="id_form_new_make" class="validate-form">
+                            <span class="text-red">All inputs with (*) are required</span>  
                             <div class="form-group">
                                 <label for="id_txt_name_mk" class="form-label">Name <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" id="id_txt_name_mk" name="txt_name_mk" placeholder="Enter make: e.g.: Nissan, BMW, etc." maxlength="45" autocomplete="off" required>

@@ -5,13 +5,15 @@
         $tmpHTML = '                                
         <!-- Row -->
         <div class="row align-items-center h-100">
-            <div class="col-md-12 col-xl-6 mx-auto">
+            <div class="col-md-12 col-xl-8 mx-auto">
                 <div class="card h-100 border-primary justify-content-center">
                     <div class="card-header">
                         <h4 class="card-title">Add User</h4>
                     </div>
                     <div class="card-body">
                         <form id="id_form_new_user" class="validate-form">
+                            <span class="text-red">All inputs with (*) are required</span>  
+                            <input type="hidden" name="hid_validate_email" id="id_hid_validate_email" value="0">
                             <div class="row">
                                 <div class="col-sm-6 col-md-6">                                   
                                     <div class="form-group">
@@ -37,6 +39,14 @@
                                     <div class="form-group">
                                         <label for="id_txt_emailconfirm_user" class="form-label">Confirm E-mail <span class="text-red">*</span></label>
                                         <input type="email" class="form-control" id="id_txt_email_user_confirmation" name="txt_email_user_confirmation" data-cmatch="id_txt_email_user" data-cmatch-msg="The emails do not match" minlength="5" maxlength="150"   required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">                                   
+                                    <div class="form-group">
+                                        <label for="id_txt_position_user" class="form-label">Position <span class="text-red">*</span></label>
+                                        <input type="text" class="form-control" id="id_txt_position_user" name="txt_position_user"  maxlength="150"  required>
                                     </div>
                                 </div>
                             </div>

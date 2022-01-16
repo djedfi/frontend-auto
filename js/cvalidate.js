@@ -2,7 +2,7 @@
 {
     $.fn.option_default = 
     {
-        data_cerror_msg         : 'This value is required.',
+        data_cerror_msg         : 'You must enter a right value',
         data_cok_msg            : 'It looks good!!!',
         data_cmatch_msg         : 'The password values do not match',        
         show_msg_cok            :  false 

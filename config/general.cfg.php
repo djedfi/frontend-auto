@@ -27,7 +27,11 @@ $array_modulos = array
     "trim"  => "trim",
     "user"  => "user",
     "car"  => "car",
-    "logout"=> "logout"
+    "logout"=> "logout",
+    "style"=> "style",
+    "customer"=> "customer",
+    "reset_password" => "reset_password",
+    "create_password"=> "create_password"
 );
 
 if(DEBUG_MODE)

@@ -39,13 +39,23 @@ $(document).ready(function()
                         var v_user_id         = data.user.id;
                         var v_token           = data.token;
                         var v_name_user       = data.user.first_name+' '+data.user.last_name;
+                        var opciones          = data.user.user_options;
+                        var group_opciones    = '';
+                        
+                        for (let i = 0; i < opciones.length; i++) 
+                        {
+                            let group_opciones_tmp;
+                            group_opciones_tmp = opciones[i]['name']+';'+opciones[i]['path_option']+';'+opciones[i]['group_option']+';'+opciones[i]['icono']+ '|';
+                            group_opciones += group_opciones_tmp;
+                        }
+                        
                         localStorage.setItem('token',data.token);
 
                         $.ajax
                         ({ 
                             type    : "POST",
                             url     : './auxcall/general.php',
-                            data    : {ahac:'login',user_id:v_user_id,token:v_token,name_user:v_name_user},
+                            data    : {ahac:'login',user_id:v_user_id,token:v_token,name_user:v_name_user,opciones_user:group_opciones},
                             dataType: "json",
                             success: function (data, status, jqXHR) 
                             {
@@ -79,5 +89,63 @@ $(document).ready(function()
             $("#global-loader").fadeOut("slow");
         }
 
+    });
+
+    $("#id_btn_fpass").click(function()
+    {
+        $("#global-loader").fadeIn("fast");
+        $('#id_div_msg_error_fpass').html('');
+        $('#id_div_msg_error_fpass').removeClass('alert').removeClass('alert-danger').removeClass('alert-success');
+        
+        if(!$('#id_form_fpass').cvalidateForm())
+        {
+            $.ajax
+            ({ 
+                type: "POST",
+                url: endpoint_general+'reset_password',
+                data:$("#id_form_fpass").serialize(),
+                dataType: "json",
+                crossDomain: true,
+                xhrFields: { withCredentials: true },
+                success: function (data, status, jqXHR) 
+                {
+                    
+                    if(data.res)
+                    {
+                        swal({
+                            title: "Sent Email!",
+                            text: data.message,
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonClass: "btn-danger",
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: false
+                          },
+                          function(){
+                            location.href = './?mod=login';
+                          });
+                    }
+                    else
+                    {
+                        $('#id_div_msg_error_fpass').addClass('alert').addClass('alert-danger');
+                        $('#id_div_msg_error_fpass').html(data.message);
+                    }
+                    $("#global-loader").fadeOut("slow");
+                },
+                error: function(data)
+                {
+                    $('#id_div_msg_error_fpass').html('');
+                    $('#id_div_msg_error_fpass').removeClass('alert').removeClass('alert-danger').removeClass('alert-success');
+
+                    $('#id_div_msg_error_fpass').addClass('alert').addClass('alert-danger');
+                    $('#id_div_msg_error_fpass').html('Error con el servidor');
+                    $("#global-loader").fadeOut("slow");
+                }
+            });
+        }
+        else
+        {
+            $("#global-loader").fadeOut("slow");
+        }
     });
 });

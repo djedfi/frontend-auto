@@ -157,7 +157,7 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'bootstrap/js/bootstrap.min.js'.$this->version_resources.'"></script>
 
         <!-- INPUT MASK JS-->
-        <script src="'.$this->path_rplugins.'input-mask/jquery.mask.min.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
     
         <!-- SPARKLINE JS-->
         <script src="'.$this->path_rjs.'jquery.sparkline.min.js'.$this->version_resources.'"></script>
@@ -386,6 +386,26 @@ final class Interfaces
 
     protected function get_menu()
     {
+        $opciones           =   substr($_SESSION['opciones'], 0, -1);
+        $opciones_unit      =   explode('|',$opciones);
+        $array_admin        =   array();
+        $array_operacion    =   array();
+
+        foreach($opciones_unit as $trozo)
+        {
+            list($name_opcion,$path_option,$group_option,$icono) = explode(';',$trozo);
+            //echo $trozo;
+
+            if($group_option == 1)
+            {
+                array_push($array_admin,array($name_opcion,$path_option,$icono));
+            }
+            else if($group_option == 2)
+            {
+                array_push($array_operacion,array($name_opcion,$path_option,$icono));
+            }
+        }
+
         $menu  = '
         <ul class="side-menu">
             <li class="sub-category">
@@ -396,66 +416,39 @@ final class Interfaces
             </li>
             <li class="sub-category">
                 <h3>Administration</h3>
-            </li>
+            </li>';
+        foreach($array_admin as $opcion_admin)
+        {
+            $menu .= '
             <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-id-card-o"></i><span class="side-menu__label">Users</span><i class="angle fe fe-chevron-right"></i></a>
+                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa '.$opcion_admin[2].'"></i><span class="side-menu__label">'.$opcion_admin[0].'</span><i class="angle fe fe-chevron-right"></i></a>
                 <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Users</a></li>
-                    <li><a href="./?mod=user&hac=add" class="slide-item">Add User</a></li>
-                    <li><a href="./?mod=user&hac=list" class="slide-item">Directory</a></li>
+                    <li class="side-menu-label1"><a href="#">'.$opcion_admin[0].'</a></li>
+                    <li><a href="./?mod='.$opcion_admin[1].'&hac=add" class="slide-item">Add '.$opcion_admin[0].'</a></li>
+                    <li><a href="./?mod='.$opcion_admin[1].'&hac=list" class="slide-item">Directory</a></li>
                 </ul>
-            </li>
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-cubes"></i><span class="side-menu__label">Brands</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Makes</a></li>
-                    <li><a href="./?mod=make&hac=add" class="slide-item">Add Make</a></li>
-                    <li><a href="./?mod=make&hac=list" class="slide-item">Directory</a></li>
-                </ul>
-            </li>
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-scribd"></i><span class="side-menu__label">Models</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Models</a></li>
-                    <li><a href="./?mod=model&hac=add" class="slide-item">Add Model</a></li>
-                    <li><a href="./?mod=model&hac=list" class="slide-item">Directory</a></li>
-                </ul>
-            </li>
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Trims</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Trims</a></li>
-                    <li><a href="./?mod=trim&hac=add" class="slide-item">Add Trim</a></li>
-                    <li><a href="./?mod=trim&hac=list" class="slide-item">Directory</a></li>
-                </ul>
-            </li>
+            </li>';
+        }
+            
+        
+        $menu .= '
             <li class="sub-category">
                 <h3>Operations</h3>
-            </li>
+            </li>';
+
+            foreach($array_operacion as $opcion_ope)
+        {
+            $menu .= '
             <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-car"></i><span class="side-menu__label">Cars</span><i class="angle fe fe-chevron-right"></i></a>
+                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa '.$opcion_ope[2].'"></i><span class="side-menu__label">'.$opcion_ope[0].'</span><i class="angle fe fe-chevron-right"></i></a>
                 <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Cars</a></li>
-                    <li><a href="./?mod=car&hac=add" class="slide-item">Add Car</a></li>
-                    <li><a href="./?mod=car" class="slide-item">Directory</a></li>
+                    <li class="side-menu-label1"><a href="#">'.$opcion_ope[0].'</a></li>
+                    <li><a href="./?mod='.$opcion_ope[1].'&hac=add" class="slide-item">Add '.$opcion_ope[0].'</a></li>
+                    <li><a href="./?mod='.$opcion_ope[1].'&hac=list" class="slide-item">Directory</a></li>
                 </ul>
-            </li>
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-users"></i><span class="side-menu__label">Customers</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Customers</a></li>
-                    <li><a href="./?mod=customer&hac=add" class="slide-item">Add Customer</a></li>
-                    <li><a href="./?mod=customer" class="slide-item">Directory</a></li>
-                </ul>
-            </li>
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa fa-cart-plus"></i><span class="side-menu__label">Sales</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">Sales</a></li>
-                    <li><a href="./?mod=sales&hac=add" class="slide-item">Add Sales</a></li>
-                    <li><a href="./?mod=sales" class="slide-item">Directory</a></li>
-                </ul>
-            </li>
+            </li>';
+        }
+        $menu .= '
         </ul>';
 
         return $menu;

@@ -69,7 +69,7 @@
                     </form>
                 </div>
                 <div id="id_div_reset_pass" class="wrap-login100 p-6 d-none">
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" id="id_form_fpass">
                         <span class="login100-form-title pb-5">
                             Forgot Password
                         </span>
@@ -78,11 +78,13 @@
                             <a href="#" class="input-group-text bg-white text-muted">
                                 <i class="zmdi zmdi-email" aria-hidden="true"></i>
                             </a>
-                            <input class="input100 form-control" type="email" placeholder="Email">
+                            <input class="input100 form-control" type="email" placeholder="Email" name="txt_email_rst" id="id_txt_email_rst"  data-cerror-print="id_div_msg_error_email_fpass" required>
                         </div>
-                        <div class="submit">
-                            <a class="btn btn-primary d-grid" href="index.html">Submit</a>
+                        <div id="id_div_msg_error_email_fpass"></div>                        
+                        <div class="submit mt-2">
+                            <a href="javascript:void(0);" class="login100-form-btn btn-primary" id="id_btn_fpass">Submit</a>
                         </div>
+                        <div id="id_div_msg_error_fpass"  class="mt-2" role="alert"></div>
                         <div class="text-center mt-4">
                             <p class="text-dark mb-0">You remember your pass?<a href="javascript:void(0);" class="text-primary ms-1" id="id_a_flogin">Login</a></p>
                         </div>

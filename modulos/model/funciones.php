@@ -12,6 +12,7 @@
                     </div>
                     <div class="card-body">
                         <form id="id_form_new_model" class="validate-form">
+                            <span class="text-red">All inputs with (*) are required</span>  
                             <div class="form-group">
                                 <label for="id_slc_brand_md" class="form-label">Choose a Brand <span class="text-red">*</span></label>
                                 <select class="form-control select2-show-search form-select" id="id_slc_brand_md" name="slc_brand_md" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcmake" required>
