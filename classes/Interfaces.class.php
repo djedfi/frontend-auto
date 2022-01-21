@@ -247,6 +247,9 @@ final class Interfaces
 
         <!-- MASKMONEY -->
         <script src="'.$this->path_js.'jquery.maskMoney.min.js'.$this->version_resources.'"></script>
+
+        <!-- STRING MASK -->
+        <script src="'.$this->path_js.'string-mask.js'.$this->version_resources.'"></script>
         
         <!-- MODULE JS -->
         ' . (file_exists($jsmod) ? '<script src="'.$jsmod.$this->version_resources.'"></script>' : '') . '
@@ -426,6 +429,7 @@ final class Interfaces
                     <li class="side-menu-label1"><a href="#">'.$opcion_admin[0].'</a></li>
                     <li><a href="./?mod='.$opcion_admin[1].'&hac=add" class="slide-item">Add '.$opcion_admin[0].'</a></li>
                     <li><a href="./?mod='.$opcion_admin[1].'&hac=list" class="slide-item">Directory</a></li>
+                    '.($opcion_admin[1] == 'user' ? '<li class="d-none"><a href="./?mod='.$opcion_admin[1].'&hac=update" class="slide-item">Update '.$opcion_admin[0].'</a></li>' : '').'
                 </ul>
             </li>';
         }

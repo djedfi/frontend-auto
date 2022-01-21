@@ -15,6 +15,7 @@
     var get_modulo =queryString.split('=');
     var modulo_url = '';
 
+
     if(get_modulo.length == 2)
     {
         modulo_url = './'+get_modulo[0]+'='+get_modulo[1];
@@ -23,7 +24,12 @@
     {
         modulo_url = './'+get_modulo[0]+'='+get_modulo[1]+'='+get_modulo[2];
     }
-
+    else
+    {
+        let tmp_block = get_modulo[2].split('&');
+        modulo_url = './'+get_modulo[0]+'='+get_modulo[1]+'=list';
+    }
+    
     $(".app-sidebar li a").each(function () {
         var $this = $(this);
         var pageUrl = $this.attr("href");

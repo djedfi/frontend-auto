@@ -1,5 +1,7 @@
 #id_txt_vin_car,
-#id_txt_stcnumber_car
+#id_txt_stcnumber_car,
+#id_txt_vin_car_upd,
+#id_txt_stcnumber_car_upd
 {
     text-transform: uppercase;
 }

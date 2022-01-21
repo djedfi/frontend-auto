@@ -9,7 +9,17 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-#id_txt_fname_cus, #id_txt_init_cus, #id_txt_lname_cus
+#id_txt_fname_cus, #id_txt_init_cus, #id_txt_lname_cus,#id_txt_fname_cus_upd, #id_txt_init_cus_upd, #id_txt_lname_cus_upd
 {
   text-transform: uppercase;
+}
+
+#id_txt_email_cus,#id_txt_email_cus_upd
+{
+  text-transform: lowercase;
+}
+
+.font-10
+{
+  font-size: 0.7rem;;
 }

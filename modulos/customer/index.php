@@ -10,6 +10,10 @@ if($hac == 'add')
 {
     $innerHTML .=form_add();
 }
+else if($hac == 'update')
+{
+    $innerHTML .=form_update();
+}
 else 
 {
     $innerHTML .=list_customer();
