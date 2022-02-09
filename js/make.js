@@ -51,7 +51,7 @@ $(document).ready(function()
                     {
                         $("#id_btn_sbm_make").removeClass('btn-loading');
                         $("#id_div_conteiner_error_newmake").removeClass('d-none').addClass('d-block');
-                        $('#id_div_msg_error_newmake').html('Ingreso informacion incorrecta');
+                        $('#id_div_msg_error_newmake').html('Check the information and try again.');
                     }
                     $("#global-loader").fadeOut("slow");
                 }
@@ -185,7 +185,7 @@ $(document).ready(function()
                         if(data.res)
                         {
                             $("#id_btn_update_mk").removeClass('btn-loading');
-                            $("#id_div_conteiner_error_updmake").removeClass('d-none').addClass('d-block').addClass('alert-success');
+                            $("#id_div_conteiner_error_updmake").removeClass('d-none').removeClass('alert-danger').addClass('d-block').addClass('alert-success');
                             $('#id_div_msg_error_updmake').html('Success! Your information has been succesfully saved');
                             $('#id_icon_up_mk').html('<i class="fe fe-check"></i>');
                             table.ajax.reload();
@@ -193,7 +193,7 @@ $(document).ready(function()
                         else
                         {
                             $("#id_btn_update_mk").removeClass('btn-loading');
-                            $("#id_div_conteiner_error_updmake").removeClass('d-none').addClass('d-block').addClass('alert-danger');
+                            $("#id_div_conteiner_error_updmake").removeClass('d-none').removeClass('alert-success').addClass('d-block').addClass('alert-danger');
                             $('#id_div_msg_error_updmake').html('Error! Try to save your information later');
                             $('#id_icon_up_mk').html('<i class="fe fe-alert-circle"></i>');
                         }

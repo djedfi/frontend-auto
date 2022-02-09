@@ -42,11 +42,18 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">                                   
+                                <div class="col-sm-6 col-md-6">                                   
                                     <div class="form-group">
                                         <label for="id_txt_position_user" class="form-label">Position <span class="text-red">*</span></label>
                                         <input type="text" class="form-control" id="id_txt_position_user" name="txt_position_user"  maxlength="150"  required>
                                     </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <label for="id_slc_branch_user" class="form-label">Choose a Branch <span class="text-red">*</span></label>
+                                    <select class="form-control select2-show-search form-select" id="id_slc_branch_user" name="slc_branch_user" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcbrach" required>
+                                        <option label="Choose one"></option>
+                                    </select>
+                                    <div id="id_div_msg_error_slcbrach"  class="" role="alert"></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -145,6 +152,13 @@
                                         <input type="hidden" name="hid_options_update_usr" id="id_hid_options_update_usr">
                                         <div id="id_div_msg_error_slcrole_update"  class="" role="alert"></div>
                                     </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <label for="id_slc_branch_update_user" class="form-label">Choose a Branch <span class="text-red">*</span></label>
+                                    <select class="form-control select2-show-search form-select" id="id_slc_branch_update_user" name="slc_branch_update_user" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcbrach" required>
+                                        <option label="Choose one"></option>
+                                    </select>
+                                    <div id="id_div_msg_error_slcbrach"  class="" role="alert"></div>
                                 </div>
 
                                 <div class="col-12">   

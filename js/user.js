@@ -138,6 +138,30 @@ $(document).ready(function()
         }
     });
 
+    $.ajax
+    ({ 
+        type: "GET",
+        url: endpoint_general+'branches',
+        dataType: "json",
+        crossDomain: true,
+        xhrFields: { withCredentials: true },
+        success: function (data, status, jqXHR) 
+        {
+            if(data.res)
+            {
+                data.data.forEach(element => {
+                    let id = element.id;
+                    let name = element.name;
+                    $("#id_slc_branch_user").append('<option value="'+id+'">'+name+'</option>');
+                });
+            }
+        },
+        complete : function()
+        {
+            
+        }
+    });
+
     if($('#id_table_users').length)
     {
         var table = $('#id_table_users').DataTable
@@ -235,6 +259,30 @@ $(document).ready(function()
                 $("#global-loader").fadeOut("slow");
             }
         });    
+
+        $.ajax
+        ({ 
+            type: "GET",
+            url: endpoint_general+'branches',
+            dataType: "json",
+            crossDomain: true,
+            xhrFields: { withCredentials: true },
+            success: function (data, status, jqXHR) 
+            {
+                if(data.res)
+                {
+                    data.data.forEach(element => {
+                        let id = element.id;
+                        let name = element.name;
+                        $("#id_slc_branch_update_user").append('<option value="'+id+'">'+name+'</option>');
+                    });
+                }
+            },
+            complete : function()
+            {
+                
+            }
+        });
         
         $.ajax
         ({ 
@@ -254,6 +302,7 @@ $(document).ready(function()
                         $('#id_txt_lname_update_user').val(data.datos.last_name);
                         $('#id_txt_email_update_user').val(data.datos.email);
                         $('#id_txt_position_update_user').val(data.datos.cargo);
+                        $('#id_slc_branch_update_user').val(data.datos.branch_id);
                         $('#id_title_user_update').html('Information about: '+data.datos.first_name+' '+data.datos.last_name);
                         
                         let array_opciones = [];

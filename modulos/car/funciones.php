@@ -50,11 +50,11 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" pattern="^[A-Za-z]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" pattern="^[A-Za-z0-9]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_ndoors_car" class="form-label">Number of doors <span class="text-red">*</span></label>
-                                        <input type="number" class="form-control" id="id_txt_ndoors_car" name="txt_ndoors_car" min="1" max="10" autocomplete="off" required>
+                                        <label for="id_txt_ndoors_car" class="form-label">Number of doors</label>
+                                        <input type="number" class="form-control" id="id_txt_ndoors_car" name="txt_ndoors_car" min="1" max="10" autocomplete="off">
                                     </div> 
                                 </div>
                             </form>
@@ -82,8 +82,8 @@
                                         <div id="id_div_msg_error_slcstyle"  class="" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_transmi_car" class="form-label">Choose a Transmission <span class="text-red">*</span></label>
-                                        <select class="form-control select2 form-select" id="id_slc_transmi_car" name="slc_transmi_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slctransmi" required>
+                                        <label for="id_slc_transmi_car" class="form-label">Choose a Transmission</label>
+                                        <select class="form-control select2 form-select" id="id_slc_transmi_car" name="slc_transmi_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slctransmi">
                                             <option label="Choose one"></option>
                                             <option value="1">Authomatic</option>
                                             <option value="2">CTV</option>
@@ -101,8 +101,8 @@
                                         <div id="id_div_msg_error_slcondicion"  class="" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_fueltype_car" class="form-label">Choose a Fuel Type <span class="text-red">*</span></label>
-                                        <select class="form-control select2 form-select" id="id_slc_fueltype_car" name="slc_fueltype_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcfuelt" required>
+                                        <label for="id_slc_fueltype_car" class="form-label">Choose a Fuel Type</label>
+                                        <select class="form-control select2 form-select" id="id_slc_fueltype_car" name="slc_fueltype_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcfuelt">
                                             <option label="Choose one"></option>
                                             <option value="1">Gasoline</option>
                                             <option value="2">Diesel</option>
@@ -112,13 +112,13 @@
                                         <div id="id_div_msg_error_slcfuelt"  class="" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_mileage_car" class="form-label">Mileage <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_mileage_car" name="txt_mileage_car" autocomplete="off" required>
+                                        <label for="id_txt_mileage_car" class="form-label">Mileage</label>
+                                        <input type="text" class="form-control" id="id_txt_mileage_car" name="txt_mileage_car" autocomplete="off">
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_color_car" class="form-label">Color <span class="text-red">*</span></label>
+                                        <label for="id_txt_color_car" class="form-label">Color</label>
                                         <input type="text" class="form-control" id="id_txt_color_car" name="txt_color_car" autocomplete="off">
-                                        <input type="hidden" name="hid_color_car" id="id_hid_color_car" data-cerror-print="id_div_msg_error_txtcolor" required>
+                                        <input type="hidden" name="hid_color_car" id="id_hid_color_car" data-cerror-print="id_div_msg_error_txtcolor">
                                         <div id="id_div_msg_error_txtcolor"  class="" role="alert"></div>
                                     </div>
                                 </div>
@@ -190,8 +190,8 @@
                                         <th class="bg-transparent border-bottom-0 text-center">Model</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Trim</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Condition</th>
-                                        <th class="bg-transparent border-bottom-0 text-center">Transmition</th>
-                                        <th class="bg-transparent border-bottom-0 text-center">Fuel Type</th>
+                                        <th class="bg-transparent border-bottom-0 text-center">VIN</th>
+                                        <th class="bg-transparent border-bottom-0 text-center">Stock Number</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Price</th>
                                         <th class="bg-transparent border-bottom-0 text-center">State</th>
                                         <th class="bg-transparent border-bottom-0  text-center w-3">Options</th>
@@ -220,10 +220,13 @@
         $tmp_id = 0;
     }
 
+    $tmp_loan_id            = isset($_GET['loan']) ? $_GET['loan'] : 0;
+
      $tmpHTML = '                        
      <!--Row -->
      <div class="row" id="id_div_car_update">
         <input type="hidden" name="hid_id_car_update" id="id_hid_id_car_update" value="'.$tmp_id.'">
+        <input type="hidden" name="hid_id_loan" id="id_hid_id_loan" value="'.$tmp_loan_id.'">
          <div class="col-md-12">
              <div class="card">
                  <div class="card-header border-bottom-0">
@@ -270,7 +273,7 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car_upd" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" pattern="^[A-Za-z]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" pattern="^[A-Za-z0-9]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_ndoors_car_upd" class="form-label">Number of doors <span class="text-red">*</span></label>

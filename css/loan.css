@@ -1,0 +1,15 @@
+.css_card_info_car
+{
+    border: .5px solid #F7DC72!important;
+}
+
+.css_card_info_customer
+{
+    border: .5px solid #A2F0FB!important;
+}
+
+
+.ui-datepicker 
+{
+    z-index: 1600 !important; /* has to be larger than 1050 */
+}

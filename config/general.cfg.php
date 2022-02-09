@@ -16,6 +16,8 @@ define("URL_AA_CSS", PATH_AA.'css/');
 define("URL_AA_JS", PATH_AA.'js/');
 define("URL_AA_IMG", URL_AA.'img/');
 
+date_default_timezone_set('America/Los_Angeles');
+
 
 $array_modulos = array
 (
@@ -31,7 +33,9 @@ $array_modulos = array
     "style"=> "style",
     "customer"=> "customer",
     "reset_password" => "reset_password",
-    "create_password"=> "create_password"
+    "create_password"=> "create_password",
+    "loan"=> "loan",
+    "config_app"=> "config_app"
 );
 
 if(DEBUG_MODE)

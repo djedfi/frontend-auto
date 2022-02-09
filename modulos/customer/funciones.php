@@ -37,27 +37,23 @@
                                         <input type="text" class="form-control" id="id_txt_mobile_cus" name="txt_mobile_cus" maxlength="14"  placeholder="(999) 999-9999" required>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_email_cus" class="form-label">E-mail <span class="text-red">*</span></label>
-                                        <input type="email" class="form-control" id="id_txt_email_cus" name="txt_email_cus" maxlength="150" required>
+                                        <label for="id_txt_email_cus" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="id_txt_email_cus" name="txt_email_cus" maxlength="150">
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_dlicense_cus" class="form-label">Drivers License Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_dlicense_cus" name="txt_dlicense_cus" maxlength="15" required>
+                                        <label for="id_txt_dlicense_cus" class="form-label">Drivers License Number</label>
+                                        <input type="text" class="form-control" id="id_txt_dlicense_cus" name="txt_dlicense_cus" maxlength="15">
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_statelic_cus" class="form-label">State Issued <span class="text-red">*</span></label>
-                                        <select class="form-control select2-show-search form-select" id="id_slc_statelic_cus" name="slc_statelic_cus" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstatelic" required>
+                                        <label for="id_slc_statelic_cus" class="form-label">State Issued </label>
+                                        <select class="form-control select2-show-search form-select" id="id_slc_statelic_cus" name="slc_statelic_cus" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstatelic">
                                             <option label="Choose one"></option>
                                         </select>
                                         <div id="id_div_msg_error_slcstatelic" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_bday_cus" class="form-label">Birthday <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_bday_cus" name="txt_bday_cus" maxlength="10" placeholder="MM/DD/YYYY" required>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <label for="id_txt_ssn_cus" class="form-label">Social Security Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_ssn_cus" name="txt_ssn_cus" maxlength="11" placeholder="999-99-9999" required>
+                                        <label for="id_txt_bday_cus" class="form-label">Birthday</label>
+                                        <input type="text" class="form-control" id="id_txt_bday_cus" name="txt_bday_cus" maxlength="10" placeholder="MM/DD/YYYY">
                                     </div>
                                 </div>
                             </form>
@@ -136,10 +132,12 @@
     {
         $tmp_id = 0;
     }
+    $tmp_loan_id            = isset($_GET['loan']) ? $_GET['loan'] : 0;
     $tmpHTML = '                        
     <!--Row -->
     <div class="row" id="id_div_customer_update">
         <input type="hidden" name="hid_id_customer_upd" id="id_hid_id_customer_upd" value="'.$tmp_id.'">
+        <input type="hidden" name="hid_id_loan" id="id_hid_id_loan" value="'.$tmp_loan_id.'">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-bottom-0">
@@ -191,10 +189,6 @@
                                    <div class="col-sm-6 col-md-6">
                                        <label for="id_txt_bday_cus_upd" class="form-label">Birthday <span class="text-red">*</span></label>
                                        <input type="text" class="form-control" id="id_txt_bday_cus_upd" name="txt_bday_cus_upd" maxlength="10" placeholder="MM/DD/YYYY" required>
-                                   </div>
-                                   <div class="col-sm-6 col-md-6">
-                                       <label for="id_txt_ssn_cusupd" class="form-label">Social Security Number <span class="text-red">*</span></label>
-                                       <input type="text" class="form-control" id="id_txt_ssn_cus_upd" name="txt_ssn_cus_upd" maxlength="11" placeholder="999-99-9999" required>
                                    </div>
                                </div>
                            </form>

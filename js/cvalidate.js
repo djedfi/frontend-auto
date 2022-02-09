@@ -390,11 +390,18 @@
                 'html'      :   array_errores[clave]
             });
 
-            
-            
-            if($("#"+clave).hasClass("div-identificador"))
+            var msg_error_input;
+            msg_error_input = $( "#"+clave ).attr( "data-cerror-print" );
+
+            if(msg_error_input != undefined)
             {
-                $('#'+clave).addClass('alert').addClass('alert-danger');
+                $('#'+clave).addClass('border').addClass('border-danger');
+                $("#"+msg_error_input).html(array_errores[clave]);
+                $("#"+msg_error_input).addClass('text-danger').addClass('font-size-12').addClass('font-weight-bold').addClass('text-left');
+            }
+            else if($("#"+clave).hasClass("div-identificador"))
+            {
+                $('#'+clave).addClass('border').addClass('border-danger');
                 $("#"+clave).html(array_errores[clave]);
             }
             else if(!$("#id_msg_error_"+clave).length)

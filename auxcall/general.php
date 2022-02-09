@@ -35,6 +35,7 @@ if (isset($ahac))
             $_SESSION['tokenAA'] = $_POST['token'];
             $_SESSION['nameusuAA'] = $_POST['name_user'];
             $_SESSION['opciones'] = $_POST['opciones_user'];
+            $_SESSION['branch_id'] = $_POST['branch_id'];
             $_SESSION['timeout'] = time();
             $respuesta_json     =   json_encode
             (

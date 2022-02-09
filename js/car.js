@@ -120,7 +120,7 @@ $(document).ready(function()
                             else
                             {
                                 $("#id_div_conteiner_error_newcar").removeClass('d-none').addClass('d-block');
-                                $('#id_div_msg_error_newcar').html('Ingreso informacion incorrecta');
+                                $('#id_div_msg_error_newcar').html('Check the information and try again.');
                             }
                         },
                         complete : function()
@@ -278,7 +278,8 @@ $(document).ready(function()
                     }
                     else
                     {
-                        $('#id_slc_model_car').select2("enable", false);
+                        $('#id_slc_model_car').removeAttr('disabled');
+                        //$('#id_slc_model_car').select2("enable", false);
                     }
                 },
                 complete : function()
@@ -314,7 +315,8 @@ $(document).ready(function()
                     }
                     else
                     {
-                        $('#id_slc_trim_car').select2("enable", false);
+                        $('#id_slc_trim_car').removeAttr('disabled');
+                        //$('#id_slc_trim_car').select2("enable", true);
                     }
                 },
                 complete : function()
@@ -395,7 +397,7 @@ $(document).ready(function()
             "ajax"      : 
             {
                 "type"  : "GET",
-                "url"   : endpoint_general+'getCarTable'
+                "url"   : endpoint_general+'getCarTable/0'
             },
             "dataSrc"   : "data",
             columns     : 
@@ -434,60 +436,24 @@ $(document).ready(function()
 
                 },
                 { 
-                    "data": "transmission",
+                    "data": "vin_car",
                     render: function(data, type) 
                     {
-                        let lbl_transmission;
-                        switch(data)
-                        {
-                            case 1:
-                                lbl_transmission = 'Automatic';
-                            break;
-                            case 2:
-                                lbl_transmission = 'CVT';
-                            break;
-                            case 3:
-                                lbl_transmission = 'Manual';
-                            break;
-                            default:
-                                lbl_condition = data;
-                            break;
-                            
-                        }
-                        return '<center><span>'+lbl_transmission+'</span></center>';
+                        return '<center><span>'+data+'</span></center>';
                     } 
                 },
                 { 
-                    "data": "fuel_type",
+                    "data": "stock_number",
                     render: function(data, type) 
                     {
-                        let lbl_fueltype;
-                        switch(data)
-                        {
-                            case 1:
-                                lbl_fueltype = 'Gasoline';
-                            break;
-                            case 2:
-                                lbl_fueltype = 'Diesel';
-                            break;
-                            case 3:
-                                lbl_fueltype = 'Hybrid';
-                            break;
-                            case 4:
-                                lbl_fueltype = 'Electric';
-                            break;
-                            default:
-                                lbl_condition = data;
-                            break;
-                        }
-                        return '<center><span>'+lbl_fueltype+'</span></center>';
+                       return '<center><span>'+data+'</span></center>';
                     } 
                 },
                 { 
                     "data": "precio",
                     render: function(data, type) 
                     {
-                        var number = $.fn.dataTable.render.number( ',', '.', 2, 'US$ '). display(data);
+                        var number = $.fn.dataTable.render.number( ',', '.', 2,'$'). display(data);
                         return '<center><span>'+number+'</span></center>';
                     }
                 }
@@ -516,7 +482,7 @@ $(document).ready(function()
             ],
             "order"     : 
             [
-                [1, "asc"]
+                [0, "desc"]
             ],
             columnDefs: 
             [
@@ -527,12 +493,14 @@ $(document).ready(function()
                 {
                     'targets': 9,
                     'data': null,
-                    'defaultContent': '<center><button type="button" id="car_edit" class="btn btn-icon btn-primary btn-sm" title="Edit information"><i class="fe fe-edit"></i></button>&nbsp;<button type="button" id="car_sale" class="btn btn-icon btn-primary btn-sm" title="Sale this Car"><i class="fe fe-shopping-cart"></i></button></center>'
+                    'defaultContent': '<center><button type="button" id="car_edit" class="btn btn-icon btn-primary btn-sm" title="Edit information"><i class="fe fe-edit"></i></button>&nbsp;<button type="button" id="car_sale" class="btn btn-icon btn-primary btn-sm" title="Sell this Car"><i class="fe fe-shopping-cart"></i></button></center>'
                 }
             ],
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
+                "decimal": ".",
+                "thousands": ","
             }
         });  
 
@@ -549,16 +517,16 @@ $(document).ready(function()
         $('#id_table_cars tbody').on( 'click', 'button#car_sale', function () 
         {
             var data = table.row( $(this).parents('tr') ).data();
-            console.log(data);
+            
             if(data.estado_car == 1)
             {
-                location.href = './?mod=sale&hac=add&car='+data.id_car;
+                location.href = './?mod=loan&hac=add&car='+data.id_car;
             }
             else
             {
                 swal({
                     title: "Alert",
-                    text: "This car is not active to sale",
+                    text: "This car is not active to sell",
                     type: "warning",
                     showCancelButton: false,
                     confirmButtonClass: "btn-success",
@@ -653,27 +621,47 @@ $(document).ready(function()
                         {
                             if(data.res)
                             {
-                                swal({
-                                    title: "Congratulations!",
-                                    text: "Your information has been succesfully updated",
-                                    type: "success",
-                                    showCancelButton: true,
-                                    confirmButtonClass: "btn-success",
-                                    confirmButtonText: "Stay on the page",
-                                    cancelButtonText:"Go to Directory",
-                                    closeOnConfirm: false
-                                },
-                                function(isConfirm)
+                                if($('#id_hid_id_loan').val() > 0)
                                 {
-                                    if(isConfirm)
+                                    swal({
+                                        title: "Congratulations!",
+                                        text: "Your information has been succesfully updated",
+                                        type: "success",
+                                        showCancelButton: false,
+                                        confirmButtonClass: "btn-success",
+                                        confirmButtonText: "Go to Loan Information",
+                                        closeOnConfirm: false
+                                    },
+                                    function()
                                     {
-                                        swal.close();
-                                    }
-                                    else
+                                        location.href = './?mod=loan&hac=update&loan='+$('#id_hid_id_loan').val()+'&opc=2';
+                                    });
+                                }
+                                else
+                                {
+                                    swal({
+                                        title: "Congratulations!",
+                                        text: "Your information has been succesfully updated",
+                                        type: "success",
+                                        showCancelButton: true,
+                                        confirmButtonClass: "btn-success",
+                                        confirmButtonText: "Stay on the page",
+                                        cancelButtonText:"Go to Directory",
+                                        closeOnConfirm: false
+                                    },
+                                    function(isConfirm)
                                     {
-                                        location.href = './?mod=car&hac=list';
-                                    }
-                                });
+                                        if(isConfirm)
+                                        {
+                                            swal.close();
+                                        }
+                                        else
+                                        {
+                                            location.href = './?mod=car&hac=list';
+                                        }
+                                    });
+                                }
+                                
                             }
                             else
                             {

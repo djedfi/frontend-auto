@@ -82,6 +82,10 @@ final class Interfaces
             <!-- INTERNAL Data table css -->
             <link href="'.$this->path_rplugins.'datatable/css/dataTables.bootstrap5.css'.$this->version_resources.'" rel="stylesheet" />
             <link href="'.$this->path_rplugins.'datatable/responsive.bootstrap5.css'.$this->version_resources.'" rel="stylesheet" />
+            <!--BOOTSTRAP-DATERANGEPICKER CSS-->
+            <link rel="stylesheet" href="'.$this->path_rplugins.'bootstrap-daterangepicker/daterangepicker.css'.$this->version_resources.'">
+            <!-- TIME PICKER CSS -->
+            <link href="'.$this->path_rplugins.'time-picker/jquery.timepicker.css'.$this->version_resources.'" rel="stylesheet" />
             <!-- INTERNAL Date Picker css -->
             <link href="'.$this->path_rplugins.'date-picker/date-picker.css'.$this->version_resources.'" rel="stylesheet" />
             <!-- INTERNAL COLOR PICKER css-->
@@ -176,8 +180,11 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'sidebar/sidebar.js'.$this->version_resources.'"></script>
         
         <!-- Perfect SCROLLBAR JS-->
-        <script src="'.$this->path_rplugins.'p-scroll/perfect-scrollbar.js"></script>
-        <script src="'.$this->path_rplugins.'p-scroll/pscroll.js"></script>
+        <script src="'.$this->path_rplugins.'p-scroll/perfect-scrollbar.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'p-scroll/pscroll.js'.$this->version_resources.'"></script>
+
+        <!-- INTERNAL Bootstrap-Datepicker js-->
+        <script src="'.$this->path_rplugins.'bootstrap-daterangepicker/daterangepicker.js'.$this->version_resources.'"></script>
     
         <!-- INTERNAL CHARTJS CHART JS-->
         <script src="'.$this->path_rplugins.'chart/Chart.bundle.js'.$this->version_resources.'"></script>
@@ -186,12 +193,25 @@ final class Interfaces
     
         <!-- INTERNAL SELECT2 JS -->
         <script src="'.$this->path_rplugins.'select2/select2.full.min.js'.$this->version_resources.'"></script>
+
+        <!-- BOOTSTRAP-DATERANGEPICKER JS -->
+        <script src="'.$this->path_rplugins.'bootstrap-daterangepicker/moment.min.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'bootstrap-daterangepicker/daterangepicker.js'.$this->version_resources.'"></script>
+    
+        <!-- INTERNAL Bootstrap-Datepicker js-->
+        <script src="'.$this->path_rplugins.'bootstrap-datepicker/bootstrap-datepicker.js'.$this->version_resources.'"></script>
+    
+        <!-- TIMEPICKER JS -->
+        <script src="'.$this->path_rplugins.'time-picker/jquery.timepicker.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'time-picker/toggles.min.js'.$this->version_resources.'"></script>        
     
         <!-- INTERNAL Data tables js-->
         <script src="'.$this->path_rplugins.'datatable/js/jquery.dataTables.min.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'datatable/js/dataTables.bootstrap5.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'datatable/dataTables.responsive.min.js'.$this->version_resources.'"></script>
-    
+        <script src="https://cdn.datatables.net/plug-ins/1.10.19/dataRender/datetime.js'.$this->version_resources.'"></script>
+        
+        
         <!-- INTERNAL APEXCHART JS -->
         <script src="'.$this->path_rjs.'apexcharts.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'apexchart/irregular-data-series.js'.$this->version_resources.'"></script>
@@ -218,6 +238,9 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'date-picker/date-picker.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'date-picker/jquery-ui.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
+
+        <!-- MOMENTO -->default
+        <script src="https://momentjs.com/downloads/moment.js'.$this->version_resources.'"></script>
 
         <!-- COLOR PICKER JS -->
         <script src="'.$this->path_rplugins.'pickr-master/pickr.es5.min.js'.$this->version_resources.'"></script>
@@ -314,7 +337,7 @@ final class Interfaces
                                                         </div>
                                                     </div>
                                                     <div class="dropdown-divider m-0"></div>
-                                                    <a class="dropdown-item" href="profile.html">
+                                                    <a class="dropdown-item" href="./?mod=user&hac=update&user='.$_SESSION['usuAA'].'">
                                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                                     </a>
                                                     <a class="dropdown-item" href="./?mod=logout">
@@ -422,16 +445,26 @@ final class Interfaces
             </li>';
         foreach($array_admin as $opcion_admin)
         {
-            $menu .= '
-            <li class="slide">
-                <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa '.$opcion_admin[2].'"></i><span class="side-menu__label">'.$opcion_admin[0].'</span><i class="angle fe fe-chevron-right"></i></a>
-                <ul class="slide-menu">
-                    <li class="side-menu-label1"><a href="#">'.$opcion_admin[0].'</a></li>
-                    <li><a href="./?mod='.$opcion_admin[1].'&hac=add" class="slide-item">Add '.$opcion_admin[0].'</a></li>
-                    <li><a href="./?mod='.$opcion_admin[1].'&hac=list" class="slide-item">Directory</a></li>
-                    '.($opcion_admin[1] == 'user' ? '<li class="d-none"><a href="./?mod='.$opcion_admin[1].'&hac=update" class="slide-item">Update '.$opcion_admin[0].'</a></li>' : '').'
-                </ul>
-            </li>';
+            if($opcion_admin[1] == 'config_app')
+            {
+                $menu .= '
+                <li>
+                    <a class="side-menu__item" href="./?mod='.$opcion_admin[1].'"><i class="side-menu__icon fa '.$opcion_admin[2].'"></i><span class="side-menu__label">'.$opcion_admin[0].'</span></a>
+                </li>';
+            }
+            else
+            {
+                $menu .= '
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class="side-menu__icon fa '.$opcion_admin[2].'"></i><span class="side-menu__label">'.$opcion_admin[0].'</span><i class="angle fe fe-chevron-right"></i></a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="#">'.$opcion_admin[0].'</a></li>
+                        <li><a href="./?mod='.$opcion_admin[1].'&hac=add" class="slide-item">Add '.$opcion_admin[0].'</a></li>
+                        <li><a href="./?mod='.$opcion_admin[1].'&hac=list" class="slide-item">Directory</a></li>
+                        '.($opcion_admin[1] == 'user' ? '<li class="d-none"><a href="./?mod='.$opcion_admin[1].'&hac=update" class="slide-item">Update '.$opcion_admin[0].'</a></li>' : '').'
+                    </ul>
+                </li>';
+            }
         }
             
         

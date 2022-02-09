@@ -85,7 +85,7 @@ $(document).ready(function()
                     {
                         $("#id_btn_sbm_model").removeClass('btn-loading');
                         $("#id_div_conteiner_error_newmodelo").removeClass('d-none').addClass('d-block');
-                        $('#id_div_msg_error_newmodel').html('Ingreso informacion incorrecta');
+                        $('#id_div_msg_error_newmodel').html('Check the information and try again.');
                     }
                     $("#global-loader").fadeOut("slow");
                 }

@@ -22,7 +22,7 @@ $(document).ready(function()
                     {
                         $("#global-loader").fadeIn("fast");
                         
-                        if(!$('#id_form_primary_info').cvalidateForm() && ($('#id_hid_validate_driverl').val() != 1 && $('#id_hid_validate_ssn').val() != 1 && $('#id_hid_validate_email').val() != 1 && $('#id_hid_validate_bday').val() != 1))
+                        if(!$('#id_form_primary_info').cvalidateForm() && ($('#id_hid_validate_driverl').val() != 1 &&  $('#id_hid_validate_email').val() != 1 && $('#id_hid_validate_bday').val() != 1))
                         {
                             $("#global-loader").fadeOut("slow");
                             return true;
@@ -33,11 +33,6 @@ $(document).ready(function()
                             if($('#id_hid_validate_driverl').val() == 1)
                             {
                                 error['id_txt_dlicense_cus'] = 'This Drives License has been previoulsy registered';
-                            }
-
-                            if($('#id_hid_validate_ssn').val() == 1)
-                            {
-                                error['id_txt_ssn_cus'] = 'This SSN has been previoulsy registered';
                             }
 
                             if($('#id_hid_validate_email').val() == 1)
@@ -167,42 +162,8 @@ $(document).ready(function()
     
         $("#id_txt_mobile_cus").mask("(999) 999-9999");
         $("#id_txt_bday_cus").mask("99/99/9999");
-        $("#id_txt_ssn_cus").mask("999-99-9999");
         $("#id_txt_resphone_cus").mask("(999) 999-9999");
         $("#id_txt_business_cus").mask("(999) 999-9999? Ext 999");
-    
-        $( "#id_txt_ssn_cus" ).blur(function() 
-        {
-            if($('#id_txt_ssn_cus').val().trim() != '')
-            {
-                $.ajax
-                ({ 
-                    type: "POST",
-                    url: endpoint_general+'checkssnCust/0',
-                    data:{txt_ssn_cus:$('#id_txt_ssn_cus').val()},
-                    dataType: "json",
-                    crossDomain: true,
-                    xhrFields: { withCredentials: true },
-                    success: function (data, status, jqXHR) 
-                    {   
-                        let error = [];
-                        if(data.res)
-                        {
-                            $('#id_hid_validate_ssn').val(1);
-                            error['id_txt_ssn_cus'] = 'This SSN has been previoulsy registered';
-                            $.fn.set_error_msg_array(error);
-                        }
-                        else
-                        {
-                            $('#id_hid_validate_ssn').val(0);
-                            $('#id_msg_error_id_txt_ssn_cus').html('');
-                            $('#id_txt_ssn_cus').removeClass('border').removeClass('border-danger');
-                        }
-                    }
-                });
-            }
-    
-        });
     
         $("#id_txt_email_cus").blur(function() 
         {
@@ -327,7 +288,7 @@ $(document).ready(function()
                     render: function(data, type) 
                     {
                         let formato = new StringMask('(000) 000-0000');
-                        return '<center><span>'+formato.apply(data)+'</span></center>';
+                        return '<center><span><a href="tel:'+formato.apply(data)+'">'+formato.apply(data)+'</a></span></center>';
                     }
 
                 },
@@ -335,24 +296,51 @@ $(document).ready(function()
                     "data": "email",
                     render : function(data,type)
                     {
-                        return '<center><span><a href="mailto:'+data+'">'+data+'</span></center>';
+                        if(data == null)
+                        {
+                            return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
+                        }
+                        else
+                        {
+                            return '<center><span><a href="mailto:'+data+'">'+data+'</span></center>';
+                        }
+                        
                     }
                 },
                 { 
                     "data": "birthday",
                     render: function(data, type) 
                     {
-                        let birthday = data.split('-');
-                        return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
+                        if(data == null)
+                        {
+                            return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
+                        }
+                        else
+                        {
+                            let birthday = data.split('-');
+                            return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
+                        }
+                        
                     }
                 },
                 { 
-                    "data": "licence"
+                    "data": "licence",
+                    render : function(data,type)
+                    {
+                        if(data == null)
+                        {
+                            return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
+                        }
+                        else
+                        {
+                            return '<center><span>'+data+'</span></center>';
+                        }
+                    }
                 }
             ],
             "order"     : 
             [
-                [1, "asc"]
+                [0, "desc"]
             ],
             columnDefs: 
             [
@@ -385,7 +373,7 @@ $(document).ready(function()
         $('#id_table_customers tbody').on( 'click', 'button#car_sale', function () 
         {
             var data = table.row( $(this).parents('tr') ).data();
-            location.href = './?mod=customer&hac=add&customer='+data.id;
+            location.href = './?mod=loan&hac=add&customer='+data.id;
         });
 
 
@@ -415,7 +403,7 @@ $(document).ready(function()
                     {
                         $("#global-loader").fadeIn("fast");
                         
-                        if(!$('#id_form_primary_info_update').cvalidateForm() && ($('#id_hid_validate_driverl_upd').val() != 1 && $('#id_hid_validate_ssn_upd').val() != 1 && $('#id_hid_validate_email_upd').val() != 1 && $('#id_hid_validate_bday_upd').val() != 1))
+                        if(!$('#id_form_primary_info_update').cvalidateForm() && ($('#id_hid_validate_driverl_upd').val() != 1 && $('#id_hid_validate_email_upd').val() != 1 && $('#id_hid_validate_bday_upd').val() != 1))
                         {
                             $("#global-loader").fadeOut("slow");
                             return true;
@@ -426,11 +414,6 @@ $(document).ready(function()
                             if($('#id_hid_validate_driverl_upd').val() == 1)
                             {
                                 error['id_txt_dlicense_cus_upd'] = 'This Drives License has been previoulsy registered';
-                            }
-
-                            if($('#id_hid_validate_ssn_upd').val() == 1)
-                            {
-                                error['id_txt_ssn_cus_upd'] = 'This SSN has been previoulsy registered';
                             }
 
                             if($('#id_hid_validate_email_upd').val() == 1)
@@ -477,27 +460,46 @@ $(document).ready(function()
                         {
                             if(data.res)
                             {
-                                swal({
-                                    title: "Congratulations!",
-                                    text: "Your information has been succesfully updated",
-                                    type: "success",
-                                    showCancelButton: true,
-                                    confirmButtonClass: "btn-success",
-                                    confirmButtonText: "Stay on the page",
-                                    cancelButtonText:"Go to Directory",
-                                    closeOnConfirm: false
-                                },
-                                function(isConfirm)
+                                if($('#id_hid_id_loan').val() > 0)
                                 {
-                                    if(isConfirm)
+                                    swal({
+                                        title: "Congratulations!",
+                                        text: "Your information has been succesfully updated",
+                                        type: "success",
+                                        showCancelButton: false,
+                                        confirmButtonClass: "btn-success",
+                                        confirmButtonText: "Go to Loan Information",
+                                        closeOnConfirm: false
+                                    },
+                                    function()
                                     {
-                                        swal.close();
-                                    }
-                                    else
+                                        location.href = './?mod=loan&hac=update&loan='+$('#id_hid_id_loan').val()+'&opc=3';
+                                    });
+                                }
+                                else
+                                {
+                                    swal({
+                                        title: "Congratulations!",
+                                        text: "Your information has been succesfully updated",
+                                        type: "success",
+                                        showCancelButton: true,
+                                        confirmButtonClass: "btn-success",
+                                        confirmButtonText: "Stay on the page",
+                                        cancelButtonText:"Go to Directory",
+                                        closeOnConfirm: false
+                                    },
+                                    function(isConfirm)
                                     {
-                                        location.href = './?mod=customer&hac=list';
-                                    }
-                                });
+                                        if(isConfirm)
+                                        {
+                                            swal.close();
+                                        }
+                                        else
+                                        {
+                                            location.href = './?mod=customer&hac=list';
+                                        }
+                                    });
+                                }
                                 
                             }
                             else
@@ -555,38 +557,7 @@ $(document).ready(function()
             }
         });
     
-        $( "#id_txt_ssn_cus_upd" ).blur(function() 
-        {
-            if($('#id_txt_ssn_cus_upd').val().trim() != '')
-            {
-                $.ajax
-                ({ 
-                    type: "POST",
-                    url: endpoint_general+'checkssnCust/'+$('#id_hid_id_customer_upd').val(),
-                    data:{txt_ssn_cus:$('#id_txt_ssn_cus_upd').val()},
-                    dataType: "json",
-                    crossDomain: true,
-                    xhrFields: { withCredentials: true },
-                    success: function (data, status, jqXHR) 
-                    {   
-                        let error = [];
-                        if(data.res)
-                        {
-                            $('#id_hid_validate_ssn_upd').val(1);
-                            error['id_txt_ssn_cus_upd'] = 'This SSN has been previoulsy registered';
-                            $.fn.set_error_msg_array(error);
-                        }
-                        else
-                        {
-                            $('#id_hid_validate_ssn_upd').val(0);
-                            $('#id_msg_error_id_txt_ssn_cus_upd').html('');
-                            $('#id_txt_ssn_cus_upd').removeClass('border').removeClass('border-danger');
-                        }
-                    }
-                });
-            }
-    
-        });
+  
     
         $("#id_txt_email_cus_upd").blur(function() 
         {
@@ -709,7 +680,6 @@ $(document).ready(function()
                         $('#id_slc_statelic_cus_upd').trigger('change');
                         let tmp_bday = data.datos.birthday.split('-');
                         $('#id_txt_bday_cus_upd').val(tmp_bday[1]+'/'+tmp_bday[2]+'/'+tmp_bday[0]);
-                        $('#id_txt_ssn_cus_upd').val(data.datos.ssn);
                         $('#id_slc_gender_cus_upd').val(data.datos.gender);
                         $('#id_slc_gender_cus_upd').trigger('change');
 
@@ -724,7 +694,6 @@ $(document).ready(function()
 
                         $("#id_txt_mobile_cus_upd").mask("(999) 999-9999");
                         $("#id_txt_bday_cus_upd").mask("99/99/9999");
-                        $("#id_txt_ssn_cus_upd").mask("999-99-9999");
                         $("#id_txt_resphone_cus_upd").mask("(999) 999-9999");
                         $("#id_txt_business_cus_upd").mask("(999) 999-9999? Ext 999");
                     }

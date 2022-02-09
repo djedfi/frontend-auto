@@ -18,10 +18,10 @@
                                 <input type="text" class="form-control" id="id_txt_name_mk" name="txt_name_mk" placeholder="Enter make: e.g.: Nissan, BMW, etc." maxlength="45" autocomplete="off" required>
                             </div>
                             <div class="form-group">
-                                <label for="id_txt_url_mk" class="form-label">Website <span class="text-red">*</span></label>
+                                <label for="id_txt_url_mk" class="form-label">Website </label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="lbl_https_url">https://</span>
-                                    <input type="text" class="form-control" id="id_txt_url_mk" name="txt_url_mk" aria-describedby="lbl_https_url" maxlength="150" autocomplete="off" data-cerror-print="id_div_msg_error_webnewmake" pattern="^((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?$" required>
+                                    <input type="text" class="form-control" id="id_txt_url_mk" name="txt_url_mk" aria-describedby="lbl_https_url" maxlength="150" autocomplete="off" data-cerror-print="id_div_msg_error_webnewmake" pattern="^((www.)?)(([^.]+)\.)?([a-zA-Z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?$">
                                 </div>
                                 <div id="id_div_msg_error_webnewmake"  class="" role="alert"></div>
                             </div>
@@ -32,7 +32,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer" style="text-align:center">
+                    <div class="card-footer text-center">
                         <button class="btn btn-primary w-lg" id="id_btn_sbm_make" type="button">
                             <i class="fa fa-save"></i>
                             Submit
@@ -89,10 +89,10 @@
                                 <input type="text" class="form-control" id="id_txt_name_mk" name="txt_name_mk" placeholder="Enter make: e.g.: Nissan, BMW, etc." maxlength="45" autocomplete="off" required>
                             </div>
                             <div class="form-group">
-                                <label for="id_txt_url_mk" class="form-label">Website <span class="text-red">*</span></label>
+                                <label for="id_txt_url_mk" class="form-label">Website </label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="lbl_https_url">https://</span>
-                                    <input type="text" class="form-control" id="id_txt_url_mk" name="txt_url_mk" aria-describedby="lbl_https_url" placeholder="Enter make website" maxlength="150" autocomplete="off" pattern="^((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?$" data-cerror-print="id_div_msg_error_webnupdmake" required>
+                                    <input type="text" class="form-control" id="id_txt_url_mk" name="txt_url_mk" aria-describedby="lbl_https_url" placeholder="Enter make website" maxlength="150" autocomplete="off" pattern="^((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?$" data-cerror-print="id_div_msg_error_webnupdmake">
                                 </div>
                                 <div id="id_div_msg_error_webnupdmake"  class="" role="alert"></div>
                             </div>

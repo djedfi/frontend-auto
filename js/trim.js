@@ -129,7 +129,7 @@ $(document).ready(function()
                     {
                         $("#id_btn_sbm_trim").removeClass('btn-loading');
                         $("#id_div_conteiner_error_newtrim").removeClass('d-none').addClass('d-block');
-                        $('#id_div_msg_error_newtrim').html('Ingreso informacion incorrecta');
+                        $('#id_div_msg_error_newtrim').html('Check the information and try again.');
                     }
                     $("#global-loader").fadeOut("slow");
                 }

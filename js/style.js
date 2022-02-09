@@ -52,7 +52,7 @@ $(document).ready(function()
                     {
                         $("#id_btn_sbm_style").removeClass('btn-loading');
                         $("#id_div_conteiner_error_newstyle").removeClass('d-none').addClass('d-block');
-                        $('#id_div_msg_error_newstyle').html('Ingreso informacion incorrecta');
+                        $('#id_div_msg_error_newstyle').html('Check the information and try again.');
                     }
                     $("#global-loader").fadeOut("slow");
                 }

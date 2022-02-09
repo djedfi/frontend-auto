@@ -40,7 +40,9 @@ $(document).ready(function()
                         var v_token           = data.token;
                         var v_name_user       = data.user.first_name+' '+data.user.last_name;
                         var opciones          = data.user.user_options;
+                        var v_branch_id         = data.user.branch_id;
                         var group_opciones    = '';
+                        
                         
                         for (let i = 0; i < opciones.length; i++) 
                         {
@@ -55,7 +57,7 @@ $(document).ready(function()
                         ({ 
                             type    : "POST",
                             url     : './auxcall/general.php',
-                            data    : {ahac:'login',user_id:v_user_id,token:v_token,name_user:v_name_user,opciones_user:group_opciones},
+                            data    : {ahac:'login',user_id:v_user_id,token:v_token,name_user:v_name_user,branch_id:v_branch_id,opciones_user:group_opciones},
                             dataType: "json",
                             success: function (data, status, jqXHR) 
                             {
