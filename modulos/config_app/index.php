@@ -57,7 +57,7 @@ $innerHTML = '
                             <label for="id_txt_taxes_cfg" class="form-label">Taxes Rate by Default <span class="text-red">*</span></label>
                             <input type="text" class="form-control" id="id_txt_taxes_cfg" name="txt_taxes_cfg" autocomplete="off" required>
                         </div>
-                        <div class="alert alert-danger mb-0 d-none" id="id_div_conteiner_error_cfg" role="alert">
+                        <div class="alert alert-danger mb-0 d-none mt-3" id="id_div_conteiner_error_cfg" role="alert">
                             <span class="alert-inner--icon" id="id_icon_up_cfg"><i class="fe fe-check"></i></span>
                             <span class="alert-inner--text "><span id="id_div_msg_error_cfg" class="fw-bold"><strong>Danger!</strong> </span></span>
                         </div>

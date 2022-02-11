@@ -62,6 +62,8 @@ final class Interfaces
             <link href="'.$this->path_rcss.'dark-style.css'.$this->version_resources.'" rel="stylesheet" />
             <link href="'.$this->path_rcss.'transparent-style.css'.$this->version_resources.'" rel="stylesheet">
             <link href="'.$this->path_rcss.'skin-modes.css'.$this->version_resources.'" rel="stylesheet" />
+            <!--C3 CHARTS CSS -->
+            <link href="'.$this->path_rplugins.'charts-c3/c3-chart.css" rel="stylesheet" />
             <!-- SINGLE-PAGE CSS -->
             '.(!isset($_SESSION['usuAA']) ? '<link href="'.$this->path_rplugins.'single-page/css/main.css'.$this->version_resources.'" rel="stylesheet" type="text/css">': '').'
             <!-- FORN WIZARD CSS -->
@@ -219,9 +221,6 @@ final class Interfaces
         <!-- C3 CHART JS -->
         <script src="'.$this->path_rplugins.'charts-c3/d3.v5.min.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'charts-c3/c3-chart.js'.$this->version_resources.'"></script>
-    
-        <!-- CHART-DONUT JS -->
-        <script src="'.$this->path_rjs.'charts.js'.$this->version_resources.'"></script>
     
         <!-- INTERNAL Flot JS -->
         <script src="'.$this->path_rplugins.'flot/jquery.flot.js'.$this->version_resources.'"></script>

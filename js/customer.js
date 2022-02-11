@@ -678,8 +678,12 @@ $(document).ready(function()
                         $('#id_txt_dlicense_cus_upd').val(data.datos.licence);
                         $('#id_slc_statelic_cus_upd').val(data.datos.state_licence);
                         $('#id_slc_statelic_cus_upd').trigger('change');
-                        let tmp_bday = data.datos.birthday.split('-');
-                        $('#id_txt_bday_cus_upd').val(tmp_bday[1]+'/'+tmp_bday[2]+'/'+tmp_bday[0]);
+                        if(data.datos.birthday != null)
+                        {
+                            let tmp_bday = data.datos.birthday.split('-');
+                            $('#id_txt_bday_cus_upd').val(tmp_bday[1]+'/'+tmp_bday[2]+'/'+tmp_bday[0]);
+                        }
+                        
                         $('#id_slc_gender_cus_upd').val(data.datos.gender);
                         $('#id_slc_gender_cus_upd').trigger('change');
 

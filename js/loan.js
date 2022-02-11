@@ -736,7 +736,7 @@ $(document).ready(function()
                                 showCancelButton: true,
                                 confirmButtonClass: "btn-success",
                                 confirmButtonText: "Add Loan",
-                                cancelButtonText:"Go to Directory",
+                                cancelButtonText:"View Loan Info",
                                 closeOnConfirm: false
                             },
                             function(isConfirm)
@@ -747,7 +747,7 @@ $(document).ready(function()
                                 }
                                 else
                                 {
-                                    location.href = './?mod=loan&hac=list&rpt=1';
+                                    location.href = './?mod=loan&hac=update&loan='+data.loan_id;
                                 }
                             });
                         }
@@ -1126,118 +1126,124 @@ $(document).ready(function()
             console.log(data);
         });
 
-        // var table_payments_due = $('#id_table_payments_due').DataTable
-        // ({
-        //     "ajax"      : 
-        //     {
-        //         "type"  : "GET",
-        //         "url"   : endpoint_general+'getReporteLoan/3'
-        //     },
-        //     "dataSrc"   : "data",
-        //     columns     : 
-        //     [
-        //         { 
-        //             "data": "full_name",
-        //             render: function(data, type) 
-        //             {
-        //                 return '<center><span>'+data+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "birthday",
-        //             render: function(data, type) 
-        //             {
-        //                 let birthday = data.split('-');
-        //                 return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "modelo_car",
-        //             render: function(data, type) 
-        //             {
-        //                 return '<center><span>'+data+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "stock_number",
-        //             render: function(data, type) 
-        //             {
-        //                 return '<center><span>'+data+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "vin",
-        //             render: function(data, type) 
-        //             {
-        //                 return '<center><span>'+data+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "payment_loan",
-        //             render: function(data, type) 
-        //             {
-        //                 var number = $.fn.dataTable.render.number( ',', '.', 2, '$'). display(data);
-        //                 return '<center><span>'+number+'</span></center>';
-        //             }
-        //         },
-        //         { 
-        //             "data": "date_programable",
-        //             render: function(data, type) 
-        //             {
-        //                 let date_programable = data.split('-');
-        //                 return '<center><span>'+date_programable[1]+'/'+date_programable[2]+'/'+date_programable[0]+'</span></center>';
-        //             }
-        //         }
-        //         ,
-        //         { 
-        //             "data": "diferencia_dias",
-        //             render: function(data, type) 
-        //             {
-        //                 return '<center><span>'+data+' days</span></center>';
-        //             }
-        //         }
-        //     ],
-        //     "order"     : 
-        //     [
-        //         [7, "desc"]
-        //     ],
-        //     columnDefs: 
-        //     [
+        var table_payments_due = $('#id_table_payments_due').DataTable
+        ({
+            "ajax"      : 
+            {
+                "type"  : "GET",
+                "url"   : endpoint_general+'getReporteLoan/3'
+            },
+            "dataSrc"   : "data",
+            columns     : 
+            [
+                {  
+                    "data": "pago_automatico",
+                    render : function(data,type)
+                    {
+                        if(data == 1)
+                        {
+                            return '<center><i class="fe fe-alert-octagon text-warning fs-5" title="Automatic payment"></center>';
+                        }
+                        else
+                        {
+                            return '';
+                        }
+                        
+                    }
+                },
+                { 
+                    "data": "full_name",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "birthday",
+                    render: function(data, type) 
+                    {
+                        if(data == null)
+                        {
+                            return '<center>NO INFO</center>'
+                        }
+                        let birthday = data.split('-');
+                        return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "modelo_car",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "stock_number",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "vin",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "minimun_payment",
+                    render: function(data, type) 
+                    {
+                        var number = $.fn.dataTable.render.number( ',', '.', 2, '$'). display(data);
+                        return '<center><span>'+number+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "date_programable",
+                    render: function(data, type) 
+                    {
+                        let date_programable = data.split('-');
+                        return '<center><span>'+date_programable[1]+'/'+date_programable[2]+'/'+date_programable[0]+'</span></center>';
+                    }
+                }
+                ,
+                { 
+                    "data": "date_end",
+                    render: function(data, type) 
+                    {
+                        let date_programable = data.split('-');
+                        return '<center><span>'+date_programable[1]+'/'+date_programable[2]+'/'+date_programable[0]+'</span></center>';
+                    }
+                }
+            ],
+            "order"     : 
+            [
+                [1, "desc"]
+            ],
+            columnDefs: 
+            [
                 
-        //         {
-        //             'targets': 8,
-        //             'data': null,
-        //             'defaultContent': '<center><button type="button" id="loan_select" class="btn btn-icon btn-primary btn-sm" title="Select this Car Loan"><i class="fe fe-eye"></i></button>&nbsp;<button type="button" id="receive_payment" class="btn btn-icon btn-primary btn-sm" title="Receive the payment"><i class="fa fa-money"></i></button></center>'
-        //         }
-        //     ],
-        //     language: {
-        //         searchPlaceholder: 'Search...',
-        //         sSearch: '',
-        //         "decimal": ".",
-        //         "thousands": ","
-        //     }
-        // });
+                {
+                    'targets': 9,
+                    'data': null,
+                    'defaultContent': '<center><button type="button" id="loan_select" class="btn btn-icon btn-primary btn-sm" title="Select this Car Loan"><i class="fe fe-eye"></i></button>'
+                }
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                "decimal": ".",
+                "thousands": ","
+            }
+        });
 
-        // $('#id_table_payments_due tbody').on( 'click', 'button#receive_payment', function () 
-        // {
-        //     var data = table_payments_due.row( $(this).parents('tr') ).data();
-        //     $('#id_form_get_payment_fee').trigger('reset')
-        //     console.log(data);
-        //     $('#id_modal_get_payment_fee').modal('show'); 
-        //     $('#id_txt_payment_get_payment_fee').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.payment_loan));
-        //     $('#id_txt_latefee_get_payment_fee').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.late_fee));
-        //     $('#id_txt_totalpay_get_payment_fee').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(parseFloat(data.payment_loan) + parseFloat(data.late_fee)));
-        //     $('#id_hid_id_payment_fee').val(data.payment_id);
-        //     $('#id_hid_daylate_fee').val(data.diferencia_dias);
-        // });
 
-        // $('#id_table_payments_due tbody').on( 'click', 'button#loan_select', function () 
-        // {
-        //     var data = table_payments_due.row( $(this).parents('tr') ).data();
-        //     console.log(data)
-        //     location.href = './?mod=loan&hac=update&loan='+data.loan_id;
-        //     console.log(data);
-        // });
+        $('#id_table_payments_due tbody').on( 'click', 'button#loan_select', function () 
+        {
+            var data = table_payments_due.row( $(this).parents('tr') ).data();
+            location.href = './?mod=loan&hac=update&loan='+data.loan_id;
+        });
 
         
     }
@@ -1282,7 +1288,6 @@ $(document).ready(function()
                     $('#id_date_startpay_tab_loan').val(start_payment[1]+'/'+start_payment[2]+'/'+start_payment[0]);
 
                     $("#id_txt_fee_late_tab_loan").prop('disabled',false);
-                    $("#id_txt_days_late_tab_loan").prop('disabled',false);
                     $("#id_txt_fee_late_tab_loan").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
                     $("#id_txt_days_late_tab_loan").maskMoney({thousands:',', decimal:'.',precision:0});
                     $('#id_txt_fee_late_tab_loan').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.datos.late_fee));
@@ -1543,8 +1548,46 @@ $(document).ready(function()
             $("#global-loader").fadeIn("fast");
             var data = table_loan_summary.row( $(this).parents('tr') ).data();
             console.log(data);
+            $.ajax
+            ({ 
+                type: "GET",
+                url: endpoint_general+'sendReceipt/'+data.id,
+                dataType: "json",
+                crossDomain: true,
+                xhrFields: { withCredentials: true },
+                success: function (data, status, jqXHR) 
+                {
+                    if(data.res)
+                    {
+                        swal({
+                            title: "Congratulations!",
+                            text: "We sent the payment receipt to the customer.",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonClass: "btn-default",
+                            confirmButtonText: "Close",
+                            closeOnConfirm: true
+                        });
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Alert",
+                            text: "We could not sent the payment receipt. Try later!",
+                            type: "warning",
+                            showCancelButton: false,
+                            confirmButtonClass: "btn-default",
+                            confirmButtonText: "Close",
+                            closeOnConfirm: true
+                        });
+                    }
+                },
+                complete : function()
+                {
+                    $("#global-loader").fadeOut("slow");
+                }
+            });
             
-            $("#global-loader").fadeOut("slow");
         });
 
         $('#id_table_loan_summary tbody').on( 'click', 'button#delete_fee', function () 
@@ -1594,6 +1637,71 @@ $(document).ready(function()
             
             
         });
+
+        //MOSTRAR EL SCHEDULE DE PAGOS
+        $('#id_table_loan_scheduled').DataTable
+        (
+            {
+                
+                "ajax"      : 
+                {
+                    "type"  : "GET",
+                    "url"   : endpoint_general+'getReporteSchedule/'+$('#id_hid_loan_id_tab_loan').val()
+                },
+                "dataSrc"       : "data",
+                "ordering"      : false,
+                "paging"        : false,
+                columns     : 
+                [
+                    {   
+                        "data": "id" 
+                    },
+                    { 
+                        "data": "date_programable"
+                    },
+                    { 
+                        "data": "date_end"
+                    },
+                    { 
+                        "data": "pago",
+                        render:function(data)
+                        {
+                            if(data == 1)
+                            {
+                                return '<center><span class="text-success fw-bold">PAID</span></center>'
+                            }
+                            else
+                            {
+                                return '<center><span class="text-danger fw-bold">NO PAYMENT</span></center>'
+                            }
+                        }
+                    },
+                    {
+                        "data": "current_month"
+                    }
+                ],
+                "order"     : 
+                [
+                    [0, "asc"]
+                ],
+                columnDefs: 
+                [
+                    { 
+                        visible:false, targets: [4]
+                    },
+                    {
+                        targets: [1,2],
+                        render: $.fn.dataTable.render.moment( 'MM/DD/YYYY' )
+                    }
+                ],
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    "decimal": ".",
+                    "thousands": ","
+                }
+            }
+        );
 
 
         $('#id_btn_save_tab_loan').on('click',function()

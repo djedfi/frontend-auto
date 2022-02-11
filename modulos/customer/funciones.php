@@ -172,23 +172,23 @@
                                        <input type="text" class="form-control" id="id_txt_mobile_cus_upd" name="txt_mobile_cus_upd" maxlength="14"  placeholder="(999) 999-9999" required>
                                    </div>
                                    <div class="col-sm-6 col-md-6">
-                                       <label for="id_txt_email_cus_upd" class="form-label">E-mail <span class="text-red">*</span></label>
-                                       <input type="email" class="form-control" id="id_txt_email_cus_upd" name="txt_email_cus_upd" maxlength="150" required>
+                                       <label for="id_txt_email_cus_upd" class="form-label">E-mail</label>
+                                       <input type="email" class="form-control" id="id_txt_email_cus_upd" name="txt_email_cus_upd" maxlength="150">
                                    </div>
                                    <div class="col-sm-6 col-md-6">
-                                       <label for="id_txt_dlicense_cus_upd" class="form-label">Drivers License Number <span class="text-red">*</span></label>
-                                       <input type="text" class="form-control" id="id_txt_dlicense_cus_upd" name="txt_dlicense_cus_upd" maxlength="15" required>
+                                       <label for="id_txt_dlicense_cus_upd" class="form-label">Drivers License Number </label>
+                                       <input type="text" class="form-control" id="id_txt_dlicense_cus_upd" name="txt_dlicense_cus_upd" maxlength="15" >
                                    </div>
                                    <div class="col-sm-6 col-md-6">
-                                       <label for="id_slc_statelic_cus_upd" class="form-label">State Issued <span class="text-red">*</span></label>
-                                       <select class="form-control select2-show-search form-select" id="id_slc_statelic_cus_upd" name="slc_statelic_cus_upd" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstatelic_upd" required>
+                                       <label for="id_slc_statelic_cus_upd" class="form-label">State Issued </label>
+                                       <select class="form-control select2-show-search form-select" id="id_slc_statelic_cus_upd" name="slc_statelic_cus_upd" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstatelic_upd">
                                            <option label="Choose one"></option>
                                        </select>
                                        <div id="id_div_msg_error_slcstatelic_upd" role="alert"></div>
                                    </div>
                                    <div class="col-sm-6 col-md-6">
-                                       <label for="id_txt_bday_cus_upd" class="form-label">Birthday <span class="text-red">*</span></label>
-                                       <input type="text" class="form-control" id="id_txt_bday_cus_upd" name="txt_bday_cus_upd" maxlength="10" placeholder="MM/DD/YYYY" required>
+                                       <label for="id_txt_bday_cus_upd" class="form-label">Birthday </label>
+                                       <input type="text" class="form-control" id="id_txt_bday_cus_upd" name="txt_bday_cus_upd" maxlength="10" placeholder="MM/DD/YYYY" >
                                    </div>
                                </div>
                            </form>

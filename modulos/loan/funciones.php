@@ -339,10 +339,10 @@ function form_update()
     <div class="row mt-5" >
         <div class="card">
             <div class="card-header text-wrap d-none" id="id_div_setup_pago_automatico">
-            <div class="alert alert-warning text-white bg-warning">
-                <span class=""><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 24 24"><path fill="#fad383" d="M15.728,22H8.272a1.00014,1.00014,0,0,1-.707-.293l-5.272-5.272A1.00014,1.00014,0,0,1,2,15.728V8.272a1.00014,1.00014,0,0,1,.293-.707l5.272-5.272A1.00014,1.00014,0,0,1,8.272,2H15.728a1.00014,1.00014,0,0,1,.707.293l5.272,5.272A1.00014,1.00014,0,0,1,22,8.272V15.728a1.00014,1.00014,0,0,1-.293.707l-5.272,5.272A1.00014,1.00014,0,0,1,15.728,22Z"/><circle cx="12" cy="16" r="1" fill="#f7b731"/><path fill="#f7b731" d="M12,13a1,1,0,0,1-1-1V8a1,1,0,0,1,2,0v4A1,1,0,0,1,12,13Z"/></svg></span>
-                <span class="fs-6"><strong>This Car Loan is step up with Automatic payments</strong></span>
-            </div>
+                <div class="alert alert-warning text-white bg-warning">
+                    <span class=""><svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 24 24"><path fill="#fad383" d="M15.728,22H8.272a1.00014,1.00014,0,0,1-.707-.293l-5.272-5.272A1.00014,1.00014,0,0,1,2,15.728V8.272a1.00014,1.00014,0,0,1,.293-.707l5.272-5.272A1.00014,1.00014,0,0,1,8.272,2H15.728a1.00014,1.00014,0,0,1,.707.293l5.272,5.272A1.00014,1.00014,0,0,1,22,8.272V15.728a1.00014,1.00014,0,0,1-.293.707l-5.272,5.272A1.00014,1.00014,0,0,1,15.728,22Z"/><circle cx="12" cy="16" r="1" fill="#f7b731"/><path fill="#f7b731" d="M12,13a1,1,0,0,1-1-1V8a1,1,0,0,1,2,0v4A1,1,0,0,1,12,13Z"/></svg></span>
+                    <span class="fs-6"><strong>This Car Loan is step up with Automatic payments</strong></span>
+                </div>
             </div>
             <div class="card-body">
                 <div class="panel panel-primary" id="id_div_panel_tab_loan">
@@ -417,7 +417,7 @@ function form_update()
                                         </div>
                                         <div class="col-md-12 col-lg-4">
                                             <label for="id_txt_days_late_tab_loan" class="form-label">Late Days <span class="text-red">*</span></label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_days_late_tab_loan" name="txt_days_late_tab_loan" required disabled>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_days_late_tab_loan" name="txt_days_late_tab_loan" readonly>
                                         </div>
                                         <div class="col-md-12 col-lg-4">
                                             <label for="id_txt_fee_late_tab_loan" class="form-label">Late Fee <span class="text-red">*</span></label>
@@ -433,7 +433,7 @@ function form_update()
 
                                         </div>
                                         <div class="col-md-12 col-lg-6 text-end">
-                                            <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Save Loan Information</button>
+                                            <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Late Fee</button>
                                         </div>
                                     </div>
                                 </form>                                
@@ -566,6 +566,7 @@ function form_update()
                             <!-- Tabs -->
                             <ul class="nav panel-tabs panel-info">
                                 <li><a href="#id_div_panel_tab_option_summary" class="active" data-bs-toggle="tab"><span><i class="fa fa-calculator me-1"></i></span>Account Summary</a></li>
+                                <li><a href="#id_div_panel_tab_option_scheduled" class="" data-bs-toggle="tab"><span><i class="fa fa-calculator me-1"></i></span>Schedule Payments</a></li>
                             </ul>
                         </div>
                     </div>
@@ -589,13 +590,28 @@ function form_update()
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-3">
+                                    <div class="col-md-12 col-lg-3 align-middle">
                                         <div class="d-grid gap-2">
                                             <button type="button" class="btn btn-lg btn-info  mb-1" id="id_btn_new_payment_tab_loan" disabled><i class="fa fa-money"></i> New Payment</button>
                                             <button type="button" class="btn btn-lg btn-success mb-1" id="id_btn_pay_balance_tab_loan" disabled><i class="fa fa-handshake-o"></i> Pay Balance</button>
                                             <button type="button" class="btn btn-lg btn-danger mb-1" id="id_btn_new_feelate_tab_loan" disabled><i class="fa fa-gavel"></i> Add Fee Late</button>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="id_div_panel_tab_option_scheduled">
+                                <div class="table-responsive">
+                                    <table id="id_table_loan_scheduled" class="table table-sm table-bordered table-hover text-nowrap mb-0" style="width:100%">
+                                        <thead class="border-top">
+                                            <tr>
+                                                <th class="bg-transparent border-bottom-0">Number</th>
+                                                <th class="bg-transparent border-bottom-0 text-center">Date Scheduled</th>
+                                                <th class="bg-transparent border-bottom-0 text-center">Date Due</th>
+                                                <th class="bg-transparent border-bottom-0 text-center">Got Payment?</th>
+                                                <th class="bg-transparent border-bottom-0 text-center">Current</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -678,8 +694,8 @@ function form_update()
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" id="id_btn_add_get_payment">Add Payment</button>
+                    <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-info" id="id_btn_add_get_payment">Add Payment</button>
                 </div>
             </div>
         </div>
@@ -755,8 +771,8 @@ function form_update()
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" id="id_btn_add_balance">Pay Balance</button>
+                    <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-success" id="id_btn_add_balance">Pay Balance</button>
                 </div>
             </div>
         </div>
@@ -801,8 +817,8 @@ function form_update()
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" id="id_btn_add_late_fee">Add Late Fee</button>
+                    <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-danger" id="id_btn_add_late_fee">Add Late Fee</button>
                 </div>
             </div>
         </div>
@@ -834,7 +850,7 @@ function form_update()
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
                     <button class="btn btn-danger" id="id_btn_delete_late_fee">Delete Late Fee</button>
                 </div>
             </div>
@@ -885,8 +901,8 @@ function list_loan()
                         <div class="tabs-menu">
                             <!-- Tabs -->
                             <ul class="nav panel-tabs panel-info">
-                                <li><a href="#id_div_panel_tab_reporte2" class="'.$rpt2_active.'" data-bs-toggle="tab"><span><i class="fa fa-warning me-1"></i></span>Loan payments due now ('.date('m/d/Y').')</a></li>
-                                <li><a href="#id_div_panel_tab_reporte3" class="'.$rpt3_active.'" data-bs-toggle="tab"><span><i class="fa fa-bell me-1"></i></span>Loan payments due already</a></li>
+                                <li><a href="#id_div_panel_tab_reporte2" class="'.$rpt2_active.'" data-bs-toggle="tab"><span><i class="fa fa-warning me-1"></i></span>Expected Loan payments today ('.date('m/d/Y').')</a></li>
+                                <li><a href="#id_div_panel_tab_reporte3" class="'.$rpt3_active.'" data-bs-toggle="tab"><span><i class="fa fa-bell me-1"></i></span>Loan payments due</a></li>
                                 <li><a href="#id_div_panel_tab_reporte1" class="'.$rpt1_active.'"  data-bs-toggle="tab"><span><i class="fa fa-list-ol me-1"></i></span>All Car Loans</a></li>
                             </ul>
                         </div>
@@ -942,14 +958,15 @@ function list_loan()
                                     <table id="id_table_payments_due" class="table table-sm table-bordered  table-hover text-nowrap mb-0" style="width:100%">
                                         <thead class="border-top">
                                             <tr>
+                                                <th class="text-center"></th>
                                                 <th class="text-center">Full Name</th>
                                                 <th class="text-center">Birthdate<br><span class="text-muted font-6">(MM/DD/YYYY)</span></th>
                                                 <th class="text-center">Car Model</th>
                                                 <th class="text-center">Stock Number</th>
                                                 <th class="text-center">VIN</th>
-                                                <th class="text-center">Payment Value</th>
+                                                <th class="text-center">MINIMUN<br>PAYMENT</th>
+                                                <th class="text-center">Payment Date</th>
                                                 <th class="text-center">Date Due</th>
-                                                <th class="text-center">Days count<br><span class="text-muted font-6">(MM/DD/YYYY)</span></th>
                                                 <th class="text-center w-1"></th>
                                             </tr>
                                         </thead>
