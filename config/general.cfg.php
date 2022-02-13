@@ -3,6 +3,7 @@ $varCache = '?v=202202121';
 
 define("DEBUG_MODE", true); //cambiar a false, al pasar a produccion
 define("URL_AA", 'http://localhost/frontend-auto/');
+//define("URL_AA", 'https://app.aamotorsla.com/');
 define("PATH_AA","./");
 //para poder levantar la interface
 define("URL_AA_TEMPLATE", URL_AA.'assets/');
