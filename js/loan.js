@@ -629,9 +629,8 @@ $(document).ready(function()
         $("#id_txt_interest_loan").maskMoney({suffix:' %',thousands:',', decimal:'.',precision:2});
         $("#id_txt_taxes_loan").maskMoney({suffix:' %',thousands:',', decimal:'.',precision:2});
 
-        $("#id_date_open_loan").mask("99/99/9999");
-        $("#id_date_startpay_loan").mask("99/99/9999");
-        $("#id_txt_long_term_loan").maskMoney({thousands:',', decimal:'.',precision:0});
+        $("#id_date_open_loan").mask("00/00/0000");
+        $("#id_date_startpay_loan").mask("00/00/0000");
 
         $("#id_date_open_loan").blur(function() 
         {
@@ -1289,7 +1288,7 @@ $(document).ready(function()
 
                     $("#id_txt_fee_late_tab_loan").prop('disabled',false);
                     $("#id_txt_fee_late_tab_loan").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
-                    $("#id_txt_days_late_tab_loan").maskMoney({thousands:',', decimal:'.',precision:0});
+                    
                     $('#id_txt_fee_late_tab_loan').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.datos.late_fee));
                     $('#id_hid_late_fee_tab_loan').val(data.datos.late_fee);
                     $('#id_txt_days_late_tab_loan').val(data.datos.days_late);
@@ -1710,6 +1709,43 @@ $(document).ready(function()
             $("#global-loader").fadeIn("fast");
             if(!$('#id_form_tab_loan').cvalidateForm())
             {
+                $.ajax
+                ({ 
+                    type: "PUT",
+                    url: endpoint_general+'loans/'+$('#id_hid_loan_id_tab_loan').val(),
+                    data:$("#id_form_tab_loan").serialize(),
+                    dataType: "json",
+                    crossDomain: true,
+                    xhrFields: { withCredentials: true },
+                    success: function (data, status, jqXHR) 
+                    {
+                        if(data.res)
+                        {
+                            swal({
+                                title: "Congratulations!",
+                                text: "Your information has been succesfully saved",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: true
+                            });
+                            $('#id_hid_late_fee_tab_loan').val(data.fee);
+                        }
+                        else
+                        {
+                            swal({
+                                title: "Alert",
+                                text: "We can not save your information, Try later!!",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Exit",
+                                closeOnConfirm: true
+                            });
+                        }
+                    }
+                });
                 $("#id_btn_save_tab_loan").removeClass('btn-loading');
                 $("#global-loader").fadeOut("slow");
             }
@@ -1739,7 +1775,17 @@ $(document).ready(function()
             $('#id_hid_balance_loan_payment').val($('#id_txt_balance_now_tab_loan').val());
             $('#id_txt_balance_payment').val($('#id_txt_balance_now_tab_loan').val());
             $('#id_txt_minimun_payment').val($('#id_txt_mpayment_tab_loan').val());
-            $('#id_lbl_email_customer_payment').html($('#id_txt_email_tab_customer').val());
+            if($('#id_txt_email_tab_customer').val() == '')
+            {
+                $('#id_lbl_email_customer_payment').html('<span class="text-danger">NO EMAIL</span>');
+                $('#id_chk_send_email_payment').prop('disabled',true);
+            }
+            else
+            {
+                $('#id_lbl_email_customer_payment').html($('#id_txt_email_tab_customer').val());
+                $('#id_chk_send_email_payment').prop('disabled',false);
+            }
+            
 
             let balance             = $('#id_txt_balance_now_tab_loan').val().replace('US$','');
             balance                 = balance.replace(',','');
@@ -1768,7 +1814,18 @@ $(document).ready(function()
             $('#id_form_get_balance').trigger('reset');
             $('#id_txt_balance_balance').val($('#id_txt_balance_now_tab_loan').val());
             $('#id_hid_loan_id_balance').val($('#id_hid_loan_id_tab_loan').val());
-            $('#id_lbl_email_customer_balance').html($('#id_txt_email_tab_customer').val());
+            
+            if($('#id_txt_email_tab_customer').val() == '')
+            {
+                $('#id_lbl_email_customer_balance').html('<span class="text-danger">NO EMAIL</span>');
+                $('#id_chk_send_email_balance').prop('disabled',true);
+            }
+            else
+            {
+                $('#id_lbl_email_customer_balance').html($('#id_txt_email_tab_customer').val());
+                $('#id_chk_send_email_balance').prop('disabled',false);
+            }
+            
 
             let balance             = $('#id_txt_balance_now_tab_loan').val().replace('US$','');
             balance                 = balance.replace(',','');
@@ -1807,7 +1864,7 @@ $(document).ready(function()
 
     if($('#id_form_get_payment').length)
     {
-        $("#id_date_payment_get_payment").mask("99/99/9999");
+        $("#id_date_payment_get_payment").mask("00/00/0000");
         $("#id_txt_amount_due_payment").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
 
         $( "#id_txt_amount_due_payment" ).blur(function() 
@@ -1907,7 +1964,7 @@ $(document).ready(function()
                 $.ajax
                 ({ 
                     type: "POST",
-                    url: endpoint_general+'payments/',
+                    url: endpoint_general+'payments',
                     data:$("#id_form_get_payment").serialize(),
                     dataType: "json",
                     crossDomain: true,
@@ -1990,7 +2047,7 @@ $(document).ready(function()
 
     if($('#id_form_get_balance').length)
     {
-        $("#id_date_payment_balance").mask("99/99/9999");
+        $("#id_date_payment_balance").mask("00/00/0000");
 
         $('#id_chk_send_email_balance').click(function() 
         {
@@ -2052,7 +2109,7 @@ $(document).ready(function()
                 $.ajax
                 ({ 
                     type: "POST",
-                    url: endpoint_general+'payments/',
+                    url: endpoint_general+'payments',
                     data:$("#id_form_get_balance").serialize(),
                     dataType: "json",
                     crossDomain: true,
@@ -2130,7 +2187,7 @@ $(document).ready(function()
 
     if($('#id_form_late_fee').length)
     {
-        $("#id_date_late_fee").mask("99/99/9999");
+        $("#id_date_late_fee").mask("00/00/0000");
         $('#id_btn_date_today_late_fee').on('click', function ()
         {   
             $("#id_date_late_fee").val(moment().format('MM/DD/YYYY'));
@@ -2179,7 +2236,7 @@ $(document).ready(function()
                 $.ajax
                 ({ 
                     type: "POST",
-                    url: endpoint_general+'payments/',
+                    url: endpoint_general+'payments',
                     data:$("#id_form_late_fee").serialize(),
                     dataType: "json",
                     crossDomain: true,

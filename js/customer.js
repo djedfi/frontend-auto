@@ -160,10 +160,10 @@ $(document).ready(function()
             }
         });
     
-        $("#id_txt_mobile_cus").mask("(999) 999-9999");
-        $("#id_txt_bday_cus").mask("99/99/9999");
-        $("#id_txt_resphone_cus").mask("(999) 999-9999");
-        $("#id_txt_business_cus").mask("(999) 999-9999? Ext 999");
+        $("#id_txt_mobile_cus").mask("(000) 000-00000");
+        $("#id_txt_bday_cus").mask("00/00/0000");
+        $("#id_txt_resphone_cus").mask("(000) 000-0000");
+        $("#id_txt_business_cus").mask("(000) 000-0000? Ext 000");
     
         $("#id_txt_email_cus").blur(function() 
         {
@@ -696,10 +696,10 @@ $(document).ready(function()
                         $('#id_txt_resphone_cus_upd').val(data.datos.telephone_res);
                         $('#id_txt_business_cus_upd').val(data.datos.telephone_bus);
 
-                        $("#id_txt_mobile_cus_upd").mask("(999) 999-9999");
-                        $("#id_txt_bday_cus_upd").mask("99/99/9999");
-                        $("#id_txt_resphone_cus_upd").mask("(999) 999-9999");
-                        $("#id_txt_business_cus_upd").mask("(999) 999-9999? Ext 999");
+                        $("#id_txt_mobile_cus_upd").mask("(000) 000-0000");
+                        $("#id_txt_bday_cus_upd").mask("00/00/0000");
+                        $("#id_txt_resphone_cus_upd").mask("(000) 000-0000");
+                        $("#id_txt_business_cus_upd").mask("(000) 000-0000? Ext 000");
                     }
                     else
                     {

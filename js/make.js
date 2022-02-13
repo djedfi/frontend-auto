@@ -130,10 +130,20 @@ $(document).ready(function()
                 {
                     if(data.res)
                     {
-                        let url_temp = data.datos.website.split('https://');
+                        
+                        if(data.datos.website != '')
+                        {
+                            let url_temp = data.datos.website.split('https://');
+                            $('#id_txt_url_mk').val(url_temp[1].trim());
+                        }
+                        else
+                        {
+                            $('#id_txt_url_mk').val('');
+                        }
+                        
                         $('#id_hid_id_mk').val(data.datos.id);
                         $('#id_txt_name_mk').val(data.datos.name);
-                        $('#id_txt_url_mk').val(url_temp[1].trim());
+                        
                     }
                     else
                     {

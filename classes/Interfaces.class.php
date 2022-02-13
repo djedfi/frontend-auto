@@ -238,7 +238,7 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'date-picker/jquery-ui.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
 
-        <!-- MOMENTO -->default
+        <!-- MOMENTO -->
         <script src="https://momentjs.com/downloads/moment.js'.$this->version_resources.'"></script>
 
         <!-- COLOR PICKER JS -->

@@ -195,7 +195,7 @@ function form_add()
 
                             <div class="col-sm-12 col-lg-3">    
                                 <label for="id_txt_long_term_loan" class="form-label">Long Term in months <span class="text-red">*</span></label>                               
-                                <input type="text" class="form-control" id="id_txt_long_term_loan" placeholder="" name="txt_long_term_loan" value="" autocomplete="off" disabled required>
+                                <input type="number" class="form-control" id="id_txt_long_term_loan" placeholder="" name="txt_long_term_loan" value="" autocomplete="off" disabled required>
                             </div>
                             <div class="col-sm-12 col-lg-3">
                                 <label for="id_txt_mpayment_loan" class="form-label">Minimun payment </label>
