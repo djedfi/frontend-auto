@@ -41,6 +41,7 @@ if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']) && ($mod != 'reset
 }
 
 
+
 $array_config_interface =   array(
     'vresource'=>$varCache,
     'modulo'=>$mod,
@@ -73,6 +74,10 @@ else if(!isset($_SESSION['usuAA']))
     echo $obj_interfaces->html_output;
     include("modulos/" . $array_modulos['login'] . "/index.php");
     $obj_interfaces->return_js_no_login();
+}
+else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && $mod == '')
+{
+    header('Location:./?mod=home');
 }
 else if(isset($_SESSION['usuAA']) &&  isset($_SESSION['tokenAA']) && isset($array_modulos[$mod]) && ($mod== 'login' || $mod == 'reset_password' || $mod == 'create_password')) 
 {
