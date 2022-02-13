@@ -163,7 +163,7 @@ final class Interfaces
         <script src="'.$this->path_rplugins.'bootstrap/js/bootstrap.min.js'.$this->version_resources.'"></script>
 
         <!-- INPUT MASK JS-->
-        <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
+        <script src="'.$this->path_rplugins.'input-mask/jquery.mask.min.js'.$this->version_resources.'"></script>
     
         <!-- SPARKLINE JS-->
         <script src="'.$this->path_rjs.'jquery.sparkline.min.js'.$this->version_resources.'"></script>
@@ -236,7 +236,6 @@ final class Interfaces
         <!-- DATEPICKER JS -->
         <script src="'.$this->path_rplugins.'date-picker/date-picker.js'.$this->version_resources.'"></script>
         <script src="'.$this->path_rplugins.'date-picker/jquery-ui.js'.$this->version_resources.'"></script>
-        <script src="'.$this->path_rplugins.'input-mask/jquery.maskedinput.js'.$this->version_resources.'"></script>
 
         <!-- MOMENTO -->
         <script src="https://momentjs.com/downloads/moment.js'.$this->version_resources.'"></script>
