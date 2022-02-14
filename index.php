@@ -35,7 +35,11 @@ if (isset($_SESSION['timeout']))
 }
 
 $mod                    =   htmlentities(isset($_GET['mod']) ? $_GET['mod'] : '');
-if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']) && ($mod != 'reset_password') && ($mod != 'create_password'))
+if($mod == 'error')
+{
+    $mod  = 'error';
+}
+else if(!isset($_SESSION['usuAA']) && !isset($_SESSION['tokenAA']) && ($mod != 'reset_password') && ($mod != 'create_password'))
 {
     $mod  = 'login';
 }
@@ -57,7 +61,13 @@ $array_config_interface =   array(
 $obj_interfaces         =   new Interfaces($array_config_interface);
 $obj_interfaces->header();
 
-if(!isset($_SESSION['usuAA']) && isset($array_modulos[$mod]) && $mod== 'reset_password' && isset($_GET['token']) && $_GET['token'] != '')
+if($mod == 'error')
+{
+    echo $obj_interfaces->html_output;
+    $obj_interfaces->return_js_no_login();
+    include("modulos/" . $array_modulos['errors'] . "/index.php");
+}
+else if(!isset($_SESSION['usuAA']) && isset($array_modulos[$mod]) && $mod== 'reset_password' && isset($_GET['token']) && $_GET['token'] != '')
 {
     echo $obj_interfaces->html_output;
     include("modulos/" . $array_modulos['reset_password'] . "/index.php");
