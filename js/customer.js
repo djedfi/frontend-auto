@@ -700,6 +700,11 @@ $(document).ready(function()
                         $("#id_txt_bday_cus_upd").mask("00/00/0000");
                         $("#id_txt_resphone_cus_upd").mask("(000) 000-0000");
                         $("#id_txt_business_cus_upd").mask("(000) 000-0000? Ext 000");
+                        setTimeout(
+                        function() 
+                        {
+                            //do something special
+                        }, 1000);
                     }
                     else
                     {

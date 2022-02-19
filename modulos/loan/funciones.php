@@ -148,8 +148,6 @@ function form_add()
                         <input type="hidden" name="hid_car_id_loan" id="id_hid_car_id_loan" value="">
                         <input type="hidden" name="hid_customer_id_loan" id="id_hid_customer_id_loan" value="">
                         <input type="hidden" name="hid_id_user_loan" id="id_hid_id_user_loan" value="'.$_SESSION['usuAA'].'">
-                        <input type="hidden" name="hid_late_fee_loan" id="id_hid_late_fee_loan" value="">
-                        <input type="hidden" name="hid_days_late_loan" id="id_hid_days_late_loan" value="">
                         <input type="hidden" name="hid_branch_id_loan" id="id_hid_branch_id_loan" value="'.$_SESSION['branch_id'].'">
                         <input type="hidden" name="hid_validate_dopen" id="id_hid_validate_dopen" value="0">
                         <input type="hidden" name="hid_validate_dstart" id="id_hid_validate_dstart" value="0">
@@ -158,56 +156,50 @@ function form_add()
                                 <span class="text-red">All inputs with (*) are required</span>
                             </div>
                             <div class="col-sm-12 col-lg-3">                                   
-                                <label for="id_txt_fname_cust_loan" class="form-label">Vehicle Price ( + )</label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_price_car_loan" name="txt_price_car_loan" required readonly>
+                                <label for="id_txt_fname_cust_loan" class="form-label">Vehicle Price (US$)</label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_price_car_loan" name="txt_price_car_loan" placeholder="0.00" required readonly>
+                            </div>
+                            <div class="col-sm-12 col-lg-3">
+                                <label for="id_txt_ttfinance_loan" class="form-label">Total to Finance (US$) <span class="text-red">*</span></label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_ttfinance_loan" name="txt_ttfinance_loan" placeholder="0.00"  value="" autocomplete="off" required disabled>
                             </div>
                             <div class="col-sm-12 col-lg-3">                                   
-                                <label for="id_txt_costo_plate_loan" class="form-label">Cost of License Plate ( + )<span class="text-red">*</span></label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_costo_plate_loan" placeholder="US$ 0.00" name="txt_costo_plate_loan" required disabled>
-                            </div>
-                            <div class="col-sm-12 col-lg-3">                                   
-                                <label for="id_txt_costo_doc_loan" class="form-label">Cost of Documentation ( + )<span class="text-red">*</span></label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_costo_doc_loan" placeholder="US$ 0.00" name="txt_costo_doc_loan" required disabled>
+                                <label for="id_txt_dpayment_loan" class="form-label">Down Payment (US$) <span class="text-red">*</span></label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_dpayment_loan" name="txt_dpayment_loan" placeholder="0.00" autocomplete="off" required disabled>
                             </div>
                             <div class="col-sm-12 col-lg-3">
-                                <label for="id_txt_tfinance_loan" class="form-label">Sub-Total ( = )</label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_tfinance_loan" placeholder="US$ 0.00" value="US$ 0.00" name="txt_tfinance_loan" value="" autocomplete="off" required readonly>
-                            </div>
+                                <label for="id_txt_mpayment_loan" class="form-label">Minimun payment (US$) <span class="text-red">*</span></label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_mpayment_loan" name="txt_mpayment_loan"  placeholder="0.00" autocomplete="off"  required disabled>
+                            </div>                            
 
-                            <div class="col-sm-12 col-lg-3">
-                                <label for="id_txt_interest_loan" class="form-label">Interest rate (%) ( + )<span class="text-red">*</span></label>
-                                <input type="text" class="form-control" id="id_txt_interest_loan" name="txt_interest_loan" placeholder="0.00 %" autocomplete="off" value="0.00 %" disabled>
-                            </div>
-                            <div class="col-sm-12 col-lg-3">
-                                <label for="id_txt_taxes_loan" class="form-label">Taxes rate (%) ( + )<span class="text-red">*</span></label>
-                                <input type="text" class="form-control" id="id_txt_taxes_loan" name="txt_taxes_loan" placeholder="0.00 %" autocomplete="off" required disabled>
-                            </div>
-
-                            <div class="col-sm-12 col-lg-3">                                   
-                                <label for="id_txt_dpayment_loan" class="form-label">Down Payment ( - )<span class="text-red">*</span></label>
-                                <input type="text" class="form-control" id="id_txt_dpayment_loan" placeholder="US$ 0.00" name="txt_dpayment_loan" autocomplete="off" required disabled>
-                            </div>
-
-                            <div class="col-sm-12 col-lg-3">
-                                <label for="id_txt_ttfinance_loan" class="form-label">Total to Finance ( = )</label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_ttfinance_loan" placeholder="US$ 0.00" value="US$ 0.00" name="txt_ttfinance_loan" value="" autocomplete="off" required readonly>
-                            </div>
-
-                            <div class="col-sm-12 col-lg-3">    
+                            <div class="col-sm-12 col-lg-4">    
                                 <label for="id_txt_long_term_loan" class="form-label">Long Term in months <span class="text-red">*</span></label>                               
                                 <input type="number" class="form-control" id="id_txt_long_term_loan" placeholder="" name="txt_long_term_loan" value="" autocomplete="off" disabled required>
                             </div>
-                            <div class="col-sm-12 col-lg-3">
-                                <label for="id_txt_mpayment_loan" class="form-label">Minimun payment </label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_mpayment_loan" placeholder="US$ 0.00" name="txt_mpayment_loan" autocomplete="off" readonly>
-                            </div>
-                            <div class="col-md-12 col-lg-3">
+                            <div class="col-md-12 col-lg-4">
                                 <label for="id_date_open_loan" class="form-label">Date Loan <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" id="id_date_open_loan" name="date_open_loan" placeholder="MM/DD/YYYY" autocomplete="off" required disabled>
                             </div>
-                            <div class="col-md-12 col-lg-3">
-                                <label for="id_date_startpay_loan" class="form-label">Start payment <span class="text-red">*</span></label>
+                            <div class="col-md-12 col-lg-4">
+                                <label for="id_date_startpay_loan" class="form-label">Starting on <span class="text-red">*</span></label>
                                 <input type="text" class="form-control" id="id_date_startpay_loan" name="date_startpay_loan" placeholder="MM/DD/YYYY" autocomplete="off" required disabled>
+                            </div>
+
+                            <div class="col-sm-12 col-lg-3">
+                                <label for="id_txt_interest_loan" class="form-label">Late Days <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" id="id_txt_late_days_loan" name="txt_late_days_loan" autocomplete="off" required disabled>
+                            </div>
+                            <div class="col-sm-12 col-lg-3">
+                                <label for="id_txt_taxes_loan" class="form-label">Late Days Fee (US$) <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" id="id_txt_late_days_fee_loan" name="txt_late_days_fee_loan" placeholder="0.00" autocomplete="off" required disabled>
+                            </div>
+                            <div class="col-sm-12 col-lg-3">
+                                <label for="id_txt_interest_loan" class="form-label">Interest rate (%) </label>
+                                <input type="text" class="form-control" id="id_txt_interest_loan" name="txt_interest_loan" placeholder="0.00" autocomplete="off"  disabled>
+                            </div>
+                            <div class="col-sm-12 col-lg-3">
+                                <label for="id_txt_taxes_loan" class="form-label">Taxes rate (%) </label>
+                                <input type="text" class="form-control" id="id_txt_taxes_loan" name="txt_taxes_loan" placeholder="0.00" autocomplete="off" disabled>
                             </div>
                             <div class="col-md-12 col-lg-3 mt-5">
                                 <label class="custom-control custom-checkbox" for="id_chk_auto_payment_loan">
@@ -227,9 +219,6 @@ function form_add()
                             </div>
                         </div>
                         <div class="col-6 text-end">
-                            <button class="btn btn-info w-lg" id="id_btn_calculare_loan" type="button" disabled>
-                                <i class="fa fa-calculator"></i>&nbsp;Calculate
-                            </button>
                             <button class="btn btn-primary w-lg" id="id_btn_sbm_loan" type="button" disabled>
                                 <i class="fa fa-save"></i>&nbsp;Submit Car Loan
                             </button>
@@ -364,68 +353,58 @@ function form_update()
                                     <input type="hidden" name="hid_late_fee_tab_loan" id="id_hid_late_fee_tab_loan" value="">
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-3">                                   
-                                            <label for="id_txt_price_car_tab_loan" class="form-label">Vehicle Price ( + )</label>
+                                            <label for="id_txt_price_car_tab_loan" class="form-label">Vehicle Price (US$)</label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_price_car_tab_loan" readonly>
                                         </div>
-                                        <div class="col-sm-12 col-lg-3">                                   
-                                            <label for="id_txt_costo_plate_tab_loan" class="form-label">Cost of License Plate ( + )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_costo_plate_tab_loan" readonly>
-                                        </div>
-                                        <div class="col-sm-12 col-lg-3">                                   
-                                            <label for="id_txt_costo_doc_tab_loan" class="form-label">Cost of Documentation ( + )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_costo_doc_tab_loan" readonly>
-                                        </div>
                                         <div class="col-sm-12 col-lg-3">
-                                            <label for="id_txt_tfinance_tab_loan" class="form-label">Sub-Total ( = )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_tfinance_tab_loan" readonly>
-                                        </div>
-            
-                                        <div class="col-sm-12 col-lg-3">
-                                            <label for="id_txt_interest_tab_loan" class="form-label">Interest rate (%) ( + )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_interest_tab_loan" readonly>
-                                        </div>
-                                        <div class="col-sm-12 col-lg-3">
-                                            <label for="id_txt_taxes_tab_loan" class="form-label">Taxes rate (%) ( + )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_taxes_tab_loan" readonly>
-                                        </div>
-        
-                                        <div class="col-sm-12 col-lg-3">                                   
-                                            <label for="id_txt_dpayment_tab_loan" class="form-label">Down Payment ( - )</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_dpayment_tab_loan" readonly>
-                                        </div>
-            
-                                        <div class="col-sm-12 col-lg-3">
-                                            <label for="id_txt_ttfinance_tab_loan" class="form-label">Total to Finance ( = )</label>
+                                            <label for="id_txt_ttfinance_tab_loan" class="form-label">Total to Finance (US$)</label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_ttfinance_tab_loan" readonly>
                                         </div>
-            
-                                        <div class="col-sm-12 col-lg-3">    
+                                        <div class="col-sm-12 col-lg-3">                                   
+                                            <label for="id_txt_dpayment_tab_loan" class="form-label">Down Payment (US$)</label>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_dpayment_tab_loan" readonly>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-3">
+                                            <label for="id_txt_mpayment_tab_loan" class="form-label">Minimun payment (US$)</label>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_mpayment_tab_loan" readonly>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4">    
                                             <label for="id_txt_long_term_tab_loan" class="form-label">Long Term in months</label>                               
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_long_term_tab_loan" readonly>
                                         </div>
-                                        <div class="col-sm-12 col-lg-3">
-                                            <label for="id_txt_mpayment_tab_loan" class="form-label">Minimun payment </label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_mpayment_tab_loan" readonly>
-                                        </div>
-                                        <div class="col-md-12 col-lg-3">
+                                        <div class="col-md-12 col-lg-4">
                                             <label for="id_date_open_tab_loan" class="form-label">Date Loan</label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_date_open_tab_loan" readonly>
                                         </div>
-                                        <div class="col-md-12 col-lg-3">
+                                        <div class="col-md-12 col-lg-4">
                                             <label for="id_date_startpay_tab_loan" class="form-label">Start payment</label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_date_startpay_tab_loan" readonly>
                                         </div>
-                                        <div class="col-md-12 col-lg-4">
+                                        <div class="col-md-12 col-lg-3">
                                             <label for="id_txt_days_late_tab_loan" class="form-label">Late Days <span class="text-red">*</span></label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_days_late_tab_loan" name="txt_days_late_tab_loan" readonly>
-                                        </div>
-                                        <div class="col-md-12 col-lg-4">
-                                            <label for="id_txt_fee_late_tab_loan" class="form-label">Late Fee <span class="text-red">*</span></label>
+                                        </div>                                        
+                                        <div class="col-md-12 col-lg-3">
+                                            <label for="id_txt_fee_late_tab_loan" class="form-label">Late Fee (US$)<span class="text-red">*</span></label>
                                             <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_fee_late_tab_loan" name="txt_fee_late_tab_loan" required disabled>
                                         </div>
-                                        <div class="col-md-12 col-lg-4">
+                                        <div class="col-sm-12 col-lg-3">
+                                            <label for="id_txt_interest_tab_loan" class="form-label">Interest rate (%)</label>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_interest_tab_loan" name="txt_interest_tab_loan" disabled>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-3">
+                                            <label for="id_txt_taxes_tab_loan" class="form-label">Taxes rate (%)</label>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_taxes_tab_loan" name="txt_taxes_tab_loan" disabled>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6 mt-5">
+                                            <label class="custom-control custom-checkbox" for="id_chk_auto_payment_tab_loan">
+                                                <input type="checkbox" class="custom-control-input" name="chk_auto_payment_tab_loan" id="id_chk_auto_payment_tab_loan" value="0" disabled>
+                                                <span class="custom-control-label">Automatic payment?</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 col-lg-6">
                                             <label for="id_txt_balance_now_tab_loan" class="form-label">Balance</label>
-                                            <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_balance_now_tab_loan" readonly>
+                                            <input type="text" class="form-control text-center fs-6  fw-bold bg-warning text-dark" id="id_txt_balance_now_tab_loan" readonly>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -433,7 +412,7 @@ function form_update()
 
                                         </div>
                                         <div class="col-md-12 col-lg-6 text-end">
-                                            <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Late Fee</button>
+                                            <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Info</button>
                                         </div>
                                     </div>
                                 </form>                                
@@ -637,20 +616,19 @@ function form_update()
                         <input type="hidden" name="hid_email_customer_payment" id="id_hid_email_customer_payment" value="">
                         <input type="hidden" name="hid_balance_loan_payment" id="id_hid_balance_loan_payment" value="">
                         <input type="hidden" name="hid_concepto_payment" id="id_hid_concepto_payment" value="1">
-                        <input type="hidden" name="hid_validate_amount_due_payment" id="id_hid_validate_amount_due_payment" value="0">
                         <input type="hidden" name="hid_validate_date_payment" id="id_hid_validate_date_payment" value="0">
                         <input type="hidden" name="hid_user_id_payment" id="id_hid_user_id_payment" value="'.$_SESSION['usuAA'].'">
                         <div class="row">
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_balance_payment" class="form-label">Balance</label>
+                                <label for="id_txt_balance_payment" class="form-label">Balance (US$)</label>
                                 <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_balance_payment" name="txt_balance_payment" autocomplete="off" readonly>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_minimun_payment" class="form-label">Minimun Payment</label>
+                                <label for="id_txt_minimun_payment" class="form-label">Minimun Payment (US$)</label>
                                 <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_minimun_payment" name="txt_minimun_payment" autocomplete="off" readonly>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_amount_due_payment" class="form-label">Amount Due <span class="text-red">*</span></label>
+                                <label for="id_txt_amount_due_payment" class="form-label">Amount Due (US$)<span class="text-red">*</span></label>
                                 <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_amount_due_payment" name="txt_amount_due_payment" autocomplete="off" required>
                             </div>
                             <div class="col-12">
@@ -667,6 +645,19 @@ function form_update()
                                 </div>
                                 <div id="id_div_msg_error_date_payment" class="div-identificador" role="alert"></div>
                             </div>
+                            <div class="col-md-12 col-lg-6">    
+                                <label for="id_scl_payment_form_get_payment" class="form-label">Payment Form <span class="text-red">*</span></label>                               
+                                <select class="form-control select2 form-select" id="id_scl_payment_form_get_payment" name="scl_payment_form_get_payment" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcfpayment_up" required>
+                                    <option label="Choose one"></option>
+                                    <option value="1">Debit Card</option>
+                                    <option value="2">Credit Card</option>
+                                    <option value="3">Bank Check</option>
+                                    <option value="4">Cash</option>
+                                    <option value="5">ZELLE</option>
+                                    <option value="5">Deposit Account</option>
+                                </select>
+                                <div id="id_div_msg_error_slcfpayment_up"  class="" role="alert"></div>
+                            </div>
                             <div class="col-md-12 col-lg-6">
                                 <label for="id_chk_send_email_payment" class="form-label">Send Receipt by Email?</label>
                                 <label class="custom-control custom-checkbox" for="id_chk_send_email_payment">
@@ -674,22 +665,7 @@ function form_update()
                                     <span class="custom-control-label">Email: <span class="text-info fw-bold" id="id_lbl_email_customer_payment"></span></span>
                                 </label>
                             </div>
-                            <div class="col-12">    
-                                <label for="id_rdo_payment_form_get_payment" class="form-label">Payment Form <span class="text-red">*</span></label>                               
-                                <div class="btn-group" role="group" aria-label="Payment Form">
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_get_payment" id="id_rdo_payment_form_get_payment_1" value="1" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_get_payment_1"><i class="fa fa-cc-visa"></i> Debit Card</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_get_payment" id="id_rdo_payment_form_get_payment_2" value="2" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_get_payment_2"><i class="fa fa-cc-mastercard"></i> Credit Card</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_get_payment" id="id_rdo_payment_form_get_payment_3" value="3" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_get_payment_3"><i class="fa fa-bank"></i> Bank Check</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_get_payment" id="id_rdo_payment_form_get_payment_4" value="4" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_get_payment_4"><i class="fa fa-money"></i> Cash</label>
-                                </div>
-                            </div>
+                            
                         </div>
                     </form>
                 </div>
@@ -716,18 +692,19 @@ function form_update()
                         <input type="hidden" name="hid_email_customer_balance" id="id_hid_email_customer_balance" value="">
                         <input type="hidden" name="hid_concepto_balance" id="id_hid_concepto_balance" value="2">
                         <input type="hidden" name="hid_validate_date_balance" id="id_hid_validate_date_balance" value="0">
+                        <input type="hidden" name="hid_validate_discount_balance" id="id_hid_validate_discount_balance" value="0">
                         <input type="hidden" name="hid_user_id_balance" id="id_hid_user_id_balance" value="'.$_SESSION['usuAA'].'">
                         <div class="row">
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_balance_balance" class="form-label">Balance</label>
+                                <label for="id_txt_balance_balance" class="form-label">Balance (US$)</label>
                                 <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_balance_balance" name="txt_balance_balance" autocomplete="off" readonly>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_discount_balance" class="form-label">Discount</label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_discount_balance" name="txt_discount_balance" autocomplete="off" readonly>
+                                <label for="id_txt_discount_balance" class="form-label">Discount (US$)</label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_discount_balance" name="txt_discount_balance" autocomplete="off" required disabled>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <label for="id_txt_amount_due_balance" class="form-label">Amount Due</label>
+                                <label for="id_txt_amount_due_balance" class="form-label">Amount Due (US$)</label>
                                 <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_amount_due_balance" name="txt_amount_due_balance" autocomplete="off" readonly>
                             </div>
                             <div class="col-12">
@@ -744,28 +721,25 @@ function form_update()
                                     <div id="id_div_msg_error_date_balance"  class="" role="alert"></div>
                                 </div>
                             </div>
+                            <div class="col-md-12 col-lg-6">    
+                                <label for="id_scl_payment_form_balance" class="form-label">Payment Form <span class="text-red">*</span></label>                               
+                                <select class="form-control select2 form-select" id="id_scl_payment_form_balance" name="scl_payment_form_balance" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcfbalance_up" required>
+                                    <option label="Choose one"></option>
+                                    <option value="1">Debit Card</option>
+                                    <option value="2">Credit Card</option>
+                                    <option value="3">Bank Check</option>
+                                    <option value="4">Cash</option>
+                                    <option value="5">ZELLE</option>
+                                    <option value="5">Deposit Account</option>
+                                </select>
+                                <div id="id_div_msg_error_slcfbalance_up"  class="" role="alert"></div>
+                            </div>
                             <div class="col-md-12 col-lg-6">
                                 <label for="id_chk_send_email_balance" class="form-label">Send Receipt by Email?</label>
                                 <label class="custom-control custom-checkbox" for="id_chk_send_email_balance">
                                     <input type="checkbox" class="custom-control-input" name="chk_send_email_balance" id="id_chk_send_email_balance" value="0">
                                     <span class="custom-control-label">Email: <span class="text-info fw-bold" id="id_lbl_email_customer_balance"></span></span>
                                 </label>
-                            </div>
-                            <div class="col-12">    
-                                <label for="id_rdo_payment_form_balance" class="form-label">Payment Form <span class="text-red">*</span></label>                               
-                                <div class="btn-group" role="group" aria-label="Payment Form">
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_balance" id="id_rdo_payment_form_balance_1" value="1" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_balance_1"><i class="fa fa-cc-visa"></i> Debit Card</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_balance" id="id_rdo_payment_form_balance_2" value="2" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_balance_2"><i class="fa fa-cc-mastercard"></i> Credit Card</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_balance" id="id_rdo_payment_form_balance_3" value="3" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_balance_3"><i class="fa fa-bank"></i> Bank Check</label>
-
-                                    <input type="radio" class="btn-check" name="rdo_payment_form_balance" id="id_rdo_payment_form_balance_4" value="4" required>
-                                    <label class="btn btn-outline-primary" for="id_rdo_payment_form_balance_4"><i class="fa fa-money"></i> Cash</label>
-                                </div>
                             </div>
                         </div>
                     </form>

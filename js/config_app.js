@@ -19,21 +19,21 @@ $(document).ready(function()
                 {
                     $('#id_hid_id_cfg').val(data.datos[0].id);
                     $('input[name=rdo_long_term_cfg][value='+data.datos[0].long_term_default+']').prop("checked",true);
-                    $('#id_txt_down_rate_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '',' %').display(data.datos[0].porc_downpay_default));
-                    $('#id_txt_interest_rate_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '',' %').display(data.datos[0].int_rate_default));
-                    $('#id_txt_latedays_fee_cfg').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.datos[0].latefee_default));
+                    $('#id_txt_down_rate_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '','').display(data.datos[0].porc_downpay_default));
+                    $('#id_txt_interest_rate_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '','').display(data.datos[0].int_rate_default));
+                    $('#id_txt_latedays_fee_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '').display(data.datos[0].latefee_default));
                     $('#id_txt_latedays_cfg').val(data.datos[0].dayslate_default);
-                    $('#id_txt_taxes_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '',' %').display(data.datos[0].taxes_rate_default));
+                    $('#id_txt_taxes_cfg').val($.fn.dataTable.render.number( ',', '.', 2, '','').display(data.datos[0].taxes_rate_default));
                 }
                 else
                 {
                     $('#id_form_cfg').trigger('reset');
                 }
 
-                $("#id_txt_down_rate_cfg").maskMoney({suffix:' %',thousands:',', decimal:'.',precision:2});
-                $("#id_txt_interest_rate_cfg").maskMoney({suffix:' %',thousands:',', decimal:'.',precision:2});
-                $("#id_txt_taxes_cfg").maskMoney({suffix:' %',thousands:',', decimal:'.',precision:2});
-                $("#id_txt_latedays_fee_cfg").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
+                $("#id_txt_down_rate_cfg").mask('#,##0.00', {reverse: true});
+                $("#id_txt_interest_rate_cfg").mask('#,##0.00', {reverse: true});
+                $("#id_txt_taxes_cfg").mask('#,##0.00', {reverse: true});
+                $("#id_txt_latedays_fee_cfg").mask('#,##0.00', {reverse: true});
             },
             complete : function()
             {
