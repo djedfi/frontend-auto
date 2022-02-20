@@ -1584,8 +1584,7 @@ $(document).ready(function()
                         $('#id_chk_auto_payment_tab_loan').prop('checked',false);
                     }
 
-                    $('#id_btn_save_tab_loan').prop('disabled',false);                      
-
+                    
                     //MOSTRAR LOS VALORES EN LA TAB DE CAR INFORMATION
                     $.ajax
                     ({ 
@@ -1665,6 +1664,7 @@ $(document).ready(function()
                             else
                             {
                                 $('#id_btn_update_tab_car').prop('disabled',true);
+                                
                             }
                         }
                     });
@@ -1739,7 +1739,8 @@ $(document).ready(function()
                     {
                         $('#id_btn_new_payment_tab_loan').prop('disabled',false);                      
                         $('#id_btn_new_feelate_tab_loan').prop('disabled',false);                      
-                        $('#id_btn_pay_balance_tab_loan').prop('disabled',false);                      
+                        $('#id_btn_pay_balance_tab_loan').prop('disabled',false);  
+                        $('#id_btn_save_tab_loan').prop('disabled',false);  
                     }
                 }
                 else

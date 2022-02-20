@@ -1,5 +1,5 @@
 <?php
-$varCache = '?v=202202122';
+$varCache = '?v=2022021222';
 
 define("DEBUG_MODE", true); //cambiar a false, al pasar a produccion
 define("URL_AA", 'http://localhost/frontend-auto/');

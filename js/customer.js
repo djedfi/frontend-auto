@@ -553,7 +553,7 @@ $(document).ready(function()
             },
             complete: function(data)
             {
-                $("#global-loader").fadeOut("slow");
+                //$("#global-loader").fadeOut("slow");
             }
         });
     
@@ -701,10 +701,10 @@ $(document).ready(function()
                         $("#id_txt_resphone_cus_upd").mask("(000) 000-0000");
                         $("#id_txt_business_cus_upd").mask("(000) 000-0000? Ext 000");
                         setTimeout(
-                        function() 
-                        {
-                            //do something special
-                        }, 1000);
+                            function() 
+                            {
+                            }, 1000);
+                            $("#global-loader").fadeOut("slow");
                     }
                     else
                     {
@@ -718,15 +718,9 @@ $(document).ready(function()
             },
             complete : function()
             {
-                
-                
-                $("#global-loader").fadeOut("slow");
+               
             }
         });
 
     }
-
-
-    
-
 });
