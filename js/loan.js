@@ -494,7 +494,7 @@ $(document).ready(function()
                     "data": "birthday",
                     render: function(data, type) 
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span>NO INFO</span></center>';
                         }
@@ -518,7 +518,7 @@ $(document).ready(function()
                     "data": "email",
                     render : function(data,type)
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span>NO INFO</span></center>';
                         }
@@ -533,7 +533,7 @@ $(document).ready(function()
                     "data": "license",
                     render: function(data, type) 
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span>NO INFO</span></center>';
                         }
@@ -942,7 +942,7 @@ $(document).ready(function()
                     "data": "birthday",
                     render: function(data, type) 
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center>NO INFO</center>'
                         }
@@ -1051,7 +1051,7 @@ $(document).ready(function()
                     "data": "birthday",
                     render: function(data, type) 
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center>NO INFO</center>'
                         }

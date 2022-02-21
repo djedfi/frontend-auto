@@ -296,7 +296,7 @@ $(document).ready(function()
                     "data": "email",
                     render : function(data,type)
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
                         }
@@ -311,7 +311,7 @@ $(document).ready(function()
                     "data": "birthday",
                     render: function(data, type) 
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
                         }
@@ -327,7 +327,7 @@ $(document).ready(function()
                     "data": "licence",
                     render : function(data,type)
                     {
-                        if(data == null)
+                        if(data == null || data == '')
                         {
                             return '<center><span class="text-warning fw-bold">NO INFO</span></center>';
                         }
