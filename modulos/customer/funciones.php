@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_zip_cus" class="form-label">Zipcode <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_zip_cus" name="txt_zip_cus" maxlength="5" placeholder="99999" pattern="^[0-9]{5}(?:[-\s]\d{4})$" required>
+                                        <input type="text" class="form-control" id="id_txt_zip_cus" name="txt_zip_cus" maxlength="5" placeholder="99999" pattern="(\d{5}([\-]\d{4})?)" required>
                                     </div>
                                     <div class="col-sm-12 col-md-6 col-lg-4">
                                         <label for="id_txt_resphone_cus" class="form-label">Residential phone </label>
@@ -218,7 +218,7 @@
                                    </div>
                                    <div class="col-sm-6 col-md-6">
                                        <label for="id_txt_zip_cus_upd" class="form-label">Zipcode <span class="text-red">*</span></label>
-                                       <input type="text" class="form-control" id="id_txt_zip_cus_upd" name="txt_zip_cus_upd" maxlength="5" placeholder="99999" pattern="^[0-9]{5}(?:[-\s]\d{4})$" required>
+                                       <input type="text" class="form-control" id="id_txt_zip_cus_upd" name="txt_zip_cus_upd" maxlength="5" placeholder="99999" pattern="(\d{5}([\-]\d{4})?)" required>
                                    </div>
                                    <div class="col-sm-12 col-md-6 col-lg-4">
                                        <label for="id_txt_resphone_cus_upd" class="form-label">Residential phone </label>
