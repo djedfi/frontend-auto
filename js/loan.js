@@ -1282,6 +1282,7 @@ $(document).ready(function()
                         if(data.data.id == data_payment.id)
                         {
                             $('#id_modal_delete_late_fee').modal('show');
+                            $('#id_form_delete_late_fee').trigger('reset');
                             $('#id_hid_loan_id_delete_late_fee').val(data_payment.loan_id);
                             $('#id_hid_payment_id_delete_late_fee').val(data_payment.id);
                             $('#id_hid_fee_late_delete_late_fee').val($('#id_txt_fee_late_tab_loan').val());
@@ -1849,6 +1850,7 @@ $(document).ready(function()
                                 $('#id_btn_new_payment_tab_loan').prop('disabled',true);                      
                                 $('#id_btn_new_feelate_tab_loan').prop('disabled',true);                      
                                 $('#id_btn_pay_balance_tab_loan').prop('disabled',true); 
+                                $('#id_btn_save_tab_loan').prop('disabled',true); 
                             }
                         }
                         else
@@ -2015,11 +2017,13 @@ $(document).ready(function()
                             });
                             $('#id_txt_balance_now_tab_loan').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.balance));
                             table_loan_summary.ajax.reload();
+                            table_loan_scheduled.ajax.reload();
                             if(data.bandera_balance)
                             {
                                 $('#id_btn_new_payment_tab_loan').prop('disabled',true);                      
                                 $('#id_btn_new_feelate_tab_loan').prop('disabled',true);                      
                                 $('#id_btn_pay_balance_tab_loan').prop('disabled',true); 
+                                $('#id_btn_save_tab_loan').prop('disabled',true);  
                             }
                         }
                         else
@@ -2147,6 +2151,7 @@ $(document).ready(function()
                             });
                             $('#id_txt_balance_now_tab_loan').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display(data.balance));
                             table_loan_summary.ajax.reload();
+                            table_loan_scheduled.ajax.reload();
                             if(data.bandera_balance)
                             {
                                 $('#id_btn_new_payment_tab_loan').prop('disabled',true);                      
