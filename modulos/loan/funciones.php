@@ -563,7 +563,7 @@ function form_update()
                                                         <th class="bg-transparent border-bottom-0 text-center">Date <br> Payment</th>
                                                         <th class="bg-transparent border-bottom-0 text-center">Amount Due</th>
                                                         <th class="bg-transparent border-bottom-0 text-center">Balance</th>
-                                                        <th class="bg-transparent border-bottom-0 text-center"></th>
+                                                        <th class="bg-transparent border-bottom-0 text-center">Options</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -813,6 +813,7 @@ function form_update()
                         <input type="hidden" name="hid_payment_id_delete_late_fee" id="id_hid_payment_id_delete_late_fee" value="">
                         <input type="hidden" name="hid_fee_late_delete_late_fee" id="id_hid_fee_late_delete_late_fee" value="">
                         <input type="hidden" name="hid_balance_delete_late_fee" id="id_hid_balance_delete_late_fee" value="">
+                        <input type="hidden" name="hid_operacion_delete_late_fee" id="id_hid_operacion_delete_late_fee" value="">
                         <input type="hidden" name="hid_estado_delete_late_fee" id="id_hid_estado_delete_late_fee" value="2">
                         <input type="hidden" name="hid_user_id_delete_late_fee" id="id_hid_user_id_delete_late_fee" value="'.$_SESSION['usuAA'].'">
                         <div class="row">
@@ -831,6 +832,62 @@ function form_update()
         </div>
     </div>
     
+    <div class="modal fade" id="id_modal_update_payment" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fa fa-edit"></i> Update Info Payment</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="id_form_update_payment" class="validate-form"> 
+                        <input type="hidden" name="hid_loan_id_upd_payment" id="id_hid_loan_id_upd_payment" value="">
+                        <input type="hidden" name="hid_validate_date_upd_payment" id="id_hid_validate_date_upd_payment" value="0">
+                        <input type="hidden" name="hid_user_id_upd_payment" id="id_hid_user_id_upd_payment" value="'.$_SESSION['usuAA'].'">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="id_txt_description_upd_payment" class="form-label">Description <span class="text-red">*</span></label>
+                                <input type="text" class="form-control" id="id_txt_description_upd_payment" name="txt_description_upd_payment" maxlength="255" value="Payment Car Loan " autocomplete="off" required>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="id_date_payment_upd_payment" class="form-label">Payment Date <span class="text-red">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="id_date_payment_upd_payment" name="date_payment_upd_payment" placeholder="MM/DD/YYYY" value="" autocomplete="off" data-cerror-print="id_div_msg_error_date_upd_payment" required>
+                                        <button class="btn btn-light" title="Click to set today date" type="button" id="id_btn_date_today_upd_payment"><i class="fa fa-calendar fs-6"></i></button>
+                                    </div>
+                                </div>
+                                <div id="id_div_msg_error_date_upd_payment" class="div-identificador" role="alert"></div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">    
+                                <label for="id_scl_payment_upd_payment" class="form-label">Payment Form <span class="text-red">*</span></label>                               
+                                <select class="form-control select2 form-select" id="id_scl_payment_upd_payment" name="scl_payment_upd_payment" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slc_upd_payment" required>
+                                    <option label="Choose one"></option>
+                                    <option value="1">Debit Card</option>
+                                    <option value="2">Credit Card</option>
+                                    <option value="3">Bank Check</option>
+                                    <option value="4">Cash</option>
+                                    <option value="5">ZELLE</option>
+                                    <option value="5">Deposit Account</option>
+                                </select>
+                                <div id="id_div_msg_error_slc_upd_payment"  class="" role="alert"></div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <label for="id_txt_amount_due_upd_payment" class="form-label">Amount Due (US$)<span class="text-red">*</span></label>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_amount_due_upd_payment" name="txt_amount_due_upd_payment" autocomplete="off" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-warning" id="id_btn_update_payment">Update Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>    
 
     ';
 

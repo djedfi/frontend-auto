@@ -1179,13 +1179,21 @@ $(document).ready(function()
                     "data" : "concepto",
                     render : function(data)
                     {
-                        if(data == 1)
+                        if(data == 2)
                         {
-                            return '<center><button type="button" id="send_email" class="btn btn-icon btn-info btn-sm" title="Select this Payment"><i class="fa fa-envelope"></i></button></center>';
+                            return '<center><button type="button" id="send_email" class="btn btn-icon btn-info btn-sm" title="Send the receipt"><i class="fa fa-envelope"></i></button></center>';
+                        }
+                        else if(data == 3)
+                        {
+                            return '<center><button type="button" id="send_email" class="btn btn-icon btn-info btn-sm" title="Send the receipt"><i class="fa fa-envelope"></i></button>&nbsp;<button type="button" id="update_payment" class="btn btn-icon btn-warning btn-sm" title="Update this Payment"><i class="fa fa-edit"></i></button>&nbsp;<button type="button" id="delete_payment" class="btn btn-icon btn-danger btn-sm" title="Delete this Payment"><i class="fa fa-trash"></i></button></center>';
+                        }
+                        else if(data == 4)
+                        {
+                            return '<center><button type="button" id="delete_fee" class="btn btn-icon btn-danger btn-sm" title="Select this Payment"><i class="fa fa-trash"></i></button></center>';
                         }
                         else
                         {
-                            return '<center><button type="button" id="delete_fee" class="btn btn-icon btn-danger btn-sm" title="Select this Payment"><i class="fa fa-trash"></i></button></center>';
+                            return '&nbsp;';
                         }
                         
                     }
@@ -1285,6 +1293,7 @@ $(document).ready(function()
                             $('#id_form_delete_late_fee').trigger('reset');
                             $('#id_hid_loan_id_delete_late_fee').val(data_payment.loan_id);
                             $('#id_hid_payment_id_delete_late_fee').val(data_payment.id);
+                            $('#id_hid_operacion_delete_late_fee').val(1);
                             $('#id_hid_fee_late_delete_late_fee').val($('#id_txt_fee_late_tab_loan').val());
                             $('#id_hid_balance_delete_late_fee').val($('#id_txt_balance_now_tab_loan').val());
                         }
@@ -1308,8 +1317,134 @@ $(document).ready(function()
                     }
                 }
             });
+        });
+
+        $('#id_table_loan_summary tbody').on( 'click', 'button#delete_payment', function () 
+        {
+            $("#global-loader").fadeIn("fast");
+            var data_payment = table_loan_summary.row( $(this).parents('tr') ).data();
+            console.log(data_payment);
+            let balance             = $('#id_txt_balance_now_tab_loan').val().replace('US$','');
+            balance                 = balance.replace(',','');
+            balance                 = parseFloat(balance);
+
+            if(balance > 0)
+            {
+                swal({
+                    title: "Delete Payment?",
+                    text: "Are you sure to delete this payment",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: "Yes, I am sure",
+                    cancelButtonText:"No, cancel it!",
+                },function(isConfirm) 
+                {
+                    if (isConfirm) 
+                    {
+                        $.ajax
+                        ({ 
+                            type: "GET",
+                            url: endpoint_general+'getLastPaymentbyLoad/'+data_payment.loan_id,
+                            dataType: "json",
+                            crossDomain: true,
+                            xhrFields: { withCredentials: true },
+                            success: function (data, status, jqXHR) 
+                            {
+                                if(data.res)
+                                {
+                                    if(data.data.id == data_payment.id)
+                                    {
+                                        $('#id_modal_delete_late_fee').modal('show');
+                                        $('#id_form_delete_late_fee').trigger('reset');
+                                        $('#id_hid_loan_id_delete_late_fee').val(data_payment.loan_id);
+                                        $('#id_hid_payment_id_delete_late_fee').val(data_payment.id);
+                                        $('#id_hid_operacion_delete_late_fee').val(2);
+                                        $('#id_hid_fee_late_delete_late_fee').val(data_payment.monto);
+                                        $('#id_hid_balance_delete_late_fee').val($('#id_txt_balance_now_tab_loan').val());
+                                    }
+                                    else
+                                    {
+                                        swal({
+                                            title: "Warning",
+                                            text: "This Fee late is not available to delete",
+                                            type: "warning",
+                                            showCancelButton: false,
+                                            confirmButtonClass: "btn-success",
+                                            confirmButtonText: "Exit",
+                                            closeOnConfirm: true
+                                        });
+                                    }
+                                    $("#global-loader").fadeOut("slow");
+                                }
+                                else
+                                {
+                                    $("#global-loader").fadeOut("slow");
+                                }
+                            }
+                        });
+                    }
+                    else
+                    {
+                        $("#global-loader").fadeOut("slow");
+                        return false;
+                    }
+                });
+            }
+            else
+            {
+                swal({
+                    title: "Warning",
+                    text: "This Car Loan is closed.",
+                    type: "warning",
+                    showCancelButton: false,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Exit",
+                    closeOnConfirm: true
+                });
+                $("#global-loader").fadeOut("slow");
+            }
             
+        });
+
+        $('#id_table_loan_summary tbody').on( 'click', 'button#update_payment', function () 
+        {
+            $("#global-loader").fadeIn("fast");
+            var data_payment = table_loan_summary.row( $(this).parents('tr') ).data();
+            console.log(data_payment);
             
+            let balance             = $('#id_txt_balance_now_tab_loan').val().replace('US$','');
+            balance                 = balance.replace(',','');
+            balance                 = parseFloat(balance);
+
+            if(balance >= 0)
+            {
+                $('#id_modal_update_payment').modal('show');
+                $('#id_form_update_payment').trigger('reset');
+
+                let date_doit = data_payment.date_doit.split('-');
+                
+                $('#id_hid_loan_id_upd_payment').val(data_payment.id);
+                $('#id_txt_description_upd_payment').val(data_payment.description);
+                $('#id_date_payment_upd_payment').val(date_doit[1]+'/'+date_doit[2]+'/'+date_doit[0]);
+                $('#id_scl_payment_upd_payment').val(data_payment.forma_pago);
+                $('#id_txt_amount_due_upd_payment').val($.fn.dataTable.render.number( ',', '.', 2, '').display(data_payment.monto));
+                $("#global-loader").fadeOut("slow");
+            }
+            else
+            {
+                swal({
+                    title: "Warning",
+                    text: "This Car Loan is closed.",
+                    type: "warning",
+                    showCancelButton: false,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Exit",
+                    closeOnConfirm: true
+                });
+                $("#global-loader").fadeOut("slow");
+            }
             
         });
 
@@ -2278,6 +2413,131 @@ $(document).ready(function()
             }
         });        
     }
+
+    if($('#id_form_update_payment').length)
+    {
+        $("#id_date_payment_upd_payment").mask("00/00/0000");
+
+        $('#id_date_payment_upd_payment').blur(function()
+        {
+            if($('#id_date_payment_upd_payment').val().trim() != '')
+            {
+                $.ajax
+                ({ 
+                    type: "POST",
+                    url: endpoint_general+'checkdbirthCust',
+                    data:{txt_bday_cus:$('#id_date_payment_upd_payment').val()},
+                    dataType: "json",
+                    crossDomain: true,
+                    xhrFields: { withCredentials: true },
+                    success: function (data, status, jqXHR) 
+                    {   
+                        let error = [];
+                        if(!data.res)
+                        {
+                            $('#id_hid_validate_date_upd_payment').val(1);
+                            error['id_date_payment_upd_payment'] = 'This Payment Date has incorrect format';
+                            $.fn.set_error_msg_array(error);
+                        }
+                        else
+                        {
+                            $('#id_hid_validate_date_upd_payment').val(0);
+                            $('#id_div_msg_error_date_upd_payment').html('');
+                            $('#id_date_payment_upd_payment').removeClass('border').removeClass('border-danger');
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#id_btn_date_today_upd_payment').on('click', function ()
+        {   
+            $("#id_date_payment_upd_payment").val(moment().format('MM/DD/YYYY'));
+            $("#id_date_payment_upd_payment").focus();
+        });
+
+        $('#id_btn_update_payment').on('click',function()
+        {
+            $("#id_btn_update_payment").addClass('btn-loading');
+            $("#global-loader").fadeIn("fast");
+
+            if(!$('#id_form_update_payment').cvalidateForm() && $('#id_hid_validate_date_upd_payment').val() != 1)
+            {
+                $.ajax
+                ({ 
+                    type: "POST",
+                    url: endpoint_general+'updatePayment/'+$('#id_hid_loan_id_upd_payment').val(),
+                    data:$("#id_form_update_payment").serialize(),
+                    dataType: "json",
+                    crossDomain: true,
+                    xhrFields: { withCredentials: true },
+                    success: function (data, status, jqXHR) 
+                    {
+                        if(data.res)
+                        {
+                            $("#id_btn_update_payment").removeClass('btn-loading');
+                            $('#id_modal_update_payment').modal('hide');
+                            swal({
+                                title: "Congratulations!",
+                                text: "Your information has been succesfully saved",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: true
+                            });
+                            table_loan_summary.ajax.reload();
+                            table_loan_scheduled.ajax.reload();
+                        }
+                        else
+                        {
+                            $('#id_modal_update_payment').modal('hide');
+                            swal({
+                                title: "Alert",
+                                text: "We can not save your information, Try later!!",
+                                type: "warning",
+                                showCancelButton: false,
+                                confirmButtonClass: "btn-success",
+                                confirmButtonText: "Exit",
+                                closeOnConfirm: true
+                            });
+                        }
+                        $("#id_btn_update_payment").removeClass('btn-loading');
+                        $("#global-loader").fadeOut("slow");
+                    },
+                    error : function(data)
+                    {
+                        $("#id_btn_update_payment").removeClass('btn-loading');
+                        $("#global-loader").fadeOut("slow");
+                        $('#id_modal_update_payment').modal('hide');
+                        swal({
+                            title: "Alert",
+                            text: "We can not connect with the server",
+                            type: "error",
+                            showCancelButton: false,
+                            confirmButtonText: 'Exit',
+                            closeOnConfirm: true
+                        });
+                    }
+                });
+            }
+            else
+            {
+                let error = [];
+               
+                if($('#id_hid_validate_date_upd_payment').val() == 1)
+                {
+                    error['id_date_payment_upd_payment'] = 'This Payment Date has incorrect format';
+                }
+                
+                $.fn.set_error_msg_array(error);    
+
+                $("#id_btn_update_payment").removeClass('btn-loading');
+                $("#global-loader").fadeOut("slow");
+            }
+        });
+    }
+
 
 
     $("#global-loader").fadeOut("slow");
