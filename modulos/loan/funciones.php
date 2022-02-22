@@ -802,7 +802,7 @@ function form_update()
         <div class="modal-dialog modal-dialog-centered modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fa fa-trash"></i> Delete Fee Late</h5>
+                    <h5 class="modal-title"><i class="fa fa-trash"></i> Delete</h5>
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -818,7 +818,7 @@ function form_update()
                         <input type="hidden" name="hid_user_id_delete_late_fee" id="id_hid_user_id_delete_late_fee" value="'.$_SESSION['usuAA'].'">
                         <div class="row">
                             <div class="col-12">
-                                <label for="id_txt_reason_delete_late_fee" class="form-label">Reason to Delete Late Fee</label>
+                                <label for="id_txt_reason_delete_late_fee" class="form-label">Reason to Delete</label>
                                 <textarea class="form-control" placeholder="" id="id_txta_reason_delete_late_fee" name="txta_reason_delete_late_fee" maxlength="255"></textarea>
                             </div>
                         </div>
@@ -826,7 +826,7 @@ function form_update()
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-danger" id="id_btn_delete_late_fee">Delete Late Fee</button>
+                    <button class="btn btn-danger" id="id_btn_delete_late_fee">Delete</button>
                 </div>
             </div>
         </div>
