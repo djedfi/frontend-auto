@@ -50,7 +50,7 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" minlength="1" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_ndoors_car" class="form-label">Number of doors</label>
@@ -273,7 +273,7 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car_upd" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" minlength="1" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_ndoors_car_upd" class="form-label">Number of doors </label>
