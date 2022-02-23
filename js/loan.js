@@ -1659,8 +1659,9 @@ $(document).ready(function()
             $("#global-loader").fadeIn("fast");
             $('#id_modal_late_fee').modal('show'); 
             $('#id_form_late_fee').trigger('reset');
+            $("#id_txt_amount_late_fee").mask('#,##0.00', {reverse: true});
             $('#id_hid_loan_id_late_fee').val($('#id_hid_loan_id_tab_loan').val());
-            $('#id_txt_amount_late_fee').val($.fn.dataTable.render.number( ',', '.', 2, 'US$ ').display($('#id_hid_late_fee_tab_loan').val()));
+            $('#id_txt_amount_late_fee').val($.fn.dataTable.render.number( ',', '.', 2, '').display($('#id_hid_late_fee_tab_loan').val()));
             $('#id_hid_balance_late_fee').val($('#id_txt_balance_now_tab_loan').val());
             $('#id_div_msg_error_date_late_fee').html('');
             $('#id_date_late_fee').removeClass('border').removeClass('border-danger');

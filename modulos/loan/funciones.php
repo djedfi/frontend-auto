@@ -771,7 +771,7 @@ function form_update()
                         <div class="row">
                             <div class="col-md-12 col-lg-6">
                                 <label for="id_txt_amount_late_fee" class="form-label">Late Fee</label>
-                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_amount_late_fee" name="txt_amount_late_fee" autocomplete="off" readonly>
+                                <input type="text" class="form-control text-center fs-6  fw-bold" id="id_txt_amount_late_fee" name="txt_amount_late_fee" autocomplete="off" required>
                             </div>
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
