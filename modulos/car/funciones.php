@@ -46,11 +46,11 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_vin_car" class="form-label">VIN <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_vin_car" name="txt_vin_car" pattern="^[A-Za-z1-9]{1}[A-Za-z0-9]{10}[0-9]{6}$" minlength="17" maxlength="17" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_vin_car" name="txt_vin_car" minlength="17" maxlength="17" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" pattern="^[A-Za-z0-9]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car" name="txt_stcnumber_car" minlength="8" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_ndoors_car" class="form-label">Number of doors</label>
@@ -269,11 +269,11 @@
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_vin_car_upd" class="form-label">VIN <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_vin_car_upd" name="txt_vin_car_upd" pattern="^[A-Za-z1-9]{1}[A-Za-z0-9]{10}[0-9]{6}$" minlength="17" maxlength="17" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_vin_car_upd" name="txt_vin_car_upd" minlength="17" maxlength="17" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_stcnumber_car_upd" class="form-label">Stock Number <span class="text-red">*</span></label>
-                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" pattern="^[A-Za-z0-9]{2}[0-9]{6}$" minlength="8" maxlength="8" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="id_txt_stcnumber_car_upd" name="txt_stcnumber_car_upd" minlength="8" maxlength="8" autocomplete="off" required>
                                     </div> 
                                     <div class="col-sm-6 col-md-6">
                                         <label for="id_txt_ndoors_car_upd" class="form-label">Number of doors </label>
