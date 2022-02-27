@@ -690,21 +690,12 @@ $(document).ready(function()
             width: '100%'
         });
     
-        $('#id_slc_model_car_upd').select2({
-            minimumResultsForSearch: '',
-            width: '100%'
-        });
-    
-        $('#id_slc_trim_car_upd').select2({
-            minimumResultsForSearch: '',
-            width: '100%'
-        });
+
 
         $("#id_txt_price_car_upd").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
         $("#id_txt_mileage_car_upd").maskMoney({thousands:',', decimal:'.',precision:0});
 
-        $('#id_slc_model_car_upd').select2("enable", false);
-        $('#id_slc_trim_car_upd').select2("enable", false);
+
 
         $('#id_txt_color_car_upd').spectrum({
             showPaletteOnly: true,
@@ -891,7 +882,7 @@ $(document).ready(function()
 
                         let url_temp = data.data[0].url_info.split('https://');
                         $("#id_txt_url_car_upd").val(url_temp[1]);
-
+                        var modelo_temp = data.data[0].id_modelo;
                         $.ajax
                         ({ 
                             type: "GET",
@@ -908,17 +899,25 @@ $(document).ready(function()
                                     data.datos.forEach(element => {
                                         let id = element.id;
                                         let name = element.name;
-                                        $("#id_slc_model_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                                        if(id == modelo_temp)
+                                        {
+                                            $("#id_slc_model_car_upd").append('<option value="'+id+'" selected>'+name+'</option>');
+                                        }
+                                        else
+                                        {
+                                            $("#id_slc_model_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                                        }
+                                        
                                     });
                                 }
                                 else
                                 {
-                                    $('#id_slc_model_car_upd').select2("enable", false);
+                                   // $('#id_slc_model_car_upd').select2("enable", false);
                                 }
                             }
                         });
                         
-
+                        var trim_temp = data.data[0].id_trim;
                         $.ajax
                         ({ 
                             type: "GET",
@@ -935,22 +934,31 @@ $(document).ready(function()
                                     data.datos.forEach(element => {
                                         let id = element.id;
                                         let name = element.name;
-                                        $("#id_slc_trim_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                                        if(id == trim_temp)
+                                        {
+                                            $("#id_slc_trim_car_upd").append('<option value="'+id+'" selected>'+name+'</option>');
+                                        }
+                                        else
+                                        {
+                                            $("#id_slc_trim_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                                        }
+                                        
                                     });
                                 }
                                 else
                                 {
-                                    $('#id_slc_trim_car_upd').select2("enable", false);
+                                    //$('#id_slc_trim_car_upd').select2("enable", false);
                                 }
                             },
                             
                         });    
                         //
-                        alert('We have loaded your information!');
                         $('#id_slc_model_car_upd').val(data.data[0].id_modelo);
                         $('#id_slc_trim_car_upd').val(data.data[0].id_trim);
-                        $('#id_slc_model_car_upd').trigger('change.select2');
-                        $('#id_slc_trim_car_upd').trigger('change');
+                        // $('#id_slc_model_car_upd').trigger('change.select2');
+                        // $('#id_slc_trim_car_upd').trigger('change.select2');
+                        // alert('We have loaded your information!');
+                       
                         
                     }
                     else

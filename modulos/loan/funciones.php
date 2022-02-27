@@ -412,6 +412,7 @@ function form_update()
 
                                         </div>
                                         <div class="col-md-12 col-lg-6 text-end">
+                                            <button type="button" id="id_btn_print_tab_loan" class="btn btn-success fw-bold lh-lg" disabled><i class="icon icon-printer"></i> Print Summary</button>
                                             <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Info</button>
                                         </div>
                                     </div>

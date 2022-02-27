@@ -1185,7 +1185,7 @@ $(document).ready(function()
                         }
                         else if(data == 3)
                         {
-                            return '<center><button type="button" id="send_email" class="btn btn-icon btn-info btn-sm" title="Send the receipt"><i class="fa fa-envelope"></i></button>&nbsp;<button type="button" id="update_payment" class="btn btn-icon btn-warning btn-sm" title="Update this Payment"><i class="fa fa-edit"></i></button>&nbsp;<button type="button" id="delete_payment" class="btn btn-icon btn-danger btn-sm" title="Delete this Payment"><i class="fa fa-trash"></i></button></center>';
+                            return '<center><button type="button" id="print_receipt" class="btn btn-icon btn-success btn-sm" title="Print the receipt"><i class="icon icon-printer"></i></button>&nbsp;<button type="button" id="send_email" class="btn btn-icon btn-info btn-sm" title="Send the receipt"><i class="fa fa-envelope"></i></button>&nbsp;<button type="button" id="update_payment" class="btn btn-icon btn-warning btn-sm" title="Update this Payment"><i class="fa fa-edit"></i></button>&nbsp;<button type="button" id="delete_payment" class="btn btn-icon btn-danger btn-sm" title="Delete this Payment"><i class="fa fa-trash"></i></button></center>';
                         }
                         else if(data == 4)
                         {
@@ -1448,6 +1448,19 @@ $(document).ready(function()
             
         });
 
+        $('#id_table_loan_summary tbody').on( 'click', 'button#print_receipt', function () 
+        {
+            $("#global-loader").fadeIn("fast");
+            var data        =   table_loan_summary.row( $(this).parents('tr') ).data();
+            location.href   =   endpoint_bc+'getloanpdf/'+data.id;
+            setTimeout(
+                function() 
+                {
+                    $("#global-loader").fadeOut("slow");
+                }, 1000);
+            
+        });
+
         //MOSTRAR EL SCHEDULE DE PAGOS
         var table_loan_scheduled = $('#id_table_loan_scheduled').DataTable
         (
@@ -1573,6 +1586,15 @@ $(document).ready(function()
                 $("#id_btn_save_tab_loan").removeClass('btn-loading');
                 $("#global-loader").fadeOut("slow");
             }
+        });
+
+        $('#id_btn_print_tab_loan').on('click',function(){
+            location.href   =   endpoint_bc+'getsummarypdf/'+$('#id_hid_loan_id_tab_loan').val();
+            setTimeout(
+                function() 
+                {
+                    $("#global-loader").fadeOut("slow");
+                }, 1000);
         });
 
         $('#id_btn_update_tab_car').on('click',function()
@@ -1878,7 +1900,9 @@ $(document).ready(function()
                         $('#id_btn_new_feelate_tab_loan').prop('disabled',false);                      
                         $('#id_btn_pay_balance_tab_loan').prop('disabled',false);  
                         $('#id_btn_save_tab_loan').prop('disabled',false);  
+                        
                     }
+                    $('#id_btn_print_tab_loan').prop('disabled',false);  
                 }
                 else
                 {
@@ -1988,6 +2012,7 @@ $(document).ready(function()
                                 $('#id_btn_pay_balance_tab_loan').prop('disabled',true); 
                                 $('#id_btn_save_tab_loan').prop('disabled',true); 
                             }
+                            $('#id_btn_print_tab_loan').prop('disabled',false); 
                         }
                         else
                         {
@@ -2160,7 +2185,9 @@ $(document).ready(function()
                                 $('#id_btn_new_feelate_tab_loan').prop('disabled',true);                      
                                 $('#id_btn_pay_balance_tab_loan').prop('disabled',true); 
                                 $('#id_btn_save_tab_loan').prop('disabled',true);  
+                                
                             }
+                            $('#id_btn_print_tab_loan').prop('disabled',false); 
                         }
                         else
                         {
