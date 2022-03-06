@@ -167,11 +167,11 @@ $(document).ready(function()
                     "data": "full_name"
                 },
                 {   
-                    "data": "id_car",
+                    "data": "conteo",
                     render: function(data,type)
                     {
                         var data_opciones;
-                        if(data)
+                        if(data > 0)
                         {
                             data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_trim_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
                         }

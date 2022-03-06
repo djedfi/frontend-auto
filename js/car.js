@@ -256,7 +256,10 @@ $(document).ready(function()
         {
             $("#global-loader").fadeIn("fast");
             $('#id_slc_model_car').select2("enable", false);
-    
+            $('#id_slc_model_car').children('option:not(:first)').remove();
+
+            $('#id_slc_trim_car').select2("enable", false);
+            $('#id_slc_trim_car').children('option:not(:first)').remove();
             $.ajax
             ({ 
                 type: "GET",
@@ -266,9 +269,9 @@ $(document).ready(function()
                 xhrFields: { withCredentials: true },
                 success: function (data, status, jqXHR) 
                 {
+                    
                     if(data.res)
                     {
-                        $('#id_slc_model_car').children('option:not(:first)').remove();
                         $('#id_slc_model_car').removeAttr('disabled');
                         data.datos.forEach(element => {
                             let id = element.id;
@@ -293,6 +296,7 @@ $(document).ready(function()
         {
             $("#global-loader").fadeIn("fast");
             $('#id_slc_trim_car').select2("enable", false);
+            $('#id_slc_trim_car').children('option:not(:first)').remove();
     
             $.ajax
             ({ 
@@ -305,7 +309,6 @@ $(document).ready(function()
                 {
                     if(data.res)
                     {
-                        $('#id_slc_trim_car').children('option:not(:first)').remove();
                         $('#id_slc_trim_car').removeAttr('disabled');
                         data.datos.forEach(element => {
                             let id = element.id;

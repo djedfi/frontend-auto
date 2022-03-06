@@ -117,18 +117,18 @@ $(document).ready(function()
                     "data": "id" 
                 },
                 { 
-                    "data": "name" 
+                    "data": "name_modelo" 
                 },
                 {   
-                    "data": "make.name"
+                    "data": "name_make"
                 }
                 ,
                 {   
-                    "data": "bandera_trim",
+                    "data": "conteo",
                     render: function(data,type)
                     {
                         var data_opciones;
-                        if(data)
+                        if(data > 0)
                         {
                             data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_model_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
                         }
