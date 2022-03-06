@@ -711,10 +711,10 @@ $(document).ready(function()
                 xhrFields: { withCredentials: true },
                 success: function (data, status, jqXHR) 
                 {
+                    $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
+                    $('#id_slc_model_car_upd').children('option:not(:first)').remove();
                     if(data.res)
                     {
-                        $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
-                        $('#id_slc_model_car_upd').children('option:not(:first)').remove();
                         $('#id_slc_model_car_upd').removeAttr('disabled');
                         data.datos.forEach(element => {
                             let id = element.id;
@@ -749,9 +749,9 @@ $(document).ready(function()
                 xhrFields: { withCredentials: true },
                 success: function (data, status, jqXHR) 
                 {
+                    $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
                     if(data.res)
                     {
-                        $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
                         $('#id_slc_trim_car_upd').removeAttr('disabled');
                         data.datos.forEach(element => {
                             let id = element.id;
