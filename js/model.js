@@ -122,6 +122,24 @@ $(document).ready(function()
                 {   
                     "data": "make.name"
                 }
+                ,
+                {   
+                    "data": "bandera_trim",
+                    render: function(data,type)
+                    {
+                        var data_opciones;
+                        if(data)
+                        {
+                            data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_model_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
+                        }
+                        else
+                        {
+                            data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_model_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button>&nbsp;<button type="button" id="delete_model" class="btn btn-icon btn-danger btn-sm" title="Delete this Model"><i class="fa fa-trash"></i></button></center>'
+                        }
+
+                        return data_opciones;
+                    }
+                }
             ],
             "order"     : 
             [
@@ -132,11 +150,6 @@ $(document).ready(function()
                 { 
                     orderable: false, targets: [1,2],
                     visible:false, targets: [0,groupColumn],
-                },
-                {
-                    'targets': 3,
-                    'data': null,
-                    'defaultContent': '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_model_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
                 }
             ],
             "displayLength": 10,
@@ -223,6 +236,68 @@ $(document).ready(function()
             $('#id_txt_name_md_up').val(data.name);
             $("#global-loader").fadeOut("slow");
         });
+
+        $('#id_table_models tbody').on( 'click', 'button#delete_model', function ()
+        {
+            var data = table.row( $(this).parents('tr') ).data();
+            swal({
+                title: "Delete Model?",
+                text: "Are you sure to delete this Model?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: "Yes, I am sure",
+                cancelButtonText:"No, cancel it!",
+            },function(isConfirm) 
+            {
+                if (isConfirm) 
+                {
+                    $.ajax
+                    ({ 
+                        type: "DELETE",
+                        url: endpoint_general+'modelos/'+data.id,
+                        dataType: "json",
+                        crossDomain: true,
+                        xhrFields: { withCredentials: true },
+                        success: function (data, status, jqXHR) 
+                        {
+                            if(data.res)
+                            {
+                                swal({
+                                    title: "Congratulations!",
+                                    text: "We have deleted the Model",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonClass: "btn-success",
+                                    confirmButtonText: "Ok",
+                                    closeOnConfirm: true
+                                });
+                                table.ajax.reload();
+                            }
+                            else
+                            {
+                                swal({
+                                    title: "Warning",
+                                    text: "This Model is not available to delete",
+                                    type: "warning",
+                                    showCancelButton: false,
+                                    confirmButtonClass: "btn-success",
+                                    confirmButtonText: "Exit",
+                                    closeOnConfirm: true
+                                });
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    $("#global-loader").fadeOut("slow");
+                    return false;
+                }
+            });
+        });
+
 
         $("#id_btn_update_md").click(function()
         {   

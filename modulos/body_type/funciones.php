@@ -8,7 +8,7 @@
             <div class="col-md-12 col-xl-6 mx-auto">
                 <div class="card h-100 border-primary justify-content-center">
                     <div class="card-header">
-                        <h4 class="card-title">Add trim</h4>
+                        <h4 class="card-title">Add Body Type</h4>
                     </div>
                     <div class="card-body">
                         <form id="id_form_new_trim" class="validate-form">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="id_txt_name_trim" class="form-label">Name <span class="text-red">*</span></label>
-                                <input type="text" class="form-control" id="id_txt_name_trim" name="txt_name_trim" placeholder="Enter trim: e.g.: S, SV, etc." maxlength="45" autocomplete="off" required>
+                                <input type="text" class="form-control" id="id_txt_name_trim" name="txt_name_trim" placeholder="Enter Body Type: e.g.: S, SV, etc." maxlength="45" autocomplete="off" required>
                             </div>
                             
                             <div class="alert alert-danger mb-0 d-none" id="id_div_conteiner_error_newtrim" role="alert">
@@ -59,7 +59,7 @@
             <div class="col-md-8 mx-auto">
                 <div class="card border-primary justify-content-center">
                     <div class="card-header justify-content-end">
-                        <button type="button" class="btn btn-success fw-bold lh-lg" id="id_btn_new_trim">Create a new Trim</button>
+                        <button type="button" class="btn btn-success fw-bold lh-lg" id="id_btn_new_trim">Create a new Body Type</button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -67,7 +67,7 @@
                                 <thead class="border-top">
                                     <tr>
                                         <th class="bg-transparent border-bottom-0">ID</th>
-                                        <th class="bg-transparent border-bottom-0">Name Trim</th>
+                                        <th class="bg-transparent border-bottom-0">Name Body Type</th>
                                         <th class="bg-transparent border-bottom-0">Name Group</th>
                                         <th class="bg-transparent border-bottom-0 w-1">Options</th>
                                     </tr>
@@ -139,13 +139,13 @@
         <!-- PAGE-HEADER -->
         <div class="page-header">
             <h1 class="page-title">
-                '.($hac == 'add' ? 'Create new trim of vehicle' : 'List of car trims').'
+                '.($hac == 'add' ? 'Create new Body Type of vehicle' : 'List of Body Types').'
                 
             </h1>
             <div>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="./?mod=trim&hac=list">Trims</a></li>
-                    '.($hac == 'add' ? '<li class="breadcrumb-item active" aria-current="page">New Trim</li>' : '<li class="breadcrumb-item active" aria-current="page">List of trims</li>').'
+                    <li class="breadcrumb-item"><a href="./?mod=body_type&hac=list">Body Type</a></li>
+                    '.($hac == 'add' ? '<li class="breadcrumb-item active" aria-current="page">New Body Type</li>' : '<li class="breadcrumb-item active" aria-current="page">List of Body Types</li>').'
                 </ol>
             </div>
         </div>

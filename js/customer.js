@@ -278,10 +278,10 @@ $(document).ready(function()
                     "data": "id" 
                 },
                 { 
-                    "data": "first_name" 
+                    "data": "last_name" 
                 },
                 { 
-                    "data": "last_name" 
+                    "data": "first_name" 
                 },
                 { 
                     "data": "cellphone",
@@ -340,7 +340,7 @@ $(document).ready(function()
             ],
             "order"     : 
             [
-                [0, "desc"]
+                [1, "asc"]
             ],
             columnDefs: 
             [

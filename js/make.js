@@ -88,6 +88,23 @@ $(document).ready(function()
                     {
                         return '<a href="'+data+'" target="_blank">'+data+'</a>';
                     }
+                },
+                {   
+                    "data": "bandera_modelo",
+                    render: function(data,type)
+                    {
+                        var data_opciones;
+                        if(data)
+                        {
+                            data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_make_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
+                        }
+                        else
+                        {
+                            data_opciones = '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_make_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button>&nbsp;<button type="button" id="delete_make" class="btn btn-icon btn-danger btn-sm" title="Delete this Make"><i class="fa fa-trash"></i></button></center>'
+                        }
+
+                        return data_opciones;
+                    }
                 }
             ],
             "order"     : 
@@ -99,11 +116,6 @@ $(document).ready(function()
                 { 
                     orderable: false, targets: [2,3],
                     visible:false, targets: [0]
-                },
-                {
-                    'targets': 3,
-                    'data': null,
-                    'defaultContent': '<center><button type="button" data-bs-toggle="modal" data-bs-target="#modal_make_update" class="btn btn-icon btn-primary btn-sm"><i class="fe fe-edit"></i></button></center>'
                 }
             ],
             language: {
@@ -164,6 +176,67 @@ $(document).ready(function()
                 }
             });
 
+        });
+
+        $('#id_table_makes tbody').on( 'click', 'button#delete_make', function () 
+        {
+            var data = table.row( $(this).parents('tr') ).data();
+            swal({
+                title: "Delete Make?",
+                text: "Are you sure to delete this Make?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: "Yes, I am sure",
+                cancelButtonText:"No, cancel it!",
+            },function(isConfirm) 
+            {
+                if (isConfirm) 
+                {
+                    $.ajax
+                    ({ 
+                        type: "DELETE",
+                        url: endpoint_general+'makes/'+data.id,
+                        dataType: "json",
+                        crossDomain: true,
+                        xhrFields: { withCredentials: true },
+                        success: function (data, status, jqXHR) 
+                        {
+                            if(data.res)
+                            {
+                                swal({
+                                    title: "Congratulations!",
+                                    text: "We have deleted the Make",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonClass: "btn-success",
+                                    confirmButtonText: "Ok",
+                                    closeOnConfirm: true
+                                });
+                                table.ajax.reload();
+                            }
+                            else
+                            {
+                                swal({
+                                    title: "Warning",
+                                    text: "This Make is not available to delete",
+                                    type: "warning",
+                                    showCancelButton: false,
+                                    confirmButtonClass: "btn-success",
+                                    confirmButtonText: "Exit",
+                                    closeOnConfirm: true
+                                });
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    $("#global-loader").fadeOut("slow");
+                    return false;
+                }
+            });
         });
         
         

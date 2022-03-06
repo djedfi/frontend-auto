@@ -271,8 +271,8 @@
                             <thead class="border-top">
                                 <tr>
                                     <th class="bg-transparent border-bottom-0">ID</th>
-                                    <th class="bg-transparent border-bottom-0">First Name</th>
                                     <th class="bg-transparent border-bottom-0">Last Name</th>
+                                    <th class="bg-transparent border-bottom-0">First Name</th>
                                     <th class="bg-transparent border-bottom-0">Mobile Number</th>
                                     <th class="bg-transparent border-bottom-0">E-Mail</th>
                                     <th class="bg-transparent border-bottom-0 text-center">Birthday<br><span class="text-muted font-10">Format (MM/DD/YYYY)</span></th>

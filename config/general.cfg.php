@@ -1,5 +1,5 @@
 <?php
-$varCache = '?v=20220227';
+$varCache = '?v=20220304';
 
 define("DEBUG_MODE", true); //cambiar a false, al pasar a produccion
 define("URL_AA", 'http://localhost/frontend-auto/');
@@ -27,7 +27,7 @@ $array_modulos = array
     "home" => "home",
     "make" => "make",
     "model" => "model",
-    "trim"  => "trim",
+    "body_type"  => "body_type",
     "user"  => "user",
     "car"  => "car",
     "logout"=> "logout",

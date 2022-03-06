@@ -34,7 +34,7 @@
                                         <div id="id_div_msg_error_slcmodel" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_trim_car" class="form-label">Choose a Trim <span class="text-red">*</span></label>
+                                        <label for="id_slc_trim_car" class="form-label">Choose a Body Type <span class="text-red">*</span></label>
                                         <select class="form-control select2-show-search form-select" id="id_slc_trim_car" name="slc_trim_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slctrim" required>
                                             <option label="Choose one"></option>
                                         </select>
@@ -75,8 +75,8 @@
                                         <div id="id_div_msg_error_slcbrach"  class="" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_style_car" class="form-label">Choose a Style <span class="text-red">*</span></label>
-                                        <select class="form-control select2-show-search form-select" id="id_slc_style_car" name="slc_style_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstyle" required>
+                                        <label for="id_slc_style_car" class="form-label">Choose a Style</label>
+                                        <select class="form-control select2-show-search form-select" id="id_slc_style_car" name="slc_style_car" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstyle">
                                             <option label="Choose one"></option>
                                         </select>
                                         <div id="id_div_msg_error_slcstyle"  class="" role="alert"></div>
@@ -188,7 +188,7 @@
                                         <th class="bg-transparent border-bottom-0">ID</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Make</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Model</th>
-                                        <th class="bg-transparent border-bottom-0 text-center">Trim</th>
+                                        <th class="bg-transparent border-bottom-0 text-center">Body Type</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Condition</th>
                                         <th class="bg-transparent border-bottom-0 text-center">VIN</th>
                                         <th class="bg-transparent border-bottom-0 text-center">Stock Number</th>
@@ -257,7 +257,7 @@
                                         <div id="id_div_msg_error_slcmodel_upd" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_trim_car_upd" class="form-label">Choose a Trim <span class="text-red">*</span></label>
+                                        <label for="id_slc_trim_car_upd" class="form-label">Choose a Body Type <span class="text-red">*</span></label>
                                         <select class="form-control select2-show-search form-select" id="id_slc_trim_car_upd" name="slc_trim_car_upd" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slctrim_upd" required>
                                             <option label="Choose one"></option>
                                         </select>
@@ -298,8 +298,8 @@
                                         <div id="id_div_msg_error_slcbrach_upd"  class="" role="alert"></div>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <label for="id_slc_style_car_upd" class="form-label">Choose a Style <span class="text-red">*</span></label>
-                                        <select class="form-control select2-show-search form-select" id="id_slc_style_car_upd" name="slc_style_car_upd" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstyle_upd" required>
+                                        <label for="id_slc_style_car_upd" class="form-label">Choose a Style</label>
+                                        <select class="form-control select2-show-search form-select" id="id_slc_style_car_upd" name="slc_style_car_upd" data-placeholder="Choose one" data-cerror-print="id_div_msg_error_slcstyle_upd">
                                             <option label="Choose one"></option>
                                         </select>
                                         <div id="id_div_msg_error_slcstyle_upd"  class="" role="alert"></div>

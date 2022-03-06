@@ -396,7 +396,7 @@ final class Interfaces
                 <div class="container">
                     <div class="row align-items-center flex-row-reverse">
                         <div class="col-md-12 col-sm-12 text-center">
-                            Copyright © '.date('Y').' <a href="#">AA Motors</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="#"> EDFI </a> All rights reserved.
+                            Copyright © '.date('Y').' <a href="https://aamotorsla.com/" target="_blank">AA Motors</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="https://palaciossolutions.com/" target="_blank"> Palacios Solutions </a> All rights reserved.
                         </div>
                     </div>
                 </div>
