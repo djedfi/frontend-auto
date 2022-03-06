@@ -689,12 +689,88 @@ $(document).ready(function()
             minimumResultsForSearch: '',
             width: '100%'
         });
+
     
 
 
         $("#id_txt_price_car_upd").maskMoney({prefix:'US$ ',thousands:',', decimal:'.'});
         $("#id_txt_mileage_car_upd").maskMoney({thousands:',', decimal:'.',precision:0});
 
+        $("#id_slc_make_car_upd").change(function()
+        {
+            $("#global-loader").fadeIn("fast");
+            $('#id_slc_model_car_upd').prop('disabled', 'disabled');
+            $('#id_slc_trim_car_upd').prop('disabled', 'disabled');
+        
+            $.ajax
+            ({ 
+                type: "GET",
+                url: endpoint_general+'modelosbmake/'+$(this).val(),
+                dataType: "json",
+                crossDomain: true,
+                xhrFields: { withCredentials: true },
+                success: function (data, status, jqXHR) 
+                {
+                    if(data.res)
+                    {
+                        $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
+                        $('#id_slc_model_car_upd').children('option:not(:first)').remove();
+                        $('#id_slc_model_car_upd').removeAttr('disabled');
+                        data.datos.forEach(element => {
+                            let id = element.id;
+                            let name = element.name;
+                            $("#id_slc_model_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                        });
+                    }
+                    else
+                    {
+                        $('#id_slc_model_car_upd').prop('disabled', 'disabled');
+                        //$('#id_slc_model_car').select2("enable", false);
+                    }
+                },
+                complete : function()
+                {
+                    $("#global-loader").fadeOut("slow");
+                }
+            });
+        });
+        
+        $("#id_slc_model_car_upd").change(function()
+        {
+            $("#global-loader").fadeIn("fast");
+            $('#id_slc_trim_car_upd').prop('disabled', 'disabled');
+        
+            $.ajax
+            ({ 
+                type: "GET",
+                url: endpoint_general+'trimsbmodel/'+$(this).val(),
+                dataType: "json",
+                crossDomain: true,
+                xhrFields: { withCredentials: true },
+                success: function (data, status, jqXHR) 
+                {
+                    if(data.res)
+                    {
+                        $('#id_slc_trim_car_upd').children('option:not(:first)').remove();
+                        $('#id_slc_trim_car_upd').removeAttr('disabled');
+                        data.datos.forEach(element => {
+                            let id = element.id;
+                            let name = element.name;
+                            $("#id_slc_trim_car_upd").append('<option value="'+id+'">'+name+'</option>');
+                        });
+                    }
+                    else
+                    {
+                        $('#id_slc_trim_car_upd').prop('disabled', 'disabled');
+                        //$('#id_slc_trim_car').select2("enable", true);
+                    }
+                },
+                complete : function()
+                {
+                    $("#global-loader").fadeOut("slow");
+                }
+            });
+        });
 
 
         $('#id_txt_color_car_upd').spectrum({
