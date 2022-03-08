@@ -42,7 +42,7 @@ final class Interfaces
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="description" content="Admin AA Motors">
+            <meta name="description" content="Admin CLoan Motors">
             <meta name="author" content="JC & EDFI">
             <meta name="copyright" content="Copyright &copy; 2021-' . date("Y") . '. Todos los derechos reservados." />
             <meta name="keywords" content="admin,aa motors">
@@ -52,7 +52,7 @@ final class Interfaces
             <link rel="shortcut icon" type="image/x-icon" href="'.$this->path_rimg.'brand/favicon.ico'.$this->version_resources.'" />
         
             <!-- TITLE -->
-            <title>Admin AA Motors</title>
+            <title>Admin CLoan Motors</title>
         
             <!-- BOOTSTRAP CSS -->
             <link id="style" href="'.$this->path_rplugins.'bootstrap/css/bootstrap.min.css'.$this->version_resources.'" rel="stylesheet" />

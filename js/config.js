@@ -1,9 +1,9 @@
-//var endpoint_general    = 'http://127.0.0.1:8000/api/';
-//var endpoint_csrf       = 'http://127.0.0.1:8000/sanctum/csrf-cookie';
-//var endpoint_bc         = 'http://localhost/backend-auto/public/';
-var endpoint_general    = 'https://backend.palaciossolutions.com/api/';
-var endpoint_csrf       = 'https://backend.palaciossolutions.com/sanctum/csrf-cookie';
-var endpoint_bc    = 'https://backend.palaciossolutions.com/';
+var endpoint_general    = 'http://127.0.0.1:8000/api/';
+var endpoint_csrf       = 'http://127.0.0.1:8000/sanctum/csrf-cookie';
+var endpoint_bc         = 'http://localhost/backend-auto/public/';
+//var endpoint_general    = 'https://backend.palaciossolutions.com/api/';
+//var endpoint_csrf       = 'https://backend.palaciossolutions.com/sanctum/csrf-cookie';
+//var endpoint_bc    = 'https://backend.palaciossolutions.com/';
 $.ajaxSetup({
     beforeSend: function(xhr) 
     {
