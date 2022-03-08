@@ -837,7 +837,15 @@ $(document).ready(function()
                     }
                 },
                 { 
-                    "data": "birthday"
+                    "data": "email",
+                    render: function(data, type) 
+                    {
+                        if(data == null || data == '')
+                        {
+                            return '<center>NO INFO</center>'
+                        }
+                        return '<center><span>'+data+'</span></center>';
+                    }
                 },
                 { 
                     "data": "modelo_car",
@@ -869,7 +877,7 @@ $(document).ready(function()
             ],
             "order"     : 
             [
-                [0, "desc"]
+                [2, "asc"]
             ],
             columnDefs: 
             [
@@ -939,15 +947,14 @@ $(document).ready(function()
                     }
                 },
                 { 
-                    "data": "birthday",
+                    "data": "email",
                     render: function(data, type) 
                     {
                         if(data == null || data == '')
                         {
                             return '<center>NO INFO</center>'
                         }
-                        let birthday = data.split('-');
-                        return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
+                        return '<center><span>'+data+'</span></center>';
                     }
                 },
                 { 
@@ -1048,15 +1055,14 @@ $(document).ready(function()
                     }
                 },
                 { 
-                    "data": "birthday",
+                    "data": "email",
                     render: function(data, type) 
                     {
                         if(data == null || data == '')
                         {
                             return '<center>NO INFO</center>'
                         }
-                        let birthday = data.split('-');
-                        return '<center><span>'+birthday[1]+'/'+birthday[2]+'/'+birthday[0]+'</span></center>';
+                        return '<center><span>'+data+'</span></center>';
                     }
                 },
                 { 
@@ -1108,7 +1114,7 @@ $(document).ready(function()
             ],
             "order"     : 
             [
-                [1, "desc"]
+                [1, "asc"]
             ],
             columnDefs: 
             [
@@ -1452,7 +1458,7 @@ $(document).ready(function()
         {
             $("#global-loader").fadeIn("fast");
             var data        =   table_loan_summary.row( $(this).parents('tr') ).data();
-            location.href   =   endpoint_bc+'getloanpdf/'+data.id;
+            window.open(endpoint_bc+'getloanpdf/'+data.id,'_blank');
             setTimeout(
                 function() 
                 {
@@ -1510,7 +1516,7 @@ $(document).ready(function()
                 columnDefs: 
                 [
                     { 
-                        visible:false, targets: [4]
+                        visible:false, targets: [3,4]
                     },
                     {
                         targets: [1,2],
@@ -1589,7 +1595,7 @@ $(document).ready(function()
         });
 
         $('#id_btn_print_tab_loan').on('click',function(){
-            location.href   =   endpoint_bc+'getsummarypdf/'+$('#id_hid_loan_id_tab_loan').val();
+            window.open(endpoint_bc+'getsummarypdf/'+$('#id_hid_loan_id_tab_loan').val(),'_blank');
             setTimeout(
                 function() 
                 {

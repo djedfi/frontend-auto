@@ -407,13 +407,16 @@ function form_update()
                                             <input type="text" class="form-control text-center fs-6  fw-bold bg-warning text-dark" id="id_txt_balance_now_tab_loan" readonly>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-3 align-middle">
                                         <div class="col-md-12 col-lg-6" id="id_div_alerta_tab_loan" role="alert">
 
                                         </div>
-                                        <div class="col-md-12 col-lg-6 text-end">
-                                            <button type="button" id="id_btn_print_tab_loan" class="btn btn-success fw-bold lh-lg" disabled><i class="icon icon-printer"></i> Print Summary</button>
-                                            <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold lh-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Info</button>
+                                        
+                                        <div class="col-md-12 col-lg-6 align-middle">
+                                            <div class="d-grid gap-1">
+                                                <button type="button" id="id_btn_save_tab_loan" class="btn btn-info fw-bold btn-lg" disabled><i class="fe fe-refresh-ccw"></i> Update Info</button>
+                                                <button type="button" id="id_btn_print_tab_loan" class="btn btn-success fw-bold btn-lg" disabled><i class="icon icon-printer"></i> Print Summary</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>                                
@@ -955,7 +958,7 @@ function list_loan()
                                             <tr>
                                                 <th class="text-center"></td>
                                                 <th class="text-center">Full Name</td>
-                                                <th class="text-center">Birthdate<br><span class="text-muted font-6">(MM/DD/YYYY)</span></td>
+                                                <th class="text-center">EMAIL</td>
                                                 <th class="text-center">Model</td>
                                                 <th class="text-center">Stock <br> Number</td>
                                                 <th class="text-center">VIN</td>
@@ -973,7 +976,7 @@ function list_loan()
                                             <tr>
                                                 <th class="text-center"></th>
                                                 <th class="text-center">Full Name</th>
-                                                <th class="text-center">Birthdate<br><span class="text-muted font-6">(MM/DD/YYYY)</span></th>
+                                                <th class="text-center">EMAIL</th>
                                                 <th class="text-center">Car Model</th>
                                                 <th class="text-center">Stock Number</th>
                                                 <th class="text-center">VIN</th>
@@ -992,7 +995,7 @@ function list_loan()
                                             <tr>
                                                 <th class="text-center"></th>
                                                 <th class="text-center">Full Name</th>
-                                                <th class="text-center">Birthdate<br><span class="text-muted font-6">(MM/DD/YYYY)</span></th>
+                                                <th class="text-center">EMAIL</th>
                                                 <th class="text-center">Car Model</th>
                                                 <th class="text-center">Stock Number</th>
                                                 <th class="text-center">VIN</th>
