@@ -161,6 +161,107 @@ $(document).ready(function()
             }
         }
     });  
+
+    $('#id_table_payments_due').DataTable
+    (
+        {
+            
+            "ajax"      : 
+            {
+                "type"  : "GET",
+                "url"   : endpoint_general+'getListPendingPayment'
+            },
+            "dataSrc"       : "data",
+            "ordering"      : false,
+            "paging"        : false,
+            columns     : 
+            [
+                {   
+                    "data": "schedule_id" 
+                },
+                {  
+                    "data": "pago_automatico",
+                    render : function(data,type)
+                    {
+                        if(data == 1)
+                        {
+                            return '<center><i class="fe fe-alert-octagon text-warning fs-5" title="Automatic payment"></center>';
+                        }
+                        else
+                        {
+                            return '';
+                        }
+                        
+                    }
+                },
+                { 
+                    "data": "customer_name",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "email",
+                    render: function(data, type) 
+                    {
+                        if(data == null || data == '')
+                        {
+                            return '<center>NO INFO</center>'
+                        }
+                        return '<center><span><a href="mailto:'+data+'">'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "car_info",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "vin",
+                    render: function(data, type) 
+                    {
+                        return '<center><span>'+data+'</span></center>';
+                    }
+                },
+                { 
+                    "data": "minimun_payment"
+                },
+                { 
+                    "data": "date_programable"
+                },
+                { 
+                    "data": "date_end"
+                }
+            ],
+            "order"     : 
+            [
+                [2, "asc"]
+            ],
+            columnDefs: 
+            [
+                { 
+                    visible:false, targets: [0]
+                },
+                {
+                    targets: [7,8],
+                    render: $.fn.dataTable.render.moment( 'MM/DD/YYYY' )
+                },
+                {
+                    targets: [6],
+                    render: $.fn.dataTable.render.number( ',', '.', 2, 'US$ ')
+                }
+            ],
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                "decimal": ".",
+                "thousands": ","
+            }
+        }
+    );    
     
     $.ajax
     ({ 

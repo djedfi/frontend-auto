@@ -140,6 +140,39 @@
         </div>
         
     </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title fw-semibold">Pending Payments</h4>
+                </div>
+                <div class="card-body pb-0">
+                    <div class="table-responsive">
+                        <table id="id_table_payments_due" class="table table-sm table-bordered  table-hover text-nowrap mb-0" style="width:100%">
+                            <thead class="border-top">
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-center">Full Name</th>
+                                    <th class="text-center">EMAIL</th>
+                                    <th class="text-center">Car Model</th>
+                                    <th class="text-center">VIN</th>
+                                    <th class="text-center">MINIMUN<br>PAYMENT</th>
+                                    <th class="text-center">DATE SCHEDULED</th>
+                                    <th class="text-center">Date Due</th>
+                                    <th class="text-center w-1"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ROW CLOSED -->
 
     ';
